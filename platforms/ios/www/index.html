@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html ng-app="dogPeople">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        
+        <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+        
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.8.18.custom.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        
+        <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/scotchPanels.js"></script>
+        
+        <title>DogPeople</title>
+        
+        <!-- Google Places API -->
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+		
+        <!-- Google Maps API -->
+	    <script>
+			var map;
+			var infowindow;
+			var service;
+			
+			function initialize() {
+			  // Create an array of styles.
+			  var styles =   [
+			    {
+			      stylers: [
+			        { hue: '#0091ff' },
+			        { saturation: 5 },
+			        { "gamma": 0.5 },
+					{ "lightness": 30 }
+			      ]
+			    }
+			  ];
+			
+			  // Create a new StyledMapType object, passing it the array of styles,
+			  // as well as the name to be displayed on the map type control.
+			  var styledMap = new google.maps.StyledMapType(styles,
+			    {name: 'Styled Map'});
+			    
+			  // Try HTML5 geolocation
+			  if(navigator.geolocation) {
+			    navigator.geolocation.getCurrentPosition(function(position) {
+			      var pos = new google.maps.LatLng(position.coords.latitude,
+			                                       position.coords.longitude);
+			
+			      var infowindow = new google.maps.InfoWindow({
+			        map: map,
+			        position: pos,
+			        content: 'Found you :)'
+			      });
+			
+				  map = new google.maps.Map(document.getElementById('map-canvas'), {
+				    center: pos,
+				    zoom: 12,
+				    mapTypeControl: false,
+				    zoomControl: false,
+				    streetViewControl: false
+				  });
+				
+				  var request = {
+				    location: pos,
+				    radius: 20000,
+				    keyword: ['Dog parks']
+				  };
+				  infowindow = new google.maps.InfoWindow();
+				  service = new google.maps.places.PlacesService(map);
+				  service.nearbySearch(request, callback);
+				  service.getDetails(request, callback);
+				  
+				  function callback(results, status) {
+					  if (status == google.maps.places.PlacesServiceStatus.OK) {
+					    for (var i = 0; i < results.length; i++) {
+					      createMarker(results[i]);
+					    }
+					  }
+					}
+					
+					function createMarker(place) {
+					  var image = 'img/marker.png';
+					  var placeLoc = place.geometry.location;
+					  var marker = new google.maps.Marker({
+					    map: map,
+					    icon: image,
+					    position: place.geometry.location
+					  });
+					
+					  var request = { reference: place.reference };
+				    
+				    service.getDetails(request, function(details, status) {
+				      google.maps.event.addListener(marker, 'click', function() {
+
+						if (status == google.maps.places.PlacesServiceStatus.OK) {
+				            var contentStr = '<h5>'+details.name+'</h5><p>'+details.formatted_address;
+				            if (!!details.formatted_phone_number) contentStr += '<br />'+details.formatted_phone_number;
+				            if (!!details.open_now) contentStr += '<br />'+details.open_now;
+				            if (!!details.rating) contentStr += '<br />Rating:<strong> '+details.rating+'</strong>';
+				            contentStr += '<br />'+details.types+'</p>';
+				            infowindow.setContent(contentStr);
+				            infowindow.open(map,marker);
+				          } else { 
+				            var contentStr = "<h5>No Result, status="+status+"</h5>";
+				            infowindow.setContent(contentStr);
+				            infowindow.open(map,marker);
+				          }
+						
+				      });
+				    });
+				    
+					}
+					
+				  //Associate the styled map with the MapTypeId and set it to display.
+				  map.mapTypes.set('map_style', styledMap);
+				  map.setMapTypeId('map_style');
+			
+			      map.setCenter(pos);
+			    }, function() {
+			      handleNoGeolocation(true);
+			    });
+			  } else {
+			    // Browser doesn't support Geolocation
+			    handleNoGeolocation(false);
+			  }
+			  
+			}
+			
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+	    
+    </head>
+    <body>
+	    
+	    <header class="main-header">
+			<a href="#" class="menu-tap"><i class="fa fa-filter"></i></a>
+			<span class="logo">DogPeople</span>	
+		</header>
+        
+        <div id="site-wrapper">
+		
+			<div id="menu-panel"><!-- Left blank on purpose --></div>
+			<div id="user-menu-panel"><!-- Left blank on purpose --></div>
+			
+			<article>
+				<div class="container">
+					
+					<div class="panel" ng-show="tab === 1">
+						<a href="" class="filter">Showing all categories. <i class="fa fa-long-arrow-right"></i> Filter results</a>
+						<div id="map-canvas"></div>
+					</div>
+					<div class="panel" ng-show="tab === 2">
+						Panel 2
+					</div>
+					<div class="panel" ng-show="tab === 3">
+						Panel 3
+					</div>
+					<div class="panel" ng-show="tab === 4">
+						Panel 4
+					</div>
+					<div class="panel" ng-show="tab === 5">
+						Panel 5
+					</div>
+					<div class="panel" ng-show="tab === 6">
+						Panel 6
+					</div>
+					<div class="panel" ng-show="tab === 7">
+						Panel 7
+					</div>
+					<div class="panel" ng-show="tab === 8">
+						Panel 8
+					</div>
+					<div class="panel" ng-show="tab === 9">
+						Panel 9
+					</div>
+					
+				</div>
+			</article>
+			
+		</div>
+		
+		<div id="menu">
+			<nav ng-init="tab = 1">
+	            <ul class="nav nav-pills">
+	                <li ng-class="{ active:tab === 1 }">
+	                	<a href ng-click="tab = 1" class="all" data-itemtype="DogPeople"><i class="fa fa-bars"></i><span>All</span></a>
+	                </li>
+	                <li ng-class="{ active:tab === 2 }">
+	                	<a href ng-click="tab = 2" class="parks" data-itemtype="Parks"><i class="fa fa-tree"></i><span>Parks</span></a>
+	                </li>
+	                <li ng-class="{ active:tab === 3 }">
+	                	<a href ng-click="tab = 3" class="day-care" data-itemtype="Boarding & Day Care"><i class="fa fa-home"></i><span>Boarding & Day Care</span></a>
+	                </li>
+	                <li ng-class="{ active:tab === 4 }">
+	                	<a href ng-click="tab = 4" class="bars" data-itemtype="Food & Drinks"><i class="fa fa-beer"></i><span>Food & Drinks</span></a>
+	                </li>
+	                <li ng-class="{ active:tab === 5 }">
+	                	<a href ng-click="tab = 5" class="salons" data-itemtype="Salons"><i class="fa fa-scissors"></i><span>Salons</span></a>
+	                </li>
+	                <li ng-class="{ active:tab === 6 }">
+	                	<a href ng-click="tab = 6" class="stores" data-itemtype="Stores"><i class="fa fa-shopping-cart"></i><span>Stores</span></a>
+	                </li>
+	                <li ng-class="{ active:tab === 7 }">
+	                	<a href ng-click="tab = 7" class="training" data-itemtype="Training"><i class="fa fa-graduation-cap"></i><span>Training</span></a>
+	                </li>
+	                <li ng-class="{ active:tab === 8 }">
+	                	<a href ng-click="tab = 8" class="walkers" data-itemtype="Sitters & Walkers"><i class="fa fa-paw"></i><span>Sitters & Walkers</span></a>
+	                </li>
+	                <li ng-class="{ active:tab === 9 }">
+	                	<a href ng-click="tab = 9" class="hotels" data-itemtype="Hotels"><i class="fa fa-suitcase"></i><span>Hotels</span></a>
+	                </li>
+	            </ul>
+	        </nav>
+		</div>
+		
+        <script type="text/javascript" src="js/cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

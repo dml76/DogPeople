@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.example.dogpeople" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <icon density="mdpi" src="www/img/icons/android/mdpi.png" />
+    <icon density="hdpi" src="www/img/icons/android/hdpi.png" />
+    <icon density="xhdpi" src="www/img/icons/android/xhdpi.png" />
+    <icon density="xxhdpi" src="www/img/icons/android/xxhdpi.png" />
+    <icon density="xxxhdpi" src="www/img/icons/android/xxxhdpi.png" />
+    <splash density="port-mdpi" src="www/img/launch/android/splash-land-mdpi.png" />
+    <splash density="port-hdpi" src="www/img/launch/android/splash-land-hdpi.png" />
+    <splash density="port-xhdpi" src="www/img/launch/android/splash-land-xhdpi.png" />
+    <splash density="port-xxhdpi" src="www/img/launch/android/splash-land-xxhdpi.png" />
+    <splash density="port-xxxhdpi" src="www/img/launch/android/splash-land-xxxhdpi.png" />
+    <name>DogPeople</name>
+    <description>
+        Spend time with your pooch
+    </description>
+    <author email="info@dmlcreative.com" href="http://dmlcreative.com">
+        DML Creative Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <feature name="UniversalAnalytics">
+        <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
+    </feature>
+</widget>

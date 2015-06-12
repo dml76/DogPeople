@@ -39,12 +39,12 @@ $(document).ready(function() {
 	        }
 	    });
 		
-		$('.filter').click(function() {
+		$('.filter').touchstart(function() {
 			menuPanel.open();
 			return false;
 		});
 		
-		$('.sub-menu li a').click(function() {
+		$('.sub-menu li a').touchstart(function() {
 			menuPanel.close();
 			return false;
 		});
@@ -54,9 +54,9 @@ $(document).ready(function() {
 	/* CHECK FOR PLATFORMS */
 	var platformRateLink;	
 	if ((navigator.platform.indexOf("iPhone") != -1)) {
-		platformRateLink = 'http://apple.com';
+		platformRateLink = 'https://itunes.apple.com/app/id1005822759';
 	} else {
-	    platformRateLink = 'http://google.com';
+	    platformRateLink = 'http://play.google.com/store/apps/details?id=dogpeople';
 	}
 	document.getElementById("platform-link").setAttribute("href",platformRateLink);
 	

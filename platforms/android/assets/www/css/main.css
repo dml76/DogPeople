@@ -7,7 +7,10 @@ BODY {
 	text-transform: none;
 	font-size: 14px;
 	height: 100%;
+	overflow: hidden;
 }
+
+.gray { color: #999; }
 
 /*====================================
 OFF-CANVAS MENUS
@@ -21,12 +24,12 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 99999999;
-    background-color: rgba(100,179,253,0.975);
-    height: 44px;
+    z-index: 3;
+    background-color: #122e49;
+    height: 54px;
     font-size: 1.2em;
     box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
-    padding: 10px;
+    padding: 15px;
 }
 
 .main-header a, .main-header a:hover { color: #fff; text-decoration: none; }
@@ -51,7 +54,7 @@ header .toggle-panel {
 }
 
 #site-wrapper {
-  padding-top: 44px;
+  padding-top: 54px;
 }
 
 #site-wrapper .scotch-panel-canvas {
@@ -59,7 +62,7 @@ header .toggle-panel {
 }
 
 #menu {
-    background-color: #64b3fd;
+    background-color: #133b61;
     position: fixed;
     height: 100%; 
     top: 0;
@@ -78,10 +81,10 @@ header .toggle-panel {
     display: block;
     width: 100%;
     background: transparent;
-    color: #fff;
+    color: #63b3fc;
     padding: 10px 15px;
     margin: 0;
-    border-top: 1px dotted rgba(255,255,255,0.3);
+    border-top: 1px dotted rgba(255,255,255,0.1);
     font-family: 'Coustard', sans-serif;
 }
 
@@ -94,7 +97,7 @@ header .toggle-panel {
 }
 
 #menu ul li a:hover {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.1);
     text-decoration: none;
 }
 
@@ -102,7 +105,7 @@ article { background-color: #fff }
 
 .container {
 	width: auto;
-/* 	min-height: calc(100vh - 44px); */
+/* 	min-height: calc(100vh - 54px); */
 	height: 100vh;
 	display: block;
 	background-color: #fff;
@@ -121,12 +124,22 @@ article { background-color: #fff }
 	float: left;
 }
 
+.nearby-search,
+.reviews-close {
+	float: right;
+}
+
 .nav-pills > li {
 	float: none;
 }
 
-.nav-pills > li.active {
-	background-color: rgba(255,255,255,0.15);
+#menu ul li a.active {
+	background-color: rgba(255,255,255,0.05);
+	color: #fff;
+}
+
+#menu ul li a:hover {
+	cursor: pointer;
 }
 
 .nav-pills > li > a {
@@ -138,26 +151,278 @@ article { background-color: #fff }
 	height: 100%;
 }
 
-.filter {
+.refresh {
 	display: block;
 	text-align: center;
 	background-color: rgba(255, 255, 255, 0.9);
-	color: #6ACA4B;
-	padding: 10px;
-	font-size: 0.8em;
+	color: #68b5fd;
+	padding: 18px;
 	position: absolute;
-	top: 0;
 	z-index: 1;
 	width: 100%;
+	height: 50px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+	bottom: 55px;
 }
 
-.filter:hover, .filter:visited {
+a.filter {
+	display: block;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.9);
+	color: #fff !important;
+	padding: 5%;
+	position: absolute;
+	z-index: 1;
+	width: 90%;
+	box-shadow: 0px 10px 3px rgba(5, 5, 5, 0.3);
+	margin: 0 5%;
+	top: 25%;
+}
+
+a.filter > span {
+	color: #68B5FD;
+	display: block;
+	margin-top: 5px;
+}
+
+.filter:hover,
+.filter:visited,
+.refresh:hover,
+.refresh:visited {
 	text-decoration: none;
-	color: #64b3fd;
+	color: #68b5fd;
 }
 
 #map-canvas {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+}
+
+.info-window {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	font-size: 1.2em;
+}
+
+.info-window li {
+	margin: 0;
+	padding: 0;
+}
+
+.reviews {
+	position: absolute;
+	top: 0;
+	margin: 0 2.5%;
+	z-index: 5;
+	width: 95%;
+	height: calc(100% - 54px);
+	background-color: rgba(255,255,255,0.95);
+	padding: 5%;
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.7);
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+.reviews-close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	z-index: 5;
+	background: url('../img/x-alt.png');
+	width: 20px;
+	height: 20px;
+}
+
+.reviews-overlay {
+	background-color: rgba(0,0,0,0.65);
+	height: 100%;
+	width: 100%;
+	display: block;
+	position: fixed;
+	z-index: 4;
+	top: 0;
+}
+
+.reviews-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.reviews-list > li {
+	margin: 0;
+	padding: 0 0 15px 0;
+	border-bottom: 1px dotted #ccc;
+}
+
+.reviews-list li p {
+	color: #757575;
+	font-family: Roboto,Arial,sans-serif;
+}
+
+.reviews-list li ul {
+	list-style-type: none;
+	margin: 0 0 10px 0;
+	padding: 0;
+}
+
+.reviews-list li ul li {
+	margin: 0;
+	padding: 5px 0;
+}
+
+.reviews-list h2 {
+	font-size: 1.5em;
+	display: block;
+	margin: 0;
+}
+
+.reviews-list h6 {
+	font-size: 1.2em;
+	color: #68b5fd;
+}
+
+.info-window .link {
+	margin: 10px 0;
+}
+
+.info-window .open-now {
+	font-weight: 600;
+	color: #ff6600;
+}
+
+.info-window-title {
+	font-size: 1.4em;
+}
+
+.rating-bar {
+	background: url('../img/stars.png');
+	width: 100px;
+	height: 20px;
+	display: inline-block;
+	position: relative;
+	margin: 0 5px;
+	top: 3px;
+}
+
+.rating-bar > span {
+	background: url('../img/stars-active.png');
+	display: inline-block;
+	position: absolute;
+	height: 20px;
+}
+
+.cities {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	z-index: 5;
+	top: 0px;
+	width: 100%;
+}
+
+.cities li {
+	margin: 0;
+	padding: 0;
+}
+
+.cities li a {
+	padding: 15px;
+	display: block;
+	border-bottom: 1px dotted #ccc;
+	background-color: #fff;
+	color: #68b5fd;
+	text-align: center;
+}
+
+.rate-app {
+	display: block;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.9);
+	padding: 5%;
+	position: absolute;
+	z-index: 10;
+	width: 90%;
+	box-shadow: 0px 10px 3px rgba(5, 5, 5, 0.3);
+	margin: 0 5%;
+	top: 25%;
+}
+
+.rate-app UL {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.rate-app UL LI A {
+	display: block;
+	padding: 8px 0;
+	border-top: 1px dotted #ddd;
+}
+
+.rate-app P {
+	font-size: 1.2em;
+}
+
+
+
+
+/*====================================
+GOOGLE MAP AUTO-COMPLETE
+====================================*/
+
+.controls {
+	border: 1px solid transparent;
+	border-radius: 2px 0 0 2px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	height: 32px;
+	outline: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+	background-color: rgba(255,255,255,0.95);
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
+	margin: 10px 5%;
+	text-overflow: ellipsis;
+	width: 90%;
+	padding: 5px 30px 5px 5px;
+	height: 40px;
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+}
+
+#pac-input:focus {
+	border-color: #4d90fe;
+}
+
+.pac-container {
+	font-family: Roboto;
+}
+
+#type-selector {
+	color: #fff;
+	background-color: #4d90fe;
+	padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+	font-family: Roboto;
+	font-size: 13px;
+	font-weight: 300;
+}
+
+.clear-search {
+	position: absolute;
+	top: 18px;
+	right: calc(5% + 5px);
+	z-index: 5;
+	background: url('../img/x.png');
+	width: 20px;
+	height: 20px;
 }

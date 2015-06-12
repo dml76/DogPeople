@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	
+	$('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
+	
 	/* OFF-CANVAS MENUS */
 	$(function() {
 	    
@@ -29,22 +31,79 @@ $(document).ready(function() {
 	            '-webkit-transform': 'translate3d(0, 0, 0)',
 	            'transform': 'translate3d(0, 0, 0)'
 	          });
+	          
 	          /* VIEW TITLE */
-			  var itemType = $('.nav-pills').find('li.active a').data('itemtype');
+			  var itemType = $('.sub-menu').find('li a.active').attr('title');
 			  $( ".logo" ).replaceWith( "<span class='logo'>" + itemType + "</span>" );
+			  
 	        }
 	    });
 		
-		$('.filter').click(function() {
+		$('.filter').touchstart(function() {
 			menuPanel.open();
 			return false;
 		});
 		
-		$('nav a').click(function() {
+		$('.sub-menu li a').touchstart(function() {
 			menuPanel.close();
 			return false;
 		});
 	
 	});
+	
+	/* CHECK FOR PLATFORMS */
+	var platformRateLink;	
+	if ((navigator.platform.indexOf("iPhone") != -1)) {
+		platformRateLink = 'https://itunes.apple.com/app/id1005822759';
+	} else {
+	    platformRateLink = 'http://play.google.com/store/apps/details?id=dogpeople';
+	}
+	document.getElementById("platform-link").setAttribute("href",platformRateLink);
+	
+	/* SHOW RATE THIS APP MODAL GAIN ONCE PER WEEK */
+	function rateAppRepeat() {
+		$('.rate-app').fadeIn("fast");
+	}
+	setTimeout(rateAppRepeat, 10000);
+	//setTimeout(rateAppRepeat, 604800000);
+	
+	/* SHOW RATE THIS APP MODAL INITIALLY */
+	$('.rate-app .remind').click(function(){
+        $('.rate-app').fadeOut("fast");
+        setTimeout(rateAppRepeat, 10000)
+    });
+	
+	/* NEVER SHOW RATE THIS APP MODAL AGAIN */
+	$('.rate-app .cancel').click(function(){
+        $('.rate-app').fadeOut("fast");
+    });
+	
+	/* SHOW FILTER TOOLTIP */
+    function filterTooltip() {
+		$('.filter').fadeOut("slow");
+	}
+	setTimeout(filterTooltip, 5000)
+    				    
+	$(".nearby-search").click(function(){
+        if (!$('.sub-menu li a').hasClass("active")) {
+			$('.sub-menu li a.all').addClass("active");
+		}
+        var itemType = $('.sub-menu').find('li a.active').attr('title');
+		$( ".logo" ).replaceWith( "<span class='logo'>" + itemType + "</span>" );
+        panLoc();
+        findPlaces();
+    });
+    
+    $('.refresh').hide();
+    $(".refresh").click(function(){
+        findPlaces();
+    });
+    
+    $(".sub-menu li a").click(function(){
+        $(".sub-menu a").removeClass('active');
+        $(this).addClass('active');
+        var itemType = $('.sub-menu').find('li a.active').attr('title');
+        findPlaces();
+    });
 
 })

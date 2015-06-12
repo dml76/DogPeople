@@ -34,6 +34,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        window.analytics.startTrackerWithId('UA-41505208-2');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.example.dogpeople;
+package com.dmlapps.dogpeople;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

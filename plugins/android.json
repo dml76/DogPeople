@@ -39,12 +39,12 @@
     },
     "installed_plugins": {
         "com.danielcwilson.plugins.googleanalytics": {
-            "PACKAGE_NAME": "com.example.dogpeople"
+            "PACKAGE_NAME": "com.dmlapps.dogpeople"
         }
     },
     "dependent_plugins": {
         "com.google.playservices": {
-            "PACKAGE_NAME": "com.example.dogpeople"
+            "PACKAGE_NAME": "com.dmlapps.dogpeople"
         }
     }
 }

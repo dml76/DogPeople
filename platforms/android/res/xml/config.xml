@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.example.dogpeople" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <feature name="UniversalAnalytics">
-        <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
-    </feature>
     <icon density="mdpi" src="www/img/icons/android/mdpi.png" />
     <icon density="hdpi" src="www/img/icons/android/hdpi.png" />
     <icon density="xhdpi" src="www/img/icons/android/xhdpi.png" />
@@ -23,4 +20,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <feature name="UniversalAnalytics">
+        <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
+    </feature>
 </widget>

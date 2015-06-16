@@ -39,12 +39,12 @@ $(document).ready(function() {
 	        }
 	    });
 		
-		$('.filter').touchstart(function() {
+		$('.filter').click(function() {
 			menuPanel.open();
 			return false;
 		});
 		
-		$('.sub-menu li a').touchstart(function() {
+		$('.sub-menu li a').click(function() {
 			menuPanel.close();
 			return false;
 		});
@@ -56,11 +56,11 @@ $(document).ready(function() {
 	if ((navigator.platform.indexOf("iPhone") != -1)) {
 		platformRateLink = 'https://itunes.apple.com/app/id1005822759';
 	} else {
-	    platformRateLink = 'http://play.google.com/store/apps/details?id=dogpeople';
+	    platformRateLink = 'https://play.google.com/store/apps/details?id=com.dmlapps.dogpeople';
 	}
 	document.getElementById("platform-link").setAttribute("href",platformRateLink);
 	
-	/* SHOW RATE THIS APP MODAL GAIN ONCE PER WEEK */
+	/* SHOW RATE THIS APP MODAL AGAIN ONCE PER WEEK */
 	function rateAppRepeat() {
 		$('.rate-app').fadeIn("fast");
 	}

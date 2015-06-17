@@ -5,12 +5,14 @@ HTML {
 BODY {
 	font-family: 'Coustard', sans-serif;
 	text-transform: none;
-	font-size: 14px;
+	font-size: 17px;
 	height: 100%;
 	overflow: hidden;
 }
 
 .gray { color: #999; }
+
+a:hover, a:active, a:visited, a:link { text-decoration: none }
 
 /*====================================
 OFF-CANVAS MENUS

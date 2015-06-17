@@ -1,13 +1,17 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dmlapps.dogpeople" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"  versionCode="1.2" CFBundleVersion="1.2">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.dmlapps.dogpeople"
+        version   = "1.0.0"
+        android-versionCode="1.2"
+        ios-CFBundleVersion="1.2">
+
     <name>DogPeople</name>
-    <description>
-        Everything for Fido
-    </description>
-    <author email="info@dmlcreative.com" href="http://dmlapps.com/dogpeople">
-        Team DML
-    </author>
-    
+    <description>Everything for Fido</description>
+    <author email="info@dmlcreative.com" href="http://dmlapps.com/dogpeople">Team DML</author>
+
     <icon src="icon.png" />
     <gap:splash src="splash.png" />
     
@@ -61,4 +65,5 @@
     
     <content src="index.html" />
     <access origin="*" />
+
 </widget>

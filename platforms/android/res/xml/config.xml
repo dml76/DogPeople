@@ -18,6 +18,9 @@
     <author email="info@dmlcreative.com" href="http://dmlapps.com/dogpeople">
         Team DML
     </author>
+    <feature name="Geolocation">
+    	<param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
+	</feature>
     <content src="index.html" />
     <access origin="*" />
 </widget>

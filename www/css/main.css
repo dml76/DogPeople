@@ -26,10 +26,10 @@ header {
     width: 100%;
     z-index: 3;
     background-color: #122e49;
-    height: 54px;
+    height: 74px;
     font-size: 1.2em;
     box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
-    padding: 15px;
+    padding: 35px 15px 15px 15px;
 }
 
 .main-header a, .main-header a:hover { color: #fff; text-decoration: none; }
@@ -54,7 +54,7 @@ header .toggle-panel {
 }
 
 #site-wrapper {
-  padding-top: 54px;
+  padding-top: 74px;
 }
 
 #site-wrapper .scotch-panel-canvas {
@@ -91,6 +91,8 @@ header .toggle-panel {
 #menu ul li a i {
     width: 24px;
 }
+
+#menu ul li:first-of-type a { padding: 30px 15px 10px 15px; }
 
 @media screen and (min-width: 1050px) {
 	#menu ul li a i { width: auto; }

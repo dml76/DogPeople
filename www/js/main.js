@@ -45,7 +45,11 @@ $(document).ready(function() {
 		});
 		
 		$('.sub-menu li a').click(function() {
+			$(".sub-menu a").removeClass('active');
+			$(this).addClass('active');
+			var itemType = $('.sub-menu').find('li a.active').attr('title');
 			menuPanel.close();
+			findPlaces();
 			return false;
 		});
 	
@@ -99,11 +103,12 @@ $(document).ready(function() {
         findPlaces();
     });
     
+/*
     $(".sub-menu li a").click(function(){
         $(".sub-menu a").removeClass('active');
         $(this).addClass('active');
         var itemType = $('.sub-menu').find('li a.active').attr('title');
-        findPlaces();
     });
+*/
 
 })

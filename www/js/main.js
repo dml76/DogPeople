@@ -48,8 +48,13 @@ $(document).ready(function() {
 			$(".sub-menu a").removeClass('active');
 			$(this).addClass('active');
 			var itemType = $('.sub-menu').find('li a.active').attr('title');
-			menuPanel.toggle();
-			findPlaces();
+			menuPanel.close();
+			
+			if ($('header').css("left", "0")) {
+				alert("Menu is closed!");
+				//findPlaces();
+			}
+
 			return false;
 		});
 	

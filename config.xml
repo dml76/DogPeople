@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.dmlapps.dogpeople"
-        version   = "2.0">
+        version   = "2.1">
 
     <name>DogPeople</name>
     <description>Everything for Fido</description>
@@ -21,6 +21,18 @@
 	<feature name="StatusBar">
         <param name="ios-package" value="CDVStatusBar" onload="true" />
     </feature>
+    
+    <plugins>
+        <plugin name="Device" value="CDVDevice" />
+        <plugin name="Logger" value="CDVLogger" />
+        <plugin name="Compass" value="CDVLocation" />
+        <plugin name="NetworkStatus" value="CDVConnection" />
+        <plugin name="Debug Console" value="CDVDebugConsole" />
+        <plugin name="Geolocation" value="CDVLocation" />
+        <plugin name="SplashScreen" value="CDVSplashScreen" />
+        <plugin name="Battery" value="CDVBattery" />
+        <plugin name="Globalization" value="CDVGlobalization" />
+    </plugins>
 	
 	<gap:platform name="ios" />
 	<gap:platform name="android" />

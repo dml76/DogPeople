@@ -73,6 +73,13 @@
 			                            'Heading: '            + position.coords.heading               + '<br />' +
 			                            'Speed: '              + position.coords.speed                 + '<br />' +
 			                            'Timestamp: '          + position.timestamp                    + '<br />';
+			        
+			        //set new value for coords
+			        coords.set('latlng',
+			            new google.maps.LatLng(position.coords.latitude,
+			                position.coords.longitude));
+			        $('.nearby-search').show();
+			        $(document).ready(function () { ga('send', 'event', 'geolocation', 'accept', 'success'); });
 			    }
 			
 			    // onError Callback receives a PositionError object
@@ -81,20 +88,7 @@
 			        alert('code: '    + error.code    + '\n' +
 			              'message: ' + error.message + '\n');
 			    }
-				
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(onSuccess);
-					$(document).ready(function () { ga('send', 'event', 'geolocation', 'accept', 'success'); });
-    			}
-    			
-    			//set new value for coords
-			    function onSuccess(position) {
-			        coords.set('latlng',
-			            new google.maps.LatLng(position.coords.latitude,
-			                position.coords.longitude));
-			        $('.nearby-search').show();
-			    }
-			    
+    					    
 			    var mapOptions = {
 					zoom: 12,
 					center: coords.get('latlng'),
@@ -325,7 +319,7 @@
 							
 							// Check for platform to send appropriate app link
 							if ((navigator.platform.indexOf("iPhone") != -1)) {
-								contentStr += '<li class="link"><a class=navLink href=maps:daddr=Current+Location&saddr='+navLink+'><i class="fa fa-automobile"></i> Get Directions</a></li>';
+								contentStr += '<li class="link"><a class=navLink href=maps:daddr=Current%20Location&saddr='+navLink+'><i class="fa fa-automobile"></i> Get Directions</a></li>';
 							} else {
 							    contentStr += '<li class="link"><a class=navLink href=https://www.google.com/maps/dir/Current+Location/'+navLink+'><i class="fa fa-automobile"></i> Get Directions</a></li>';
 							}

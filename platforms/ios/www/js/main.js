@@ -5,12 +5,21 @@ $(document).ready(function() {
 	/* OFF-CANVAS MENUS */
 	$(function() {
 	    
+	    $('.sub-menu li a').click(function() {
+			$(".sub-menu a").removeClass('active');
+			$(this).addClass('active');
+			var itemType = $('.sub-menu').find('li a.active').attr('title');
+			//menuPanel.close();
+			findPlaces();
+			return false;
+		});
+	    
 	    var menuPanel = $('#menu-panel').scotchPanel({
 	        containerSelector: '#site-wrapper',
 	        direction: 'left',
 	        duration: 300,
 	        transition: 'ease',
-	        clickSelector: '.menu-tap',
+	        clickSelector: '.menu-tap, .filter, .sub-menu li a',
 	        distanceX: '250px',
 	        enableEscapeKey: true,
 	        
@@ -38,16 +47,6 @@ $(document).ready(function() {
 			  
 	        }
 	    });
-		
-		$('.filter').touchstart(function() {
-			menuPanel.open();
-			return false;
-		});
-		
-		$('.sub-menu li a').touchstart(function() {
-			menuPanel.close();
-			return false;
-		});
 	
 	});
 	
@@ -56,11 +55,11 @@ $(document).ready(function() {
 	if ((navigator.platform.indexOf("iPhone") != -1)) {
 		platformRateLink = 'https://itunes.apple.com/app/id1005822759';
 	} else {
-	    platformRateLink = 'http://play.google.com/store/apps/details?id=dogpeople';
+	    platformRateLink = 'https://play.google.com/store/apps/details?id=com.dmlapps.dogpeople';
 	}
 	document.getElementById("platform-link").setAttribute("href",platformRateLink);
 	
-	/* SHOW RATE THIS APP MODAL GAIN ONCE PER WEEK */
+	/* SHOW RATE THIS APP MODAL AGAIN ONCE PER WEEK */
 	function rateAppRepeat() {
 		$('.rate-app').fadeIn("fast");
 	}
@@ -99,11 +98,12 @@ $(document).ready(function() {
         findPlaces();
     });
     
+/*
     $(".sub-menu li a").click(function(){
         $(".sub-menu a").removeClass('active');
         $(this).addClass('active');
         var itemType = $('.sub-menu').find('li a.active').attr('title');
-        findPlaces();
     });
+*/
 
 })

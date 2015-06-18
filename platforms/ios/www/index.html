@@ -52,13 +52,41 @@
 				var coords = new google.maps.MVCObject();
 				coords.set('latlng', new google.maps.LatLng(40.69847032728747, -73.9514422416687));
 				
+				// Wait for device API libraries to load
+				document.addEventListener("deviceready", onDeviceReady, false);
+				
+				// device APIs are available
+			    function onDeviceReady() {
+			        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+			    }
+				
+				// onSuccess Geolocation
+			    function onSuccess(position) {
+			        var element = document.getElementById('geolocation');
+			        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+			                            'Longitude: '          + position.coords.longitude             + '<br />' +
+			                            'Altitude: '           + position.coords.altitude              + '<br />' +
+			                            'Accuracy: '           + position.coords.accuracy              + '<br />' +
+			                            'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+			                            'Heading: '            + position.coords.heading               + '<br />' +
+			                            'Speed: '              + position.coords.speed                 + '<br />' +
+			                            'Timestamp: '          + position.timestamp                    + '<br />';
+			    }
+			
+			    // onError Callback receives a PositionError object
+			    //
+			    function onError(error) {
+			        alert('code: '    + error.code    + '\n' +
+			              'message: ' + error.message + '\n');
+			    }
+				
 				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(success);
+					navigator.geolocation.getCurrentPosition(onSuccess);
 					$(document).ready(function () { ga('send', 'event', 'geolocation', 'accept', 'success'); });
     			}
     			
     			//set new value for coords
-			    function success(position) {
+			    function onSuccess(position) {
 			        coords.set('latlng',
 			            new google.maps.LatLng(position.coords.latitude,
 			                position.coords.longitude));
@@ -140,6 +168,7 @@
 					
 					$('.nearby-search, .menu-tap').fadeOut("slow");
 					$(".sub-menu a").removeClass('active');
+					$("#map-canvas").css('height', '100%');
 					
 					/* VIEW TITLE */
 					$( ".logo" ).replaceWith( "<span class='logo'>Searching&nbsp;...</span>" );

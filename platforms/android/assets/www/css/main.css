@@ -5,12 +5,14 @@ HTML {
 BODY {
 	font-family: 'Coustard', sans-serif;
 	text-transform: none;
-	font-size: 14px;
+	font-size: 17px;
 	height: 100%;
 	overflow: hidden;
 }
 
 .gray { color: #999; }
+
+a:hover, a:active, a:visited, a:link { text-decoration: none }
 
 /*====================================
 OFF-CANVAS MENUS
@@ -26,10 +28,10 @@ header {
     width: 100%;
     z-index: 3;
     background-color: #122e49;
-    height: 54px;
+    height: 94px;
     font-size: 1.2em;
     box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
-    padding: 15px;
+    padding: 35px 15px 15px 15px;
 }
 
 .main-header a, .main-header a:hover { color: #fff; text-decoration: none; }
@@ -54,7 +56,7 @@ header .toggle-panel {
 }
 
 #site-wrapper {
-  padding-top: 54px;
+  padding-top: 74px;
 }
 
 #site-wrapper .scotch-panel-canvas {
@@ -90,6 +92,11 @@ header .toggle-panel {
 
 #menu ul li a i {
     width: 24px;
+}
+
+#menu ul li:first-of-type a {
+	padding: 20px 15px 10px 15px;
+	height: 54px;
 }
 
 @media screen and (min-width: 1050px) {

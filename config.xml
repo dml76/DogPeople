@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.dmlapps.dogpeople"
-        version   = "1.5">
+        version   = "1.6">
 
     <name>DogPeople</name>
     <description>Everything for Fido</description>
@@ -16,6 +16,11 @@
 	<feature name="Geolocation">
     	<param name="ios-package" value="CDVLocation" />
 	</feature>
+	<gap:plugin name="org.apache.cordova.statusbar" version="0.1.4" />
+	<preference name="StatusBarOverlaysWebView" value="true" />
+	<feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
 	
 	<gap:platform name="ios" />
 	<gap:platform name="android" />

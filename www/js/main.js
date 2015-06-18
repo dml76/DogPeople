@@ -10,6 +10,7 @@ $(document).ready(function() {
 			$(this).addClass('active');
 			var itemType = $('.sub-menu').find('li a.active').attr('title');
 			//menuPanel.close();
+			//$('.refresh').fadeIn("slow");
 			findPlaces();
 			return false;
 		});
@@ -53,9 +54,9 @@ $(document).ready(function() {
 	/* CHECK FOR PLATFORMS */
 	var platformRateLink;	
 	if ((navigator.platform.indexOf("iPhone") != -1)) {
-		platformRateLink = 'https://itunes.apple.com/app/id1005822759';
+		platformRateLink = 'itms-apps://itunes.apple.com/us/app/domainsicle-domain-name-search/id1005822759?ls=1&mt=8';
 	} else {
-	    platformRateLink = 'https://play.google.com/store/apps/details?id=com.dmlapps.dogpeople';
+	    platformRateLink = 'market://details?id=com.dmlapps.dogpeople';
 	}
 	document.getElementById("platform-link").setAttribute("href",platformRateLink);
 	
@@ -84,6 +85,7 @@ $(document).ready(function() {
 	setTimeout(filterTooltip, 5000)
     				    
 	$(".nearby-search").click(function(){
+        $('.refresh').fadeIn("slow");
         if (!$('.sub-menu li a').hasClass("active")) {
 			$('.sub-menu li a.all').addClass("active");
 		}

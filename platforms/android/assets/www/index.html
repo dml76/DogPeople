@@ -73,10 +73,6 @@
 			                            'Heading: '            + position.coords.heading               + '<br />' +
 			                            'Speed: '              + position.coords.speed                 + '<br />' +
 			                            'Timestamp: '          + position.timestamp                    + '<br />';
-			        coords.set('latlng',
-			            new google.maps.LatLng(position.coords.latitude,
-			                position.coords.longitude));
-			        $('.nearby-search').show();
 			    }
 			
 			    // onError Callback receives a PositionError object
@@ -90,7 +86,15 @@
 					navigator.geolocation.getCurrentPosition(onSuccess);
 					$(document).ready(function () { ga('send', 'event', 'geolocation', 'accept', 'success'); });
     			}
-    					    
+    			
+    			//set new value for coords
+			    function onSuccess(position) {
+			        coords.set('latlng',
+			            new google.maps.LatLng(position.coords.latitude,
+			                position.coords.longitude));
+			        $('.nearby-search').show();
+			    }
+			    
 			    var mapOptions = {
 					zoom: 12,
 					center: coords.get('latlng'),

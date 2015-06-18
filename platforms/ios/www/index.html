@@ -15,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/main.css" />
         
+        <script type="text/javascript" src="js/cordova.js"></script>
         <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
@@ -58,6 +59,7 @@
 				// device APIs are available
 			    function onDeviceReady() {
 			        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+			        StatusBar.styleBlackTranslucent();
 			    }
 				
 				// onSuccess Geolocation
@@ -125,7 +127,7 @@
 				
 				// Load the default category places	
 			  	findPlaces();
-
+			  	
 			  	// Display Redo search in current map area bar at bottom of view
 			  	google.maps.event.addListener(map,"dragend",function(event){
 					$('.refresh').show();
@@ -136,8 +138,21 @@
 					$('.refresh').show();
 					$(document).ready(function () { ga('send', 'event', 'map', 'zoomed', 'true'); });	
 				});
-			    
-			    
+			  	
+			  	$(".nearby-search, .sub-menu li a").click(function(){
+			        // Display Redo search in current map area bar at bottom of view
+				  	google.maps.event.addListener(map,"dragend",function(event){
+						$('.refresh').show();
+						$(document).ready(function () { ga('send', 'event', 'map', 'dragged', 'true'); });	
+					});
+					
+					google.maps.event.addListener(map,"zoom_changed",function(event){
+						$('.refresh').show();
+						$(document).ready(function () { ga('send', 'event', 'map', 'zoomed', 'true'); });	
+					});
+			    });
+			  	
+			  	
 			    
 				// START AUTO-COMPLETE
 				
@@ -166,9 +181,17 @@
 					// Drop Markers on Map
 					clearMarkers();
 					
-					$('.nearby-search, .menu-tap').fadeOut("slow");
+					$('.nearby-search, .menu-tap, .refresh').fadeOut("slow");
 					$(".sub-menu a").removeClass('active');
-					$("#map-canvas").css('height', '100%');
+					
+					// Hide Redo search in current map area bar at bottom of view on search
+				  	google.maps.event.addListener(map,"dragend",function(event){
+						$('.refresh').hide();	
+					});
+					
+					google.maps.event.addListener(map,"zoom_changed",function(event){
+						$('.refresh').hide();	
+					});
 					
 					/* VIEW TITLE */
 					$( ".logo" ).replaceWith( "<span class='logo'>Searching&nbsp;...</span>" );
@@ -187,12 +210,14 @@
 					  	 	
 			    	}
 			    	
+			    	$("#map-canvas, .scotch-panel-canvas").css('height', '100%');
+					$(".container").css('height', '100vh');
+			    	
 					function showNearbyIcon() {
 						$('.nearby-search, .menu-tap').fadeIn("fast");
 						$( ".logo" ).replaceWith( "<span class='logo'>Search Results</span>" );
 					}
 					setTimeout(showNearbyIcon, 10000)
-					
 				});
 				
 				// Bias the SearchBox results towards places that are within the bounds of the current map's viewport.
@@ -254,7 +279,8 @@
 			            if (i === results.length) clearInterval(interval);
 			        }, 500);
 			    } else if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
-			    	alert('Oh man, no results here :(');
+			    	//alert('Oh man, no results here :(');
+			    	$('#modalNoResults').modal('show');
 				}
 			}
 		
@@ -299,11 +325,11 @@
 							
 							// Check for platform to send appropriate app link
 							if ((navigator.platform.indexOf("iPhone") != -1)) {
-								contentStr += '<li class="link"><a class=navLink href=http://maps.apple.com/?daddr=Current+Location&saddr='+navLink+'><i class="fa fa-automobile"></i> Get Directions</a></li>';
+								contentStr += '<li class="link"><a class=navLink href=maps:daddr=Current+Location&saddr='+navLink+'><i class="fa fa-automobile"></i> Get Directions</a></li>';
 							} else {
 							    contentStr += '<li class="link"><a class=navLink href=https://www.google.com/maps/dir/Current+Location/'+navLink+'><i class="fa fa-automobile"></i> Get Directions</a></li>';
 							}
-				            
+							
 				            if (!!details.formatted_phone_number) contentStr += '<li class="link"><a class="phone" href="tel:'+details.formatted_phone_number+'"><i class="fa fa-phone"></i> '+details.formatted_phone_number+'</a></li>';
 						    
 						    if (!!details.reviews && details.reviews.length) contentStr += '<li><a href="" class="reviews-link">Reviews</a></li>';
@@ -472,6 +498,24 @@
 	    
     </head>
     <body>
+	    
+	    <!-- Modals -->
+		<div class="modal fade" id="modalNoResults" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">No results</h4>
+		      </div>
+		      <div class="modal-body">
+		        Oh man, no results here :(
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	    
 	    <header class="main-header">
 			<a href="" class="reviews-close"></a>

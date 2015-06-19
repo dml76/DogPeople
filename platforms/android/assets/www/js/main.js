@@ -81,6 +81,9 @@ $(document).ready(function() {
 	/* SHOW FILTER TOOLTIP */
     function filterTooltip() {
 		$('.filter').fadeOut("slow");
+		
+		// Drop in initial markers
+		findPlaces();
 	}
 	setTimeout(filterTooltip, 5000)
     				    
@@ -99,13 +102,5 @@ $(document).ready(function() {
     $(".refresh").click(function(){
         findPlaces();
     });
-    
-/*
-    $(".sub-menu li a").click(function(){
-        $(".sub-menu a").removeClass('active');
-        $(this).addClass('active');
-        var itemType = $('.sub-menu').find('li a.active').attr('title');
-    });
-*/
 
 })

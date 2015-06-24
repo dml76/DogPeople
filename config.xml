@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.dmlapps.dogpeople"
-        version   = "2.4">
+        version   = "2.6">
 
     <name>DogPeople</name>
     <description>Everything for Fido</description>
@@ -38,7 +38,7 @@
 	<gap:platform name="android" />
 
 	<!-- Defaults -->
-    <icon src="icon.png" />
+    <icon src="icon.png" gap:role="default" />
     <gap:splash src="splash.png" />
 	
 	<!-- Android -->	

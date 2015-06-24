@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dmlapps.dogpeople" version="2.8" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.dmlapps.dogpeople" version="2.9" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <name>DogPeople</name>
     <description>Everything for Fido</description>
@@ -22,6 +22,9 @@
     <gap:platform name="ios" />
     <gap:platform name="android" />
     <icon gap:role="default" src="icon.png" />
+    <icon height="72" src="icon_72.png" width="72" />
+    <icon height="48" src="icon_48.png" width="48" />
+    <icon height="36" src="icon_36.png" width="36" />
     <gap:splash src="splash.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="www/img/launch/android/screen-ldpi-portrait.png" />
     <gap:splash gap:platform="android" gap:qualifier="land-ldpi" src="www/img/launch/android/screen-ldpi-landscape.png" />
@@ -59,5 +62,7 @@
     <gap:splash gap:platform="ios" height="2048" src="www/img/launch/ios/Default-Portrait@2x.png" width="1536" />
     <gap:splash gap:platform="ios" height="1536" src="www/img/launch/ios/Default-Landscape@2x.png" width="2048" />
     <content src="index.html" />
-    <access origin="http://google.com" />
+    <access origin="*.google.com" />
+    <access origin="*.googleapis.com" />
+    <access origin="*.gstatic.com" />
 </widget>

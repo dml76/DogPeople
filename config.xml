@@ -4,14 +4,14 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.dmlapps.dogpeople"
-        version   = "2.9">
+        version   = "3.0">
 
     <name>DogPeople</name>
     <description>Everything for Fido</description>
     <author email="info@dmlapps.com" href="http://dmlapps.com/dogpeople">Team DML</author>
 	
 	<!-- Plugins -->
-	<preference name="permissions" value="none"/>
+<!-- 	<preference name="permissions" value="none"/> -->
 	<gap:plugin name="org.apache.cordova.geolocation" />
 	<feature name="Geolocation">
     	<param name="ios-package" value="CDVLocation" />
@@ -93,7 +93,7 @@
 	<gap:splash src="www/img/launch/ios/Default-Landscape@2x.png" gap:platform="ios" width="2048" height="1536" />
 	        
     <content src="index.html" />
-<!--     <access origin="*" /> -->
+    
     <access origin="*.google.com" />
 	<access origin="*.googleapis.com" />
 	<access origin="*.gstatic.com" />

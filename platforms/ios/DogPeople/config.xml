@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dmlapps.dogpeople" version="2.9" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.dmlapps.dogpeople" version="3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="false" />
@@ -20,7 +20,6 @@
     <name>DogPeople</name>
     <description>Everything for Fido</description>
     <author email="info@dmlapps.com" href="http://dmlapps.com/dogpeople">Team DML</author>
-    <preference name="permissions" value="none" />
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.statusbar" version="0.1.4" />
     <preference name="StatusBarOverlaysWebView" value="true" />

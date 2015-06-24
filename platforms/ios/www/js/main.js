@@ -85,7 +85,7 @@ $(document).ready(function() {
 		// Drop in initial markers
 		findPlaces();
 	}
-	setTimeout(filterTooltip, 5000)
+	setTimeout(filterTooltip, 3000)
     				    
 	$(".nearby-search").click(function(){
         $('.refresh').fadeIn("slow");

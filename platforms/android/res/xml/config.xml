@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dmlapps.dogpeople" version="3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.dmlapps.dogpeople" version="3.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <name>DogPeople</name>
     <description>Everything for Fido</description>
@@ -20,8 +20,8 @@
     </plugins>
     <gap:platform name="ios" />
     <gap:platform name="android" />
-    <icon gap:role="default" src="icon.png" />
-    <icon height="72" src="icon_72.png" width="72" />
+    <icon gap:role="default" src="icon_72.png" />
+    <icon height="57" src="icon.png" width="57" />
     <icon height="48" src="icon_48.png" width="48" />
     <icon height="36" src="icon_36.png" width="36" />
     <gap:splash src="splash.png" />
@@ -61,7 +61,10 @@
     <gap:splash gap:platform="ios" height="2048" src="www/img/launch/ios/Default-Portrait@2x.png" width="1536" />
     <gap:splash gap:platform="ios" height="1536" src="www/img/launch/ios/Default-Landscape@2x.png" width="2048" />
     <content src="index.html" />
-    <access origin="*.google.com" />
-    <access origin="*.googleapis.com" />
-    <access origin="*.gstatic.com" />
+    <access origin="http://google.com" subdomains="true" />
+    <access origin="http://gstatic.com" subdomains="true" />
+    <access origin="http://googleapis.com" subdomains="true" />
+    <access origin="https://google.com" subdomains="true" />
+    <access origin="https://gstatic.com" subdomains="true" />
+    <access origin="https://googleapis.com" subdomains="true" />
 </widget>

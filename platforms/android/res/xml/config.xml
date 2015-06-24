@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dmlapps.dogpeople" version="2.6" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.dmlapps.dogpeople" version="2.7" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <name>DogPeople</name>
     <description>Everything for Fido</description>
@@ -23,17 +23,24 @@
     <gap:platform name="android" />
     <icon gap:role="default" src="icon.png" />
     <gap:splash src="splash.png" />
+    <icon height="72" src="icon_72.png" width="72" />
+    <icon height="48" src="icon_48.png" width="48" />
+    <icon height="36" src="icon_36.png" width="36" />
     <icon gap:density="ldpi" gap:platform="android" src="www/img/icons/android/ldpi.png" />
     <icon gap:density="mdpi" gap:platform="android" src="www/img/icons/android/mdpi.png" />
     <icon gap:density="hdpi" gap:platform="android" src="www/img/icons/android/hdpi.png" />
     <icon gap:density="xhdpi" gap:platform="android" src="www/img/icons/android/xdpi.png" />
     <icon gap:density="xxhdpi" gap:platform="android" src="www/img/icons/android/xxdpi.png" />
-    <gap:splash gap:platform="android" gap:qualifier="ldpi" src="www/img/launch/android/splash-land-ldpi.png" />
-    <gap:splash gap:platform="android" gap:qualifier="mdpi" src="www/img/launch/android/splash-land-mdpi.png" />
-    <gap:splash gap:platform="android" gap:qualifier="hdpi" src="www/img/launch/android/splash-land-hdpi.png" />
-    <gap:splash gap:platform="android" gap:qualifier="xhdpi" src="www/img/launch/android/splash-land-xhdpi.png" />
-    <gap:splash gap:platform="android" gap:qualifier="port-xxhdpi" src="www/img/launch/android/portrait-xxhdpi.png" />
-    <gap:splash gap:platform="android" gap:qualifier="land-xxhdpi" src="www/img/launch/android/landscape-xxhdpi.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="www/img/launch/android/screen-ldpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="land-ldpi" src="www/img/launch/android/screen-ldpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="www/img/launch/android/screen-mdpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="land-mdpi" src="www/img/launch/android/screen-mdpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="www/img/launch/android/screen-hdpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="land-hdpi" src="www/img/launch/android/screen-hdpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="www/img/launch/android/screen-xhdpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="land-xhdpi" src="www/img/launch/android/screen-xhdpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-xxhdpi" src="www/img/launch/android/screen-xxhdpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="land-xxhdpi" src="www/img/launch/android/screen-xxhdpi-landscape.png" />
     <icon gap:platform="ios" height="180" src="www/img/icons/ios/icon-60@3x.png" width="180" />
     <icon gap:platform="ios" height="60" src="www/img/icons/ios/icon-60.png" width="60" />
     <icon gap:platform="ios" height="120" src="www/img/icons/ios/icon-60@2x.png" width="120" />
@@ -60,5 +67,5 @@
     <gap:splash gap:platform="ios" height="2048" src="www/img/launch/ios/Default-Portrait@2x.png" width="1536" />
     <gap:splash gap:platform="ios" height="1536" src="www/img/launch/ios/Default-Landscape@2x.png" width="2048" />
     <content src="index.html" />
-    <access origin="*" />
+    <access origin="http://google.com" />
 </widget>

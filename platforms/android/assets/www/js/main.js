@@ -2,6 +2,21 @@ $(document).ready(function() {
 	
 	$('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
 	
+	/* ADJUST HEADER HEIGHT FOR STATUS BARS */
+	if ((navigator.platform.indexOf("iPhone") != -1)) {
+		$('header').css('height', '94px');
+		$('header').css('padding', '35px 15px 15px');
+		$('#menu ul li:first-of-type a').css('height', '74px');
+		$('#menu ul li:first-of-type a').css('padding', '40px 15px 10px');
+		$('.reviews-close').css('top', '35px');
+	} else {
+	    $('header').css('height', '54px');
+	    $('header').css('padding', '15px');
+	    $('#menu ul li:first-of-type a').css('height', '54px');
+		$('#menu ul li:first-of-type a').css('padding', '20px 15px 10px');
+		$('.reviews-close').css('top', '15px');
+	}
+	
 	/* OFF-CANVAS MENUS */
 	$(function() {
 	    

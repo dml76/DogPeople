@@ -9,12 +9,14 @@ $(document).ready(function() {
 		$('#menu ul li:first-of-type a').css('height', '74px');
 		$('#menu ul li:first-of-type a').css('padding', '40px 15px 10px');
 		$('.reviews-close').css('top', '35px');
+		$('#site-wrapper').css('padding-top', '74px');
 	} else {
 	    $('header').css('height', '54px');
 	    $('header').css('padding', '15px');
 	    $('#menu ul li:first-of-type a').css('height', '54px');
 		$('#menu ul li:first-of-type a').css('padding', '20px 15px 10px');
 		$('.reviews-close').css('top', '15px');
+		$('#site-wrapper').css('padding-top', '54px');
 	}
 	
 	/* OFF-CANVAS MENUS */

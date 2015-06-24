@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dmlapps.dogpeople" version="2.7" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.dmlapps.dogpeople" version="2.8" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <name>DogPeople</name>
     <description>Everything for Fido</description>
@@ -23,14 +23,6 @@
     <gap:platform name="android" />
     <icon gap:role="default" src="icon.png" />
     <gap:splash src="splash.png" />
-    <icon height="72" src="icon_72.png" width="72" />
-    <icon height="48" src="icon_48.png" width="48" />
-    <icon height="36" src="icon_36.png" width="36" />
-    <icon gap:density="ldpi" gap:platform="android" src="www/img/icons/android/ldpi.png" />
-    <icon gap:density="mdpi" gap:platform="android" src="www/img/icons/android/mdpi.png" />
-    <icon gap:density="hdpi" gap:platform="android" src="www/img/icons/android/hdpi.png" />
-    <icon gap:density="xhdpi" gap:platform="android" src="www/img/icons/android/xdpi.png" />
-    <icon gap:density="xxhdpi" gap:platform="android" src="www/img/icons/android/xxdpi.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="www/img/launch/android/screen-ldpi-portrait.png" />
     <gap:splash gap:platform="android" gap:qualifier="land-ldpi" src="www/img/launch/android/screen-ldpi-landscape.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="www/img/launch/android/screen-mdpi-portrait.png" />

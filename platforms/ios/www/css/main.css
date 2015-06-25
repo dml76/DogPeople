@@ -1,5 +1,6 @@
 HTML {
 	height: 100%;
+	width: 100%;
 }
 
 BODY {
@@ -7,6 +8,7 @@ BODY {
 	text-transform: none;
 	font-size: 15px;
 	height: 100%;
+	width: 100%;
 	overflow: hidden;
 }
 
@@ -108,7 +110,7 @@ header .toggle-panel {
     text-decoration: none;
 }
 
-article { background-color: #fff }
+article { background-color: #fff; }
 
 .container {
 	width: auto;
@@ -201,7 +203,8 @@ a.filter > span {
 }
 
 #map-canvas {
-	height: 100%;
+	height: 100vh;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 }

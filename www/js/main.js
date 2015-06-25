@@ -75,7 +75,7 @@ $(document).ready(function() {
 	if ((navigator.platform.indexOf("iPhone") != -1)) {
 		platformRateLink = 'itms-apps://itunes.apple.com/us/app/domainsicle-domain-name-search/id1005822759?ls=1&mt=8';
 	} else {
-	    platformRateLink = 'market://details?id=com.dmlapps.dogpeople';
+	    platformRateLink = 'http://play.google.com/store/apps/details?id=com.dmlapps.dogpeople';
 	}
 	document.getElementById("platform-link").setAttribute("href",platformRateLink);
 	

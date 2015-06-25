@@ -203,12 +203,13 @@ a.filter > span {
 }
 
 #map-canvas {
-	height: 100vh;
+	height: 100%;
 /* 	height: calc(100vh - 54px); */
 	width: 100%;
 	margin: 0;
 	padding: 0;
 /* 	top: -54px; */
+	background-color: #122e49;
 }
 
 .info-window {

@@ -20,6 +20,7 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('#site-wrapper').css('padding-top', '0');
 		$('.container').css('top', '-74px');
 		$('#pac-input').css('top', '74px !important');
+		$('.reviews').css('padding', '74px 5% 5% 5%');
 	} else {
 	    $('header').css('height', '54px');
 	    $('header').css('padding', '15px');
@@ -29,6 +30,7 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('#site-wrapper').css('padding-top', '0');
 		$('.container').css('top', '-54px');
 		$('#pac-input').css('top', '54px !important');
+		$('.reviews').css('padding', '54px 5% 5% 5%');
 	}
 	
 	/* OFF-CANVAS MENUS */
@@ -38,8 +40,6 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 			$(".sub-menu a").removeClass('active');
 			$(this).addClass('active');
 			var itemType = $('.sub-menu').find('li a.active').attr('title');
-			//menuPanel.close();
-			//$('.refresh').fadeIn("slow");
 			findPlaces();
 			return false;
 		});

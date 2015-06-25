@@ -8,8 +8,14 @@ window.addEventListener('load', function() {
     document.getElementById('noScrollRefresh').addEventListener('touchmove', function(e) {
         e.preventDefault();
     }, false);
+    document.getElementById('menu').addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, false);
     document.getElementById('noScrollContainer').addEventListener('touchmove', function(e) {
         e.preventDefault();
+    }, false);
+    document.getElementById('scrollReviews').addEventListener('touchmove', function(e) {
+        e.stopPropagation();
     }, false);
 }, false);
 	

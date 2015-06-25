@@ -30,7 +30,8 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('.reviews-close').css('top', '35px');
 		$('#site-wrapper').css('padding-top', '74px');
 		$('.refresh').css('bottom', '74px');
-		$('.reviews').css('height', 'calc(100% - 74px)');
+		$('.reviews').css('top', '-74px');
+		$('.reviews').css('padding', '74px 5% 5% 5%');
 	} else {
 	    $('header').css('height', '54px');
 	    $('header').css('padding', '15px');
@@ -39,7 +40,8 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('.reviews-close').css('top', '15px');
 		$('#site-wrapper').css('padding-top', '54px');
 		$('.refresh').css('bottom', '54px');
-		$('.reviews').css('height', 'calc(100% - 54px)');
+		$('.reviews').css('top', '-54px');
+		$('.reviews').css('padding', '54px 5% 5% 5%');
 	}
 	
 	/* OFF-CANVAS MENUS */

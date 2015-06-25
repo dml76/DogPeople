@@ -42,6 +42,7 @@
 		A96F910D71AD4560AC8A359A /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F81B3DA3105F4799ADB81ABD /* CDVLocation.m */; };
 		5912BB2883EE43E09FEE2BA4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6D8417DAB141A99DEC42E8 /* CoreLocation.framework */; };
 		49DEBFBF95184DD8A1ABDA85 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D507AB9F158A490EBE06B257 /* CDVLocation.m */; };
+		40A6309CD08A4FAF94DE4999 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = CB01BF69E70B4204831E5B30 /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,8 @@
 		0D6D8417DAB141A99DEC42E8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreLocation.framework"; path = "System/Library/Frameworks/CoreLocation.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 		D507AB9F158A490EBE06B257 /* CDVLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVLocation.m"; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		A177EC0271CB48DAA8D026EA /* CDVLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLocation.h"; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		CB01BF69E70B4204831E5B30 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		84664B85385040F2A03AFD70 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +219,8 @@
 				ED739A5193AB45A6B382160F /* CDVLocation.h */,
 				D507AB9F158A490EBE06B257 /* CDVLocation.m */,
 				A177EC0271CB48DAA8D026EA /* CDVLocation.h */,
+				CB01BF69E70B4204831E5B30 /* CDVInAppBrowser.m */,
+				84664B85385040F2A03AFD70 /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = "DogPeople/Plugins";
@@ -402,6 +407,7 @@
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				A96F910D71AD4560AC8A359A /* CDVLocation.m in Sources */,
 				49DEBFBF95184DD8A1ABDA85 /* CDVLocation.m in Sources */,
+				40A6309CD08A4FAF94DE4999 /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

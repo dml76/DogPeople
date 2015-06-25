@@ -1,6 +1,15 @@
 $(document).ready(function() {
 	
-	$('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
+	/* PREVENT VERTICAL SCROLLING SYSTEM SETTING */
+	window.addEventListener("touchstart", function(e) {
+	    e.preventDefault();
+	}, false);
+	
+	window.addEventListener("touchmove", function(e) {
+	    e.preventDefault();
+	}, false);
+
+$('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
 	
 	/* ADJUST HEADER HEIGHT FOR STATUS BARS */
 	if ((navigator.platform.indexOf("iPhone") != -1)) {
@@ -69,6 +78,12 @@ $(document).ready(function() {
 	    });
 	
 	});
+	
+	// Redirect Android links to system
+	function openExternal(elem) {
+	    window.open(elem.href, "_system");
+	    return false; // Prevent execution of the default onClick handler 
+	}
 	
 	/* CHECK FOR PLATFORMS */
 	var platformRateLink;	

@@ -24,5 +24,11 @@
             "url": "https://git-wip-us.apache.org/repos/asf/cordova-plugin-geolocation.git",
             "subdir": "."
         }
+    },
+    "org.apache.cordova.inappbrowser": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.inappbrowser"
+        }
     }
 }

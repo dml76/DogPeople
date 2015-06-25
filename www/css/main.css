@@ -60,6 +60,7 @@ header .toggle-panel {
 #site-wrapper {
   padding-top: 74px;
   height: 100vh;
+  min-height: 100%;
 }
 
 #site-wrapper .scotch-panel-canvas {
@@ -111,11 +112,12 @@ header .toggle-panel {
     text-decoration: none;
 }
 
-article { background-color: #fff; height: 100vh; }
+article { background-color: #fff; height: 100vh; min-height: 100%; }
 
 .container {
 	width: auto;
 	height: 100vh;
+	min-height: 100%;
 	display: block;
 	padding: 0;
 	top: -54px;
@@ -165,7 +167,7 @@ article { background-color: #fff; height: 100vh; }
 	text-align: center;
 	background-color: rgba(255, 255, 255, 0.9);
 	color: #68b5fd;
-	padding: 18px;
+	padding: 18px;	
 	position: absolute;
 	z-index: 1;
 	width: 100%;
@@ -204,11 +206,10 @@ a.filter > span {
 
 #map-canvas {
 	height: 100vh;
-/* 	height: calc(100vh - 54px); */
+	min-height: 100%;
 	width: 100%;
 	margin: 0;
 	padding: 0;
-/* 	top: -54px; */
 	background-color: #122e49;
 }
 

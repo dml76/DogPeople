@@ -1,10 +1,6 @@
 $(document).ready(function() {
 	
 	/* PREVENT VERTICAL SCROLLING SYSTEM SETTING */
-	window.addEventListener("touchstart", function(e) {
-	    e.preventDefault();
-	}, false);
-	
 	window.addEventListener("touchmove", function(e) {
 	    e.preventDefault();
 	}, false);

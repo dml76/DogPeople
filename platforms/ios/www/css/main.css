@@ -59,6 +59,7 @@ header .toggle-panel {
 
 #site-wrapper {
   padding-top: 74px;
+  background-color: #ffff00;
 }
 
 #site-wrapper .scotch-panel-canvas {
@@ -110,13 +111,13 @@ header .toggle-panel {
     text-decoration: none;
 }
 
-article { background-color: #fff; }
+article { background-color: #ff6600; }
 
 .container {
 	width: auto;
 	height: 100vh;
 	display: block;
-	background-color: #fff;
+	background-color: #ff000;
 	padding: 0;
 	top: -54px;
 }
@@ -203,7 +204,7 @@ a.filter > span {
 }
 
 #map-canvas {
-	height: 100%;
+	height: 100vh;
 /* 	height: calc(100vh - 54px); */
 	width: 100%;
 	margin: 0;

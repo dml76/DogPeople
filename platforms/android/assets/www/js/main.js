@@ -2,7 +2,7 @@ $(document).ready(function() {
 	
 	/* PREVENT VERTICAL SCROLLING SYSTEM SETTING */
 	window.addEventListener('touchmove',function(e) {
-	    if ($(this).hasClass('main-header, refresh'))
+	    if ($(this).hasClass('main-header'))
 	    {
 	        e.preventDefault();
 	        return false;

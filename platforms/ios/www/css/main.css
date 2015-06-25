@@ -59,7 +59,6 @@ header .toggle-panel {
 
 #site-wrapper {
   padding-top: 74px;
-  background-color: #ffff00;
   height: 100vh;
 }
 
@@ -112,13 +111,12 @@ header .toggle-panel {
     text-decoration: none;
 }
 
-article { background-color: #ff6600; height: 100vh; }
+article { background-color: #fff; height: 100vh; }
 
 .container {
 	width: auto;
 	height: 100vh;
 	display: block;
-	background-color: #ff000;
 	padding: 0;
 	top: -54px;
 }

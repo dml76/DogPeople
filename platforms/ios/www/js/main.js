@@ -8,6 +8,9 @@ window.addEventListener('load', function() {
     document.getElementById('noScrollRefresh').addEventListener('touchmove', function(e) {
         e.preventDefault();
     }, false);
+    document.getElementById('noScrollContainer').addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, false);
 }, false);
 	
 $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();

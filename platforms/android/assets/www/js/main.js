@@ -1,31 +1,10 @@
 $(document).ready(function() {
 	
 /* PREVENT VERTICAL SCROLLING SYSTEM SETTING */
-/*
-window.addEventListener('load', function() {
-    document.getElementById('noScrollHeader').addEventListener('touchmove', function(e) {
-        e.preventDefault();
-    }, false);
-    document.getElementById('noScrollRefresh').addEventListener('touchmove', function(e) {
-        e.preventDefault();
-    }, false);
-    document.getElementById('menu').addEventListener('touchmove', function(e) {
-        e.preventDefault();
-    }, false);
-    document.getElementById('noScrollContainer').addEventListener('touchmove', function(e) {
-        e.preventDefault();
-    }, false);
-    document.getElementById('scrollReviews').addEventListener('touchmove', function(e) {
-        e.stopPropagation();
-    }, false);
-}, false);
-*/
-
 $(document).bind("touchmove", function(e){
     e.preventDefault();
 });
-
-$('#scrollReviews').on('touchmove', function (e) {
+$('.reviews').on('touchmove', function (e) {
      e.stopPropagation();
 });
 	
@@ -40,7 +19,7 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('.reviews-close').css('top', '35px');
 		$('#site-wrapper').css('padding-top', '74px');
 		$('.refresh').css('bottom', '74px');
-		$('.reviews').css('height', 'calc(100% - 74px)');
+		//$('.reviews').css('height', 'calc(100% - 74px)');
 	} else {
 	    $('header').css('height', '54px');
 	    $('header').css('padding', '15px');
@@ -49,7 +28,7 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('.reviews-close').css('top', '15px');
 		$('#site-wrapper').css('padding-top', '54px');
 		$('.refresh').css('bottom', '54px');
-		$('.reviews').css('height', 'calc(100% - 54px)');
+		//$('.reviews').css('height', 'calc(100% - 54px)');
 	}
 	
 	/* OFF-CANVAS MENUS */

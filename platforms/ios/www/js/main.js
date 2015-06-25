@@ -1,14 +1,15 @@
 $(document).ready(function() {
 	
-	/* PREVENT VERTICAL SCROLLING SYSTEM SETTING */
-	window.addEventListener('touchmove',function(e) {
-	    if ($(this).hasClass('main-header'))
-	    {
-	        e.preventDefault();
-	        return false;
-	    }
-	});
-
+/* PREVENT VERTICAL SCROLLING SYSTEM SETTING */
+window.addEventListener('load', function() {
+    document.getElementById('noScrollHeader').addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, false);
+    document.getElementById('noScrollRefresh').addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, false);
+}, false);
+	
 $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
 	
 	/* ADJUST HEADER HEIGHT FOR STATUS BARS */

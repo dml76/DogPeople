@@ -60,6 +60,7 @@ header .toggle-panel {
 #site-wrapper {
   padding-top: 74px;
   background-color: #ffff00;
+  height: 100vh;
 }
 
 #site-wrapper .scotch-panel-canvas {
@@ -111,7 +112,7 @@ header .toggle-panel {
     text-decoration: none;
 }
 
-article { background-color: #ff6600; }
+article { background-color: #ff6600; height: 100vh; }
 
 .container {
 	width: auto;

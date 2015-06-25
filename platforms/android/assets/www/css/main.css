@@ -119,6 +119,7 @@ article { background-color: #fff; }
 	display: block;
 	background-color: #fff;
 	padding: 0;
+	top: -54px;
 }
 
 .logo {
@@ -208,7 +209,7 @@ a.filter > span {
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	top: -54px;
+/* 	top: -54px; */
 }
 
 .info-window {

@@ -1,9 +1,13 @@
 $(document).ready(function() {
 	
 	/* PREVENT VERTICAL SCROLLING SYSTEM SETTING */
-	window.addEventListener("touchmove", function(e) {
-	    e.preventDefault();
-	}, false);
+	window.addEventListener('touchmove',function(e) {
+	    if ($(this).hasClass('main-header, refresh'))
+	    {
+	        e.preventDefault();
+	        return false;
+	    }
+	});
 
 $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
 	

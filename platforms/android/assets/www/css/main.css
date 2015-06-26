@@ -117,8 +117,7 @@ article { background-color: #fff; height: 100vh; min-height: 100%; display: bloc
 
 .container {
 	width: auto;
-/* 	height: 100vh; */
-	height: 300px;
+	height: 100vh;
 	min-height: 100%;
 	display: block;
 	padding: 0;

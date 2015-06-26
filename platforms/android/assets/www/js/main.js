@@ -7,6 +7,13 @@ $(document).bind("touchmove", function(e){
 $('.reviews').on('touchmove', function (e) {
      e.stopPropagation();
 });
+
+/* FIND VIEWPORT HEIGHT IN PIXELS FOR ANDROID DEVICES */
+// Listen for resize changes
+window.addEventListener("resize", function() {
+	// Get screen size (inner/outerWidth, inner/outerHeight)
+	$('.container').css('height', window.outerHeight + 'px');
+}, false);
 	
 $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
 	

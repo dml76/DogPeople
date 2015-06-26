@@ -46,6 +46,23 @@
 
 			function initialize() {
 				
+				/* FIND VIEWPORT HEIGHT IN PIXELS FOR ANDROID DEVICES */
+				getMapHeight();
+				
+				function getMapHeight() {
+					var mapHeight = (window.innerHeight + 'px');
+					$('.container').css('height', mapHeight);
+					//alert(mapHeight);
+				} 
+				
+				// Listen for resize changes
+				window.addEventListener("resize", function() {
+					getMapHeight();
+					$('#pac-input').css('top', '80px !important');
+				}, false);
+				
+				
+				
 				// prepare Geocoder
 				geocoder = new google.maps.Geocoder();
 				
@@ -210,9 +227,9 @@
 					    })(place), 500 * i)
 					  	 	
 			    	}
-			    	
-// 			    	$(".scotch-panel-canvas").css('height', '100%');
-					$("#map-canvas, .container").css('height', '100vh');
+					
+					// Set container height after keyboard moves out
+					getMapHeight();
 			    	
 					function showNearbyIcon() {
 						$('.nearby-search, .menu-tap').fadeIn("fast");

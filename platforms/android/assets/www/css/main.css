@@ -61,6 +61,7 @@ header .toggle-panel {
   padding-top: 74px;
   height: 100vh;
   min-height: 100%;
+  display: block;
 }
 
 #site-wrapper .scotch-panel-canvas {
@@ -112,7 +113,7 @@ header .toggle-panel {
     text-decoration: none;
 }
 
-article { background-color: #fff; height: 100vh; min-height: 100%; }
+article { background-color: #fff; height: 100vh; min-height: 100%; display: block; }
 
 .container {
 	width: auto;
@@ -211,6 +212,7 @@ a.filter > span {
 	margin: 0;
 	padding: 0;
 	background-color: #122e49;
+	display: block;
 }
 
 .info-window {

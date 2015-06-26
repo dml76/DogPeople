@@ -12,7 +12,7 @@ $('.reviews').on('touchmove', function (e) {
 getMapHeight();
 
 function getMapHeight() {
-	var mapHeight = (window.outerHeight + 'px');
+	var mapHeight = (window.innerHeight + 'px');
 	$('.container').css('height', mapHeight);
 	//alert(mapHeight);
 } 

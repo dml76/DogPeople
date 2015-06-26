@@ -47,15 +47,16 @@
 			function initialize() {
 				
 				// prepare Geocoder
-				geocoder = new google.maps.Geocoder();
+// 				geocoder = new google.maps.Geocoder();
 				
 				//define a default-position
 				var coords = new google.maps.MVCObject();
 				coords.set('latlng', new google.maps.LatLng(40.69847032728747, -73.9514422416687));
 				
+/*
 				// Wait for device API libraries to load
 				document.addEventListener("deviceready", onDeviceReady, false);
-				
+
 				// device APIs are available
 			    function onDeviceReady() {
 			        google.maps.event.addDomListener(window, 'load', initialize);
@@ -87,6 +88,7 @@
 					navigator.geolocation.getCurrentPosition(onSuccess);
 					$(document).ready(function () { ga('send', 'event', 'geolocation', 'accept', 'success'); });
     			}
+*/
     			
     			//set new value for coords
 			    function onSuccess(position) {

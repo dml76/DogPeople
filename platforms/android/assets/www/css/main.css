@@ -213,6 +213,7 @@ a.filter > span {
 	padding: 0;
 	background-color: #122e49;
 	display: block;
+	margin-top: -6px;
 }
 
 .info-window {
@@ -450,7 +451,7 @@ GOOGLE MAP AUTO-COMPLETE
 	padding: 5px 30px 5px 5px;
 	height: 40px;
 	box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
-	top: 54px !important;
+	top: 60px !important;
 }
 
 #pac-input:focus {

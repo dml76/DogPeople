@@ -19,7 +19,7 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('.reviews-close').css('top', '35px');
 		$('#site-wrapper').css('padding-top', '0');
 		$('.container').css('top', '-74px');
-		$('#pac-input').css('top', '74px !important');
+		$('#pac-input').css('top', '80px !important');
 		$('.reviews').css('padding', '74px 5% 5% 5%');
 	} else {
 	    $('header').css('height', '54px');
@@ -29,7 +29,7 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('.reviews-close').css('top', '15px');
 		$('#site-wrapper').css('padding-top', '0');
 		$('.container').css('top', '-54px');
-		$('#pac-input').css('top', '54px !important');
+		$('#pac-input').css('top', '60px !important');
 		$('.reviews').css('padding', '54px 5% 5% 5%');
 	}
 	

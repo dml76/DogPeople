@@ -11,8 +11,9 @@ $('.reviews').on('touchmove', function (e) {
 /* FIND VIEWPORT HEIGHT IN PIXELS FOR ANDROID DEVICES */
 // Listen for resize changes
 window.addEventListener("resize", function() {
+	var mapHeight = (window.outerHeight + 'px');
 	// Get screen size (inner/outerWidth, inner/outerHeight)
-	$('.container').css('height', window.outerHeight + 'px');
+	$('.container').css('height', mapHeight);
 }, false);
 	
 $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();

@@ -89,7 +89,7 @@ header .toggle-panel {
     width: 100%;
     background: transparent;
     color: #63b3fc;
-    padding: 10px 15px;
+    padding: 8px 15px;
     margin: 0;
     border-top: 1px dotted rgba(255,255,255,0.1);
     font-family: 'Coustard', sans-serif;
@@ -100,7 +100,7 @@ header .toggle-panel {
 }
 
 #menu ul li:first-of-type a {
-	padding: 40px 15px 10px 15px;
+	padding: 40px 15px 8px 15px;
 	height: 74px;
 }
 

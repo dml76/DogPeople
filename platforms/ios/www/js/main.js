@@ -34,7 +34,7 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('.reviews-close').css('top', '35px');
 		$('#site-wrapper').css('padding-top', '0');
 		$('.container').css('top', '-74px');
-		$('#pac-input').css('top', '115px !important');
+		$('#pac-input').css('top', '136px !important');
 		$('.reviews').css('padding', '74px 5% 5% 5%');
 	} else {
 	    $('header').css('height', '54px');

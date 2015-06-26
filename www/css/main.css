@@ -36,7 +36,7 @@ header {
     padding: 35px 15px 15px 15px;
 }
 
-.main-header a, .main-header a:hover { color: #fff; text-decoration: none; }
+.main-header a, .main-header a:hover { color: #fff; text-decoration: none; display: inline-block; width: 24px; text-align: center; }
 
 header a i, header a i:hover { color: inherit; }
 

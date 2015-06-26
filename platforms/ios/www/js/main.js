@@ -29,8 +29,8 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 	if ((navigator.platform.indexOf("iPhone") != -1)) {
 		$('header').css('height', '94px');
 		$('header').css('padding', '35px 15px 15px');
-		$('#menu ul li:first-of-type a').css('height', '62px');
-		$('#menu ul li:first-of-type a').css('padding', '35px 15px 8px');
+		$('#menu ul li:first-of-type a').css('height', '59px');
+		$('#menu ul li:first-of-type a').css('padding', '32px 15px 8px');
 		$('.reviews-close').css('top', '35px');
 		$('#site-wrapper').css('padding-top', '0');
 		$('.container').css('top', '-74px');
@@ -39,8 +39,8 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 	} else {
 	    $('header').css('height', '54px');
 	    $('header').css('padding', '15px');
-	    $('#menu ul li:first-of-type a').css('height', '42px');
-		$('#menu ul li:first-of-type a').css('padding', '15px 15px 8px');
+	    $('#menu ul li:first-of-type a').css('height', '39px');
+		$('#menu ul li:first-of-type a').css('padding', '12px 15px 8px');
 		$('.reviews-close').css('top', '15px');
 		$('#site-wrapper').css('padding-top', '0');
 		$('.container').css('top', '-54px');

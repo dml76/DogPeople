@@ -47,13 +47,12 @@
 			function initialize() {
 				
 				// prepare Geocoder
-// 				geocoder = new google.maps.Geocoder();
+				geocoder = new google.maps.Geocoder();
 				
 				//define a default-position
 				var coords = new google.maps.MVCObject();
 				coords.set('latlng', new google.maps.LatLng(40.69847032728747, -73.9514422416687));
 				
-/*
 				// Wait for device API libraries to load
 				document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -88,7 +87,6 @@
 					navigator.geolocation.getCurrentPosition(onSuccess);
 					$(document).ready(function () { ga('send', 'event', 'geolocation', 'accept', 'success'); });
     			}
-*/
     			
     			//set new value for coords
 			    function onSuccess(position) {
@@ -542,7 +540,7 @@
 					</div>					
 					<a href="" class="filter">Showing all categories.<span><i class="fa fa-filter"></i> Filter results</span></a>
 					<a href="" class="clear-search"></a><input id="pac-input" class="controls" type="text" placeholder="Ex: Dog Parks near City, ST">
-					<div id="map-canvas"></div>
+<!-- 					<div id="map-canvas"></div> -->Hello, world!
 					<a href="" class="refresh"><i class="fa fa-refresh"></i> Redo search in this area</a>
 					<div class="reviews">
 						<p id="reviews_content"></p>

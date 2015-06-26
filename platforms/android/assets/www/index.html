@@ -325,7 +325,7 @@
 				            contentStr += '<li>'+details.formatted_address+'</li>';
 							
 							// Check for platform to send appropriate app link
-							if ((navigator.platform.indexOf("iPhone") != -1)) {
+							if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
 								contentStr += '<li class="link"><a class=navLink href=maps:saddr=Current%20Location&daddr='+navLink+'><i class="fa fa-automobile"></i> Get Directions</a></li>';
 							} else {
 							    contentStr += '<li class="link"><a class=navLink href=https://www.google.com/maps/dir/Current+Location/'+navLink+'><i class="fa fa-automobile"></i> Get Directions</a></li>';

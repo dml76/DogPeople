@@ -26,15 +26,15 @@ window.addEventListener("resize", function() {
 $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
 	
 	/* ADJUST HEADER HEIGHT FOR STATUS BARS */
-	if ((navigator.platform.indexOf("iPhone") != -1)) {
-		$('header').css('height', '94px');
+	if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
+		$('header').css('height', '74px');
 		$('header').css('padding', '35px 15px 15px');
 		$('#menu ul li:first-of-type a').css('height', '59px');
 		$('#menu ul li:first-of-type a').css('padding', '32px 15px 8px');
 		$('.reviews-close').css('top', '35px');
 		$('#site-wrapper').css('padding-top', '0');
 		$('.container').css('top', '-74px');
-		$('#pac-input').css('top', '80px !important');
+		$('#pac-input').css('top', '115px !important');
 		$('.reviews').css('padding', '74px 5% 5% 5%');
 	} else {
 	    $('header').css('height', '54px');
@@ -103,7 +103,7 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 	
 	/* CHECK FOR PLATFORMS */
 	var platformRateLink;	
-	if ((navigator.platform.indexOf("iPhone") != -1)) {
+	if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
 		platformRateLink = 'itms-apps://itunes.apple.com/us/app/domainsicle-domain-name-search/id1005822759?ls=1&mt=8';
 	} else {
 	    platformRateLink = 'http://play.google.com/store/apps/details?id=com.dmlapps.dogpeople';

@@ -101,8 +101,8 @@ header .toggle-panel {
 }
 
 #menu ul li:first-of-type a {
-	padding: 40px 15px 8px 15px;
-	height: 74px;
+	padding: 35px 15px 8px 15px;
+	height: 62px;
 }
 
 @media screen and (min-width: 1050px) {

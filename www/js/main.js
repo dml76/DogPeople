@@ -61,19 +61,7 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 	} else {
 		addNewStyle('#pac-input {top:60px !important;}')
 	}
-	
-	/* Display alert if no internet connection */
-	
-	if (document.eventListener("offline", onOffline, false);) {
-	    function connectionTooltip() {
-			$('.connection').fadeOut("slow");
-		}
-		setTimeout(connectionTooltip, 3000)
-	}
-	else {
-	    // nothing
-	};
-	
+		
 	/* OFF-CANVAS MENUS */
 	$(function() {
 	    

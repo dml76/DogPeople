@@ -178,7 +178,7 @@ article { background-color: #fff; height: 100vh; min-height: 100%; display: bloc
 	bottom: 0;
 }
 
-a.filter {
+a.filter, .connection {
 	display: block;
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0.9);
@@ -390,11 +390,12 @@ a.filter > span {
 
 
 /*====================================
-OFF-CANVAS MENUS
+MODALS
 ====================================*/
 
 .modal {
 	z-index: 100000;
+	top: 25%;
 }
 
 .modal-footer,

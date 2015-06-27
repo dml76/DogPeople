@@ -7,6 +7,20 @@ $(document).bind("touchmove", function(e){
 $('.reviews').on('touchmove', function (e) {
      e.stopPropagation();
 });
+
+/* FIND VIEWPORT HEIGHT IN PIXELS FOR ANDROID DEVICES */
+getMapHeight();
+
+function getMapHeight() {
+	var mapHeight = (window.innerHeight + 'px');
+	$('.container').css('height', mapHeight);
+	//alert(mapHeight);
+} 
+
+// Listen for resize changes
+window.addEventListener("resize", function() {
+	getMapHeight();
+}, false);
 	
 $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
 	
@@ -19,7 +33,6 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('.reviews-close').css('top', '35px');
 		$('#site-wrapper').css('padding-top', '0');
 		$('.container').css('top', '-74px');
-		$('.container > #pac-input').css('top', '80px !important');
 		$('.reviews').css('padding', '74px 5% 5% 5%');
 	} else {
 	    $('header').css('height', '54px');
@@ -29,9 +42,37 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('.reviews-close').css('top', '15px');
 		$('#site-wrapper').css('padding-top', '0');
 		$('.container').css('top', '-54px');
-		$('.container > #pac-input').css('top', '60px !important');
 		$('.reviews').css('padding', '54px 5% 5% 5%');
 	}
+	
+	/* Override autocomplete positioning */
+	function addNewStyle(newStyle) {
+	    var styleElement = document.getElementById('styles_js');
+	    if (!styleElement) {
+	        styleElement = document.createElement('style');
+	        styleElement.type = 'text/css';
+	        styleElement.id = 'styles_js';
+	        document.getElementsByTagName('head')[0].appendChild(styleElement);
+	    }
+	    styleElement.appendChild(document.createTextNode(newStyle));
+	}
+	if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
+		addNewStyle('#pac-input {top:80px !important;}')
+	} else {
+		addNewStyle('#pac-input {top:60px !important;}')
+	}
+	
+	/* Display alert if no internet connection */
+	
+	if (document.eventListener("offline", onOffline, false);) {
+	    function connectionTooltip() {
+			$('.connection').fadeOut("slow");
+		}
+		setTimeout(connectionTooltip, 3000)
+	}
+	else {
+	    // nothing
+	};
 	
 	/* OFF-CANVAS MENUS */
 	$(function() {

@@ -46,23 +46,6 @@
 
 			function initialize() {
 				
-				/* FIND VIEWPORT HEIGHT IN PIXELS FOR ANDROID DEVICES */
-				getMapHeight();
-				
-				function getMapHeight() {
-					var mapHeight = (window.innerHeight + 'px');
-					$('.container').css('height', mapHeight);
-					//alert(mapHeight);
-				} 
-				
-				// Listen for resize changes
-				window.addEventListener("resize", function() {
-					getMapHeight();
-					$('#pac-input').css('top', '80px !important');
-				}, false);
-				
-				
-				
 				// prepare Geocoder
 				geocoder = new google.maps.Geocoder();
 				
@@ -216,6 +199,14 @@
 					$("#pac-input").blur();
 					$(document).ready(function () { ga('send', 'event', 'map', 'search', 'results'); });
 					
+					// Set container height after keyboard moves out
+					getMapHeight();
+					function getMapHeight() {
+						var mapHeight = (window.innerHeight + 'px');
+						$('.container').css('height', mapHeight);
+						//alert(mapHeight);
+					}
+					
 					for (var i = 0, place; place = places[i]; i++) {
 					  	
 					  	setTimeout((function(place) {
@@ -227,9 +218,6 @@
 					    })(place), 500 * i)
 					  	 	
 			    	}
-					
-					// Set container height after keyboard moves out
-					getMapHeight();
 			    	
 					function showNearbyIcon() {
 						$('.nearby-search, .menu-tap').fadeIn("fast");
@@ -556,6 +544,7 @@
 						</ul>
 					</div>					
 					<a href="" class="filter">Showing all categories.<span><i class="fa fa-filter"></i> Filter results</span></a>
+					<div class="connection">No internet connection</div>
 					<a href="" class="clear-search"></a><input id="pac-input" class="controls" type="text" placeholder="Ex: Dog Parks near City, ST">
 					<div id="map-canvas"></div>
 					<a href="" class="refresh"><i class="fa fa-refresh"></i> Redo search in this area</a>
@@ -582,7 +571,7 @@
 		</div>
 		
         <script type="text/javascript" src="js/cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/index.js"></script> 
 
     </body>
 </html>

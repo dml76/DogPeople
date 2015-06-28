@@ -395,7 +395,6 @@ MODALS
 
 .modal {
 	z-index: 100000;
-	top: 25%;
 }
 
 .modal-footer,
@@ -413,7 +412,7 @@ MODALS
 }
 
 .modal.in .modal-dialog {
-    transform: translate(0px, 50%);
+    transform: translate(0px, 100%);
 }
 
 .btn-default,

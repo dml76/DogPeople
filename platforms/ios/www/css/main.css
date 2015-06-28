@@ -412,7 +412,7 @@ MODALS
 }
 
 .modal.in .modal-dialog {
-    transform: translate(0px, 100%);
+    transform: translate(0px, 200px);
 }
 
 .btn-default,

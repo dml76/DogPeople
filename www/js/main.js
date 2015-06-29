@@ -14,7 +14,6 @@ getMapHeight();
 function getMapHeight() {
 	var mapHeight = (window.innerHeight + 'px');
 	$('.container').css('height', mapHeight);
-	//alert(mapHeight);
 } 
 
 // Listen for resize changes

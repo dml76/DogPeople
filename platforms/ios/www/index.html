@@ -58,7 +58,7 @@
 
 				// device APIs are available
 			    function onDeviceReady() {
-			        google.maps.event.addDomListener(window, 'load', initialize);
+					google.maps.event.addDomListener(window, 'load', initialize);
 			        navigator.geolocation.getCurrentPosition(onSuccess, onError);
 			        StatusBar.styleBlackTranslucent();
 			    }
@@ -95,7 +95,8 @@
 			                position.coords.longitude));
 			        $('.nearby-search').show();
 			        // Load the default category places	
-					//findPlaces();
+					clearMarkers();
+					findPlaces();
 			    }
 			    
 			    var mapOptions = {
@@ -127,9 +128,6 @@
 					map: map,
 					icon: loc_image
 			    });
-			    
-			    // Load the default category places	
-				findPlaces();
 			  	
 			  	// Display Redo search in current map area bar at bottom of view
 			  	google.maps.event.addListener(map,"dragend",function(event){
@@ -154,6 +152,9 @@
 						$(document).ready(function () { ga('send', 'event', 'map', 'zoomed', 'true'); });	
 					});
 			    });
+			    
+			    // Load the default category places	
+				findPlaces();
 			  	
 			  	
 			    

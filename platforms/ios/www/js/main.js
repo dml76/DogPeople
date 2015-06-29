@@ -148,10 +148,5 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
     $(".refresh").click(function(){
         findPlaces();
     });
-    
-    // Load the default category places
-    function defaultPlaces() {
-		findPlaces();
-	};
 
 })

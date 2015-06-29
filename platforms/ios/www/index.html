@@ -94,6 +94,8 @@
 			            new google.maps.LatLng(position.coords.latitude,
 			                position.coords.longitude));
 			        $('.nearby-search').show();
+			        // Load the default category places	
+					findPlaces();
 			    }
 			    
 			    var mapOptions = {

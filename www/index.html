@@ -95,7 +95,7 @@
 			                position.coords.longitude));
 			        $('.nearby-search').show();
 			        // Load the default category places	
-					findPlaces();
+					//findPlaces();
 			    }
 			    
 			    var mapOptions = {
@@ -127,6 +127,9 @@
 					map: map,
 					icon: loc_image
 			    });
+			    
+			    // Load the default category places	
+				findPlaces();
 			  	
 			  	// Display Redo search in current map area bar at bottom of view
 			  	google.maps.event.addListener(map,"dragend",function(event){
@@ -151,9 +154,6 @@
 						$(document).ready(function () { ga('send', 'event', 'map', 'zoomed', 'true'); });	
 					});
 			    });
-			    
-			    // Load the default category places	
-				findPlaces();
 			  	
 			  	
 			    

@@ -178,8 +178,8 @@ article { background-color: #fff; height: 100vh; min-height: 100%; display: bloc
 	bottom: 0;
 }
 
-a.filter, .connection {
-	display: block;
+a.filter, .connection, .no-results {
+	display: none;
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0.9);
 	color: #fff !important;
@@ -365,7 +365,7 @@ a.filter > span {
 	position: absolute;
 	z-index: 10;
 	width: 90%;
-	box-shadow: 0px 10px 3px rgba(5, 5, 5, 0.3);
+	box-shadow: 0px 3px 3px rgba(5, 5, 5, 0.3);
 	margin: 0 5%;
 	top: 25%;
 }

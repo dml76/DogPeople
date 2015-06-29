@@ -285,8 +285,14 @@
 			            if (i === results.length) clearInterval(interval);
 			        }, 500);
 			    } else if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
-			    	//alert('Oh man, no results here :(');
-			    	$('#modalNoResults').modal('show');
+			    	$('.no-results').fadeIn('fast');
+			    	
+			    	/* SHOW NO RESULTS TOOLTIP */
+				    function noResultsTooltip() {
+						$('.no-results').fadeOut("slow");
+					}
+					setTimeout(noResultsTooltip, 2000)
+			    	
 				}
 			}
 		
@@ -505,24 +511,6 @@
     </head>
     <body>
 	    
-	    <!-- Modals -->
-		<div class="modal fade" id="modalNoResults" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalLabel">No results</h4>
-		      </div>
-		      <div class="modal-body">
-		        Oh man, no results here :(
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	    
 	    <header class="main-header">
 			<a href="" class="reviews-close"></a>
 			<a href="" class="nearby-search"><i class="fa fa-location-arrow"></i></a> 
@@ -538,12 +526,23 @@
 					<div class="rate-app">
 						<p>Love using this app?</p>
 						<ul>
-							<li><a href="" class="cancel" id="platform-link" target="_top">Give us a good rating :)</a></li>
+							<li>
+								<script>
+									/* CHECK FOR PLATFORMS */
+									var platformRateLink;	
+									if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
+										platformRateLink = 'itms-apps://itunes.apple.com/us/app/domainsicle-domain-name-search/id1005822759?ls=1&mt=8';
+									} else {
+									    platformRateLink = 'http://play.google.com/store/apps/details?id=com.dmlapps.dogpeople';
+									}
+								</script>
+								<a href="#" class="cancel" onclick="window.open(platformRateLink, '_system');">Give us a good rating :)</a>
+							</li>
 							<li><a href="" class="remind">Remind me later</a></li>
 							<li><a href="" class="cancel">Don't ask again</a></li>
 						</ul>
 					</div>					
-					<a href="" class="filter">Showing all categories.<span><i class="fa fa-filter"></i> Filter results</span></a>
+					<div class="no-results">Man, no results here :(</div>
 <!-- 					<div class="connection">No internet connection</div> -->
 					<a href="" class="clear-search"></a><input id="pac-input" class="controls" type="text" placeholder="Ex: Dog Parks near City, ST">
 					<div id="map-canvas"></div>

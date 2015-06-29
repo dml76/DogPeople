@@ -115,21 +115,12 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 	    return false; // Prevent execution of the default onClick handler 
 	}
 	
-	/* CHECK FOR PLATFORMS */
-	var platformRateLink;	
-	if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
-		platformRateLink = 'itms-apps://itunes.apple.com/us/app/domainsicle-domain-name-search/id1005822759?ls=1&mt=8';
-	} else {
-	    platformRateLink = 'http://play.google.com/store/apps/details?id=com.dmlapps.dogpeople';
-	}
-	document.getElementById("platform-link").setAttribute("href",platformRateLink);
-	
 	/* SHOW RATE THIS APP MODAL AGAIN ONCE PER WEEK */
 	function rateAppRepeat() {
 		$('.rate-app').fadeIn("fast");
 	}
-	setTimeout(rateAppRepeat, 10000);
-	//setTimeout(rateAppRepeat, 604800000);
+	//setTimeout(rateAppRepeat, 10000);
+	setTimeout(rateAppRepeat, 604800000);
 	
 	/* SHOW RATE THIS APP MODAL INITIALLY */
 	$('.rate-app .remind').click(function(){
@@ -141,15 +132,6 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 	$('.rate-app .cancel').click(function(){
         $('.rate-app').fadeOut("fast");
     });
-	
-	/* SHOW FILTER TOOLTIP */
-    function filterTooltip() {
-		$('.filter').fadeOut("slow");
-		
-		// Drop in initial markers
-		findPlaces();
-	}
-	setTimeout(filterTooltip, 3000)
     				    
 	$(".nearby-search").click(function(){
         $('.refresh').fadeIn("slow");

@@ -152,6 +152,7 @@
 						$(document).ready(function () { ga('send', 'event', 'map', 'zoomed', 'true'); });	
 					});
 			    });
+			    
 			  	
 			  	
 			    
@@ -255,15 +256,6 @@
 			        map.setCenter(latlng);
 			        findPlaces();
 			    });
-			    
-			    
-			    
-			    
-			    function defaultPlaces() {
-					// Load the default category places	
-					var itemType = $('.sub-menu').find('li a.active').attr('title');
-					findPlaces();
-				}
 			
 			}
 
@@ -566,7 +558,7 @@
 		
 		<div id="menu">
 			<ul class="sub-menu cats">
-	           <li><a class="all active" title="DogPeople" data-itemtype="Dog"><i class="fa fa-bars"></i><span>All</span></a></li>
+	           <li><a class="all active" title="DogPeople" data-itemtype="Dog" id="defaultPlaces"><i class="fa fa-bars"></i><span>All</span></a></li>
 	           <li><a title="Dog Parks" data-itemtype="Dog Parks off-leash"><i class="fa fa-tree"></i><span>Dog Parks</span></a></li>
 	           <li><a title="Boarding & Day Care" data-itemtype="Dog Day Care"><i class="fa fa-home"></i><span>Boarding & Day Care</span></a></li>
 	           <li><a title="Food & Drinks" data-itemtype="Pet Friendly Restaurants"><i class="fa fa-beer"></i><span>Food & Drinks</span></a></li>

@@ -147,5 +147,11 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
     $(".refresh").click(function(){
         findPlaces();
     });
+    
+    function showDefaultPlaces() {
+		// Load the default category places
+		findPlaces();
+	}
+	setTimeout(showDefaultPlaces, 3000);
 
 })

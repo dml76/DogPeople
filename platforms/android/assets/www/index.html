@@ -96,7 +96,7 @@
 			        $('.nearby-search').show();
 			        // Load the default category places	
 					clearMarkers();
-					findPlaces();
+					//findPlaces();
 			    }
 			    
 			    var mapOptions = {
@@ -152,9 +152,6 @@
 						$(document).ready(function () { ga('send', 'event', 'map', 'zoomed', 'true'); });	
 					});
 			    });
-			    
-			    // Load the default category places	
-				findPlaces();
 			  	
 			  	
 			    
@@ -259,6 +256,12 @@
 			        findPlaces();
 			    });
 			
+			}
+			
+			function defaultPlaces() {
+				// Load the default category places	
+				var itemType = $('.sub-menu').find('li a.active').attr('title');
+				findPlaces();
 			}
 
 			// New search query

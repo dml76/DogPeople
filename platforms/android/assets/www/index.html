@@ -255,13 +255,16 @@
 			        map.setCenter(latlng);
 			        findPlaces();
 			    });
+			    
+			    
+			    
+			    
+			    function defaultPlaces() {
+					// Load the default category places	
+					var itemType = $('.sub-menu').find('li a.active').attr('title');
+					findPlaces();
+				}
 			
-			}
-			
-			function defaultPlaces() {
-				// Load the default category places	
-				var itemType = $('.sub-menu').find('li a.active').attr('title');
-				findPlaces();
 			}
 
 			// New search query

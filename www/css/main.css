@@ -484,3 +484,9 @@ GOOGLE MAP AUTO-COMPLETE
 	width: 20px;
 	height: 20px;
 }
+
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+
+	.clear-search { right: 55px; }
+	
+}

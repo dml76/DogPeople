@@ -56,9 +56,9 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 	    styleElement.appendChild(document.createTextNode(newStyle));
 	}
 	if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
-		addNewStyle('#pac-input {top:80px !important;}')
+		addNewStyle('#floating-panel {top:80px !important;}')
 	} else {
-		addNewStyle('#pac-input {top:60px !important;}')
+		addNewStyle('#floating-panel {top:60px !important;}')
 	}
 		
 	/* OFF-CANVAS MENUS */

@@ -26,12 +26,18 @@
         
         <title>DogPeople</title>
         
+        <script type="text/javascript" src="js/ga.js"></script>
+        
         <!-- Google Places API -->
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.10&libraries=places,geometry"></script>
+		
+		 <!-- Google GeoLocationMarker API -->
+		<script type="text/javascript" src="js/geolocationmarker-compiled.js"></script>
 		
         <!-- Google Maps API -->
 	    <script>
 			var map;
+			var GeoMarker;
 			var markers = [];
 			var loc_marker;
 			var selected_markers = [];
@@ -122,6 +128,24 @@
 				
 				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 				
+				GeoMarker = new GeolocationMarker();
+				GeoMarker.setCircleOptions({fillColor: '#63B3FC'});
+				
+				google.maps.event.addListenerOnce(GeoMarker, 'position_changed', function() {
+		          map.setCenter(this.getPosition());
+		          //map.fitBounds(this.getBounds()); //Change zoom to accuracy circle bounds
+		        });
+		
+		        google.maps.event.addListener(GeoMarker, 'geolocation_error', function(e) {
+		          alert('There was an error obtaining your position. Message: ' + e.message);
+		        });
+		
+		        GeoMarker.setMap(map);
+				$('.nearby-search').show();
+				
+				
+				
+							
 				var loc_image = 'img/loc_marker.png';	
 				loc_marker = new google.maps.Marker({
 			    	position: coords.get('latlng'),
@@ -153,93 +177,6 @@
 					});
 			    });
 			    
-			  	
-			  	
-			    
-				// START AUTO-COMPLETE
-				
-			  	// Create the search box and link it to the UI element.
-				var input = /** @type {HTMLInputElement} */(document.getElementById('pac-input'));
-				map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-				
-				var searchBox = new google.maps.places.SearchBox(/** @type {HTMLInputElement} */(input));
-    
-				// Listen for the event fired when the user selects an item from the
-				// pick list. Retrieve the matching places for that item.
-				google.maps.event.addListener(searchBox, 'places_changed', function() {
-			    	var places = searchBox.getPlaces();
-			
-					if (places.length == 0) {
-						return;
-			    	}
-					for (var i = 0, marker; marker = markers[i]; i++) {
-						marker.setMap(null);
-			    	}
-			
-					// For each place, get the icon, place name, and location.
-					markers = [];
-					var bounds = new google.maps.LatLngBounds();
-					
-					// Drop Markers on Map
-					clearMarkers();
-					
-					$('.nearby-search, .menu-tap, .refresh').fadeOut("slow");
-					$(".sub-menu a").removeClass('active');
-					
-					// Hide Redo search in current map area bar at bottom of view on search
-				  	google.maps.event.addListener(map,"dragend",function(event){
-						$('.refresh').hide();	
-					});
-					
-					google.maps.event.addListener(map,"zoom_changed",function(event){
-						$('.refresh').hide();	
-					});
-					
-					/* VIEW TITLE */
-					$( ".logo" ).replaceWith( "<span class='logo'>Searching&nbsp;...</span>" );
-					$("#pac-input").blur();
-					$(document).ready(function () { ga('send', 'event', 'map', 'search', 'results'); });
-					
-					// Set container height after keyboard moves out
-					getMapHeight();
-					function getMapHeight() {
-						var mapHeight = (window.innerHeight + 'px');
-						$('.container').css('height', mapHeight);
-						//alert(mapHeight);
-					}
-					
-					for (var i = 0, place; place = places[i]; i++) {
-					  	
-					  	setTimeout((function(place) {
-							return function() {
-								createMarker(place);
-								bounds.extend(place.geometry.location); 
-								map.fitBounds(bounds);
-					  		}
-					    })(place), 500 * i)
-					  	 	
-			    	}
-			    	
-					function showNearbyIcon() {
-						$('.nearby-search, .menu-tap').fadeIn("fast");
-						$( ".logo" ).replaceWith( "<span class='logo'>Search Results</span>" );
-					}
-					setTimeout(showNearbyIcon, 10000)
-				});
-				
-				// Bias the SearchBox results towards places that are within the bounds of the current map's viewport.
-				google.maps.event.addListener(map, 'bounds_changed', function() {
-					var bounds = map.getBounds();
-				    searchBox.setBounds(bounds);
-				});
-				
-				$(".clear-search").click(function(){
-			        input.value = "";
-			    });
-			
-				// END AUTO-COMPLETE
-			
-			
 			
 			  	var service = new google.maps.places.PlacesService(map);
 			  	service.nearbySearch(request, createMarkers);
@@ -256,8 +193,59 @@
 			        map.setCenter(latlng);
 			        findPlaces();
 			    });
-			
+			    
+			    
+			    
+			    
+			    
+			    
+			    // START AUTO-COMPLETE ZIP CODES
+				document.getElementById('submit').addEventListener('click', function() {
+					geocodeAddress(geocoder, map);
+					if (!$('.sub-menu li a').hasClass("active")) {
+						$('.sub-menu li a.all').addClass("active");
+					}
+			        var itemType = $('.sub-menu').find('li a.active').attr('title');
+					$( ".logo" ).replaceWith( "<span class='logo'>" + itemType + "</span>" );
+				});
+				
+				function geocodeAddress(geocoder, map) {
+				  var address = document.getElementById('address').value;
+				  geocoder.geocode({'address': address}, function(results, status) {
+				    if (status === google.maps.GeocoderStatus.OK) {
+				      map.setCenter(results[0].geometry.location);
+				      
+				      if (!$('.sub-menu li a').hasClass("active")) {
+						$('.sub-menu li a.all').addClass("active");
+					}
+			        var itemType = $('.sub-menu').find('li a.active').attr('title');
+					$( ".logo" ).replaceWith( "<span class='logo'>" + itemType + "</span>" );
+			        //panLoc();
+			        findPlaces();
+        
+				    } else {
+				      // alert('Geocode was not successful for the following reason: ' + status);
+				    }
+				  });
+				}
+				
+				// Show Close-X if there is a value
+				$( ".clear-search" ).hide();
+				var inp = $("input#address");
+				
+				$(inp).keyup(function(){
+					if($(this).val()=="" || $(this).val()==null) {
+						$( ".clear-search" ).hide();
+    				} else {
+	    				$( ".clear-search" ).show();
+    				}
+    			});
+				
+				// END AUTO-COMPLETE ZIP CODES
+			    
 			}
+				
+				
 
 			// New search query
 			function findPlaces() {
@@ -463,12 +451,19 @@
 			
 			// Pan to device location
 			function panLoc() {
-			  	map.panTo(loc_marker.getPosition());
+			  	map.panTo(GeoMarker.getPosition());
 			} 
 					
 			google.maps.event.addDomListener(window, 'load', initialize);
 			
 		</script>
+		
+		
+		
+		
+		
+		<!-- Google Analytics Tracking -->
+		<script type="text/javascript" src="js/GALocalStorage.js"></script>
 		
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -481,30 +476,34 @@
 		  // Events
 		  $(document).ready(function () {
 		  	
+		  	ga_storage._setAccount('UA-41505208-2');  
+		    ga_storage._trackPageview('/index.html');
+		    ga_storage._trackEvent('Startup','Starting scripts all loaded')
+		    		  	
 		  	// Navigation
-		  	$(".sub-menu li:nth-of-type(1) a").click(function(){ ga('send', 'event', 'nav', 'tap', 'all'); });
-		  	$(".sub-menu li:nth-of-type(2) a").click(function(){ ga('send', 'event', 'nav', 'tap', 'parks'); });
-		  	$(".sub-menu li:nth-of-type(3) a").click(function(){ ga('send', 'event', 'nav', 'tap', 'boarding'); });
-		  	$(".sub-menu li:nth-of-type(4) a").click(function(){ ga('send', 'event', 'nav', 'tap', 'food'); });
-		  	$(".sub-menu li:nth-of-type(5) a").click(function(){ ga('send', 'event', 'nav', 'tap', 'grooming'); });
-		  	$(".sub-menu li:nth-of-type(6) a").click(function(){ ga('send', 'event', 'nav', 'tap', 'stores'); });
-		  	$(".sub-menu li:nth-of-type(7) a").click(function(){ ga('send', 'event', 'nav', 'tap', 'trainers'); });
-		  	$(".sub-menu li:nth-of-type(8) a").click(function(){ ga('send', 'event', 'nav', 'tap', 'sitters'); });
-		  	$(".sub-menu li:nth-of-type(9) a").click(function(){ ga('send', 'event', 'nav', 'tap', 'hotels'); });
+		  	$(".sub-menu li:nth-of-type(1) a").click(function(){ ga_storage._trackEvent('Nav','All'); });
+		  	$(".sub-menu li:nth-of-type(2) a").click(function(){ ga_storage._trackEvent('Nav','Dog Parks'); });
+		  	$(".sub-menu li:nth-of-type(3) a").click(function(){ ga_storage._trackEvent('Nav','Boarding and Day Care'); });
+		  	$(".sub-menu li:nth-of-type(4) a").click(function(){ ga_storage._trackEvent('Nav','Food and Drinks'); });
+		  	$(".sub-menu li:nth-of-type(5) a").click(function(){ ga_storage._trackEvent('Nav','Grooming'); });
+		  	$(".sub-menu li:nth-of-type(6) a").click(function(){ ga_storage._trackEvent('Nav','Stores'); });
+		  	$(".sub-menu li:nth-of-type(7) a").click(function(){ ga_storage._trackEvent('Nav','Trainers'); });
+		  	$(".sub-menu li:nth-of-type(8) a").click(function(){ ga_storage._trackEvent('Nav','Sitters and Walkers'); });
+		  	$(".sub-menu li:nth-of-type(9) a").click(function(){ ga_storage._trackEvent('Nav','Hotels'); });
 		  	
 		  	// Rate modal
-		  	$(".rate-app ul li:nth-of-type(1) a").click(function(){ ga('send', 'event', 'rate', 'tap', 'success'); });
-		  	$(".rate-app ul li:nth-of-type(2) a").click(function(){ ga('send', 'event', 'rate', 'tap', 'remind'); });
-		  	$(".rate-app ul li:nth-of-type(3) a").click(function(){ ga('send', 'event', 'rate', 'tap', 'fail'); });
+		  	$(".rate-app ul li:nth-of-type(1) a").click(function(){ ga_storage._trackEvent('Rate','Success'); });
+		  	$(".rate-app ul li:nth-of-type(2) a").click(function(){ ga_storage._trackEvent('Rate','Remind'); });
+		  	$(".rate-app ul li:nth-of-type(3) a").click(function(){ ga_storage._trackEvent('Rate','Fail'); });
 		  	
 		  	// Info Window
-		  	$(".reviews-link").click(function(){ ga('send', 'event', 'infowindow', 'tap', 'reviews'); });
-		  	$(".navLink").click(function(){ ga('send', 'event', 'infowindow', 'tap', 'directions'); });
-		  	$(".phone").click(function(){ ga('send', 'event', 'infowindow', 'tap', 'phone'); });
+		  	$(".reviews-link").click(function(){ ga_storage._trackEvent('Info Window','Display Reviews'); });
+		  	$(".navLink").click(function(){ ga_storage._trackEvent('Info Window','Get Directions'); });
+		  	$(".phone").click(function(){ ga_storage._trackEvent('Info Window','Call Phone Number'); });
 		  	
 		  	// Map
-		  	$(".refresh").click(function(){ ga('send', 'event', 'map', 'tap', 'refresh'); });
-		  	$(".nearby-search").click(function(){ ga('send', 'event', 'map', 'tap', 'findme'); });
+		  	$(".refresh").click(function(){ ga_storage._trackEvent('Map','Refresh Map Results'); });
+		  	$(".nearby-search").click(function(){ ga_storage._trackEvent('Map','Find My Location'); });
 		  	
 		  });
 		</script>
@@ -544,10 +543,21 @@
 						</ul>
 					</div>					
 					<div class="no-results">Man, no results here :(</div>
-<!-- 					<div class="connection">No internet connection</div> -->
-					<a href="" class="clear-search"></a><input id="pac-input" class="controls" type="text" placeholder="Ex: Dog Parks near City, ST">
+										
+					<!-- Auto-complete Zip codes -->
+					<div id="floating-panel">
+				    	<a href="" class="clear-search"></a>
+				    	<input id="address" type="textbox" class="postal-address" placeholder="Search by zip/postal code">
+						<input type="image" src="img/icon-search.png" id="submit" class="postal-submit" type="button" value="">
+				    </div>
+
+					<!-- Map -->
 					<div id="map-canvas"></div>
+					
+					<!-- Refresh -->
 					<a href="" class="refresh"><i class="fa fa-refresh"></i> Redo search in this area</a>
+					
+					<!-- Reviews -->
 					<div class="reviews">
 						<p id="reviews_content"></p>
 					</div>

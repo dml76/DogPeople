@@ -153,5 +153,11 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		findPlaces();
 	}
 	setTimeout(showDefaultPlaces, 3000);
+	
+	// Clear Search
+	$(".clear-search").click(function(){
+       $( "input#address" ).val("");
+       $(".clear-search").hide();
+    });
 
 })

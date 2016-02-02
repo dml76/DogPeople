@@ -24,7 +24,8 @@ window.addEventListener("resize", function() {
 $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
 	
 	/* ADJUST HEADER HEIGHT FOR STATUS BARS */
-	if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
+	//if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
+	if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i))) {
 		$('header').css('height', '74px');
 		$('header').css('padding', '35px 15px 15px');
 		$('#menu ul li:first-of-type a').css('height', '59px');
@@ -55,7 +56,8 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 	    }
 	    styleElement.appendChild(document.createTextNode(newStyle));
 	}
-	if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
+	//if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
+	if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i))) {
 		addNewStyle('#floating-panel {top:80px !important;}')
 	} else {
 		addNewStyle('#floating-panel {top:60px !important;}')

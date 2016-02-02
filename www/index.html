@@ -128,9 +128,6 @@
 				
 				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 				
-				
-				
-				
 				GeoMarker = new GeolocationMarker();
 				GeoMarker.setCircleOptions({fillColor: '#63B3FC'});
 				
@@ -148,7 +145,7 @@
 				
 				
 				
-								
+							
 				var loc_image = 'img/loc_marker.png';	
 				loc_marker = new google.maps.Marker({
 			    	position: coords.get('latlng'),
@@ -180,17 +177,16 @@
 					});
 			    });
 			    
-			  	
-			  	
-			    
-				// START AUTO-COMPLETE
+				
 				
 			  	// Create the search box and link it to the UI element.
 				var input = /** @type {HTMLInputElement} */(document.getElementById('pac-input'));
 				map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-				
 				var searchBox = new google.maps.places.SearchBox(/** @type {HTMLInputElement} */(input));
     
+				
+				
+				
 				// Listen for the event fired when the user selects an item from the
 				// pick list. Retrieve the matching places for that item.
 				google.maps.event.addListener(searchBox, 'places_changed', function() {
@@ -261,10 +257,11 @@
 				});
 				
 				$(".clear-search").click(function(){
-			        input.value = "";
+			       $( "input#address" ).val("");
+			       $(".clear-search").hide();
 			    });
-			
-				// END AUTO-COMPLETE
+			    
+			    
 			
 			
 			
@@ -283,8 +280,59 @@
 			        map.setCenter(latlng);
 			        findPlaces();
 			    });
-			
+			    
+			    
+			    
+			    
+			    
+			    
+			    // START AUTO-COMPLETE ZIP CODES
+				document.getElementById('submit').addEventListener('click', function() {
+					geocodeAddress(geocoder, map);
+					if (!$('.sub-menu li a').hasClass("active")) {
+						$('.sub-menu li a.all').addClass("active");
+					}
+			        var itemType = $('.sub-menu').find('li a.active').attr('title');
+					$( ".logo" ).replaceWith( "<span class='logo'>" + itemType + "</span>" );
+				});
+				
+				function geocodeAddress(geocoder, map) {
+				  var address = document.getElementById('address').value;
+				  geocoder.geocode({'address': address}, function(results, status) {
+				    if (status === google.maps.GeocoderStatus.OK) {
+				      map.setCenter(results[0].geometry.location);
+				      
+				      if (!$('.sub-menu li a').hasClass("active")) {
+						$('.sub-menu li a.all').addClass("active");
+					}
+			        var itemType = $('.sub-menu').find('li a.active').attr('title');
+					$( ".logo" ).replaceWith( "<span class='logo'>" + itemType + "</span>" );
+			        //panLoc();
+			        findPlaces();
+        
+				    } else {
+				      // alert('Geocode was not successful for the following reason: ' + status);
+				    }
+				  });
+				}
+				
+				// Show Close-X if there is a value
+				$( ".clear-search" ).hide();
+				var inp = $("input#address");
+				
+				$(inp).keyup(function(){
+					if($(this).val()=="" || $(this).val()==null) {
+						$( ".clear-search" ).hide();
+    				} else {
+	    				$( ".clear-search" ).show();
+    				}
+    			});
+				
+				// END AUTO-COMPLETE ZIP CODES
+			    
 			}
+				
+				
 
 			// New search query
 			function findPlaces() {
@@ -582,10 +630,23 @@
 						</ul>
 					</div>					
 					<div class="no-results">Man, no results here :(</div>
-<!-- 					<div class="connection">No internet connection</div> -->
-					<a href="" class="clear-search"></a><input id="pac-input" class="controls" type="text" placeholder="Ex: Dog Parks near City, ST">
+					<!-- <div class="connection">No internet connection</div> -->
+<!-- 					<a href="" class="clear-search"></a><input id="pac-input" class="controls" type="text" placeholder="Ex: Dog Parks near City, ST"> -->
+					
+					<!-- Auto-complete Zip codes -->
+					<div id="floating-panel">
+				    	<a href="" class="clear-search"></a>
+				    	<input id="address" type="textbox" class="postal-address" placeholder="Search by zip/postal code">
+						<input type="image" src="img/icon-search.png" id="submit" class="postal-submit" type="button" value="">
+				    </div>
+
+					<!-- Map -->
 					<div id="map-canvas"></div>
+					
+					<!-- Refresh -->
 					<a href="" class="refresh"><i class="fa fa-refresh"></i> Redo search in this area</a>
+					
+					<!-- Reviews -->
 					<div class="reviews">
 						<p id="reviews_content"></p>
 					</div>

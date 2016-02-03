@@ -118,6 +118,8 @@ $(document).ready(function() {
     });
     				    
 	$(".nearby-search").click(function(){
+        $( "input#address" ).val("");
+        $(".clear-search").hide();
         $('.refresh').fadeIn("slow");
         if (!$('.sub-menu li a').hasClass("active")) {
 			$('.sub-menu li a.all').addClass("active");

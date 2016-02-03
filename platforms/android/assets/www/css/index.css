@@ -129,10 +129,13 @@ h1 {
 	border: none;
 	background-color: transparent;
 	padding: 7px 1% 3px 1%;
-	font-size: 0.8em;
 }
 
 .postal-submit {
 	padding: 5px 10px;
 	float: right;
+}
+
+.postal-submit:active {
+	opacity: 0.3;
 }

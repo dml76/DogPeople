@@ -1,30 +1,29 @@
 $(document).ready(function() {
 	
-/* PREVENT VERTICAL SCROLLING SYSTEM SETTING */
-$(document).bind("touchmove", function(e){
-    e.preventDefault();
-});
-$('.reviews').on('touchmove', function (e) {
-     e.stopPropagation();
-});
-
-/* FIND VIEWPORT HEIGHT IN PIXELS FOR ANDROID DEVICES */
-getMapHeight();
-
-function getMapHeight() {
-	var mapHeight = (window.innerHeight + 'px');
-	$('.container').css('height', mapHeight);
-} 
-
-// Listen for resize changes
-window.addEventListener("resize", function() {
-	getMapHeight();
-}, false);
+	/* PREVENT VERTICAL SCROLLING SYSTEM SETTING */
+	$(document).bind("touchmove", function(e){
+	    e.preventDefault();
+	});
+	$('.reviews').on('touchmove', function (e) {
+	     e.stopPropagation();
+	});
 	
-$('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
+	/* FIND VIEWPORT HEIGHT IN PIXELS FOR ANDROID DEVICES */
+	getMapHeight();
+	
+	function getMapHeight() {
+		var mapHeight = (window.innerHeight + 'px');
+		$('.container').css('height', mapHeight);
+	} 
+	
+	// Listen for resize changes
+	window.addEventListener("resize", function() {
+		getMapHeight();
+	}, false);
+		
+	$('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
 	
 	/* ADJUST HEADER HEIGHT FOR STATUS BARS */
-	//if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
 	if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i))) {
 		$('header').css('height', '74px');
 		$('header').css('padding', '35px 15px 15px');
@@ -34,6 +33,7 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('#site-wrapper').css('padding-top', '0');
 		$('.container').css('top', '-74px');
 		$('.reviews').css('padding', '74px 5% 5% 5%');
+		$('.zipcode-search').css('top', '80px');
 	} else {
 	    $('header').css('height', '54px');
 	    $('header').css('padding', '15px');
@@ -43,24 +43,7 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
 		$('#site-wrapper').css('padding-top', '0');
 		$('.container').css('top', '-54px');
 		$('.reviews').css('padding', '54px 5% 5% 5%');
-	}
-	
-	/* Override autocomplete positioning */
-	function addNewStyle(newStyle) {
-	    var styleElement = document.getElementById('styles_js');
-	    if (!styleElement) {
-	        styleElement = document.createElement('style');
-	        styleElement.type = 'text/css';
-	        styleElement.id = 'styles_js';
-	        document.getElementsByTagName('head')[0].appendChild(styleElement);
-	    }
-	    styleElement.appendChild(document.createTextNode(newStyle));
-	}
-	//if ((navigator.platform.indexOf("iPhone")  != -1) || (navigator.platform.indexOf("iPad")  != -1)) {
-	if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i))) {
-		addNewStyle('#floating-panel {top:80px !important;}')
-	} else {
-		addNewStyle('#floating-panel {top:60px !important;}')
+		$('.zipcode-search').css('top', '60px');
 	}
 		
 	/* OFF-CANVAS MENUS */
@@ -135,6 +118,8 @@ $('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide(
     });
     				    
 	$(".nearby-search").click(function(){
+        $( "input#address" ).val("");
+        $(".clear-search").hide();
         $('.refresh').fadeIn("slow");
         if (!$('.sub-menu li a').hasClass("active")) {
 			$('.sub-menu li a.all').addClass("active");

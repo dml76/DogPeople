@@ -128,7 +128,10 @@
 				
 				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 				
+				// My location marker
+				var loc_image = 'img/loc_marker.png';
 				GeoMarker = new GeolocationMarker();
+				GeoMarker.setMarkerOptions({icon: loc_image});
 				GeoMarker.setCircleOptions({fillColor: '#63B3FC'});
 				
 				google.maps.event.addListenerOnce(GeoMarker, 'position_changed', function() {
@@ -145,13 +148,17 @@
 				
 				
 				
-							
+				// My location marker			
+/*
 				var loc_image = 'img/loc_marker.png';	
 				loc_marker = new google.maps.Marker({
 			    	position: coords.get('latlng'),
 					map: map,
 					icon: loc_image
 			    });
+*/
+
+				
 			  	
 			  	// Display Redo search in current map area bar at bottom of view
 			  	google.maps.event.addListener(map,"dragend",function(event){
@@ -189,7 +196,7 @@
 			  	//observe the latlng-property of coords and map-center when it changes
 			    google.maps.event.addListenerOnce(coords, 'latlng_changed', function () {
 			        var latlng = this.get('latlng');
-			        loc_marker.setPosition(latlng)
+			        GeoMarker.setPosition(latlng)
 			        map.setCenter(latlng);
 			        findPlaces();
 			    });
@@ -545,9 +552,9 @@
 					<div class="no-results">Man, no results here :(</div>
 										
 					<!-- Auto-complete Zip codes -->
-					<div id="floating-panel">
+					<div class="zipcode-search" id="floating-panel">
 				    	<a href="" class="clear-search"></a>
-				    	<input id="address" type="textbox" class="postal-address" placeholder="Search by zip/postal code">
+				    	<input id="address" type="textbox" class="postal-address" placeholder="Enter city or zip/postal code">
 						<input type="image" src="img/icon-search.png" id="submit" class="postal-submit" type="button" value="">
 				    </div>
 

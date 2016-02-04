@@ -1,5 +1,14 @@
 $(document).ready(function() {
 	
+	/* CHECK NETWORK CONNECTION REPEAT */
+	setInterval(function() {
+	    if (navigator.onLine) {
+		  alert('online')
+		} else {
+		  alert('offline');
+		}
+	}, 10000);
+	
 	/* PREVENT VERTICAL SCROLLING SYSTEM SETTING */
 	$(document).bind("touchmove", function(e){
 	    e.preventDefault();

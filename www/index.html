@@ -29,6 +29,90 @@
         <script type="text/javascript" src="js/ga.js"></script>
         
         <!-- CHECK FOR NETWORK CONNECTION -->
+        
+        <script type="text/javascript" charset="utf-8">
+        
+        function checkConnection(){
+		   var networkState = navigator.connection.type;
+		
+		   var states = {};
+		   states[Connection.UNKNOWN]  = 'Unknown connection';
+		   states[Connection.ETHERNET] = 'Ethernet connection';
+		   states[Connection.WIFI]     = 'WiFi connection';
+		   states[Connection.CELL_2G]  = 'Cell 2G connection';
+		   states[Connection.CELL_3G]  = 'Cell 3G connection';
+		   states[Connection.CELL_4G]  = 'Cell 4G connection';
+		   states[Connection.CELL]     = 'Cell generic connection';
+		   states[Connection.NONE]     = 'No network connection';
+		
+		   if(states[networkState].indexOf("WiFi") != -1 || states[networkState].indexOf("Cell") != -1)
+		        return true;
+		   else return false;
+		}
+		
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+		function onDeviceReady() {
+		   // Now safe to use device APIs
+		   var connected = checkConnection();//will return true or false
+		
+		   if(connected){
+		      alert('online') //user is online
+		   } else {
+		      alert('offline') //user is offline
+		   }
+		}
+		
+/*
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+		function onDeviceReady() {
+			// Now safe to use device APIs
+			document.addEventListener("online", onOnline, false);
+			document.addEventListener("offline", onOffline, false);
+		}
+		
+		function onOnline() {
+		   alert('online') // User is Online
+		}
+		function onOffline() {
+		   alert('offline') // User is Offline
+		}
+*/
+		
+        </script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+<!--
+        <script type="text/javascript" charset="utf-8">
+	        
+	        document.addEventListener("onLine", function(){ navigator.notification.alert("online") }, false);
+	        document.addEventListener("offLine", function(){ navigator.notification.alert("offline") }, false);
+	        //document.addEventListener("onLine", function(){ alert("online") }, false);
+	        //document.addEventListener("offLine", function(){ alert("offline") }, false);
+	        
+	        setInterval(function() {
+			    if (navigator.onLine) {
+				  alert('online')
+				} else {
+				  alert('offline');
+				}
+			}, 10000);
+	
+	    </script>
+-->
 <!--
         <script type="text/javascript" charset="utf-8">
 	    	

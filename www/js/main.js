@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	
 	/* CHECK NETWORK CONNECTION REPEAT */
+/*
 	setInterval(function() {
 	    if (navigator.onLine) {
 		  alert('online')
@@ -8,6 +9,7 @@ $(document).ready(function() {
 		  alert('offline');
 		}
 	}, 10000);
+*/
 	
 	/* PREVENT VERTICAL SCROLLING SYSTEM SETTING */
 	$(document).bind("touchmove", function(e){

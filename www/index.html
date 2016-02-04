@@ -49,11 +49,11 @@
 			   else return false;
 			}
 			
+/*
 			document.addEventListener("deviceready", onDeviceReady, false);
 	
 			function onDeviceReady() {
 			   // Now safe to use device APIs
-			   alert('Hi!');
 			   var connected = checkConnection();//will return true or false
 			
 			   if(connected){
@@ -62,6 +62,7 @@
 			      alert('offline') //user is offline
 			   }
 			}
+*/
 			
 	/*
 			document.addEventListener("deviceready", onDeviceReady, false);
@@ -127,6 +128,18 @@
 
 				// device APIs are available
 			    function onDeviceReady() {
+				    
+				    // Now safe to use device APIs
+				   
+				   // Check Network Connection
+				   var connected = checkConnection();//will return true or false
+				   if(connected){
+				      alert('online') //user is online
+				   } else {
+				      alert('offline') //user is offline
+				   }
+				    
+				    // Load Map
 					google.maps.event.addDomListener(window, 'load', initialize);
 			        navigator.geolocation.getCurrentPosition(onSuccess, onError);
 			        StatusBar.styleBlackTranslucent();

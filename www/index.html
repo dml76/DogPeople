@@ -28,6 +28,161 @@
         
         <script type="text/javascript" src="js/ga.js"></script>
         
+        <!-- CHECK FOR NETWORK CONNECTION -->
+<!--
+        <script type="text/javascript" charset="utf-8">
+	    	
+	    	document.addEventListener("deviceready", init, false);
+			var lastStatus = "";
+			
+			function init() {
+			
+			  //listen for changes
+			  document.addEventListener("offline", offlineState, false);
+			  document.addEventListener("online", onlineState, false);
+			
+			}
+			
+			// Displayed data
+			
+			function offlineState() {
+			  if(lastStatus != 'disconnected') {
+			    lastStatus = 'disconnected';
+			    navigator.notification.alert(
+			      "Please check your network connection", 
+			      null, 
+			      "No connection :(");
+			  }
+			}
+			
+			function onlineState() {
+			  if(lastStatus != 'connected' && lastStatus != '') {
+			    lastStatus = 'connected';
+			    navigator.notification.alert(
+			      "Welcome back!", 
+			      null, 
+			      "Online!");
+			  }
+			}
+	    	
+	    </script>
+-->
+<!--
+        <script type="text/javascript" charset="utf-8">
+ 
+	    // Call onDeviceReady when Cordova is loaded.
+	    //
+	    // At this point, the document has loaded but cordova-x.x.x.js has not.
+	    // When Cordova is loaded and talking with the native device,
+	    // it will call the event `deviceready`.
+	    //
+	    function onLoad() {
+	        document.addEventListener("online", onOnline, false);
+	        document.addEventListener("offline", onOffline, false);
+	        document.addEventListener("deviceready", onDeviceReady, false);
+	    }
+	 
+	    // Cordova is loaded and it is now safe to make calls Cordova methods
+	    //
+	    function onDeviceReady() {
+	        console.log("onDeviceReady");
+	    }
+	 
+	    // Handle the online event
+	    //
+	    function onOnline() {
+	        console.log("onOnline");
+	    }
+	 
+	    function onOffline() {
+	        console.log("onOffline");
+	    }
+	        
+	    </script>
+-->
+        
+        
+<!--
+        <script type="text/javascript">
+	        document.addEventListener("deviceready", onDeviceReady, false);
+	        // device APIs are available
+	        function onDeviceReady() {
+	            if(navigator.connection.type == Connection.NONE){
+	                alert("nocon");
+	            }else{
+	                alert("yescon");
+	            }
+	        }
+	    </script>
+-->
+        
+        <script type="text/javascript" charset="utf-8">
+         var init = function init() {
+            // Wait for Cordova to load
+            document.addEventListener("deviceready", onDeviceReady, false);
+            // Cordova is ready
+            function onDeviceReady() {
+            }
+         };
+         
+         function onDeviceReady() {
+		   if (navigator.network.connection.type != Connection.NONE) {
+		      NetworkType();
+		   }
+		   else {
+		      alert("You are not connected");
+		   }
+		   document.addEventListener("online", onOnline, false);
+		   document.addEventListener("offline", onOffline, false);
+		}
+		
+		function NetworkType() {
+		   switch (navigator.network.connection.type) {
+		      case Connection.UNKNOWN:
+		         alert("Connection type is not known");
+		         break;
+		      case Connection.ETHERNET:
+		         alert("Connection type is Ethernet");
+		         break;
+		      case Connection.WIFI:
+		         alert("Connection type is WiFi");
+		         break;
+		      case Connection.CELL_2G:
+		         alert("Connection type is 2G");
+		         break;
+		      case Connection.CELL_3G:
+		         alert("Connection type is 3G");
+		         break;
+		      case Connection.CELL_4G:
+		         alert("Connection type is 4G");
+		         break;
+		      case Connection.NONE:
+		         alert('No Network Connection');
+		         break;
+		   }
+		}
+		
+		function onOnline() {
+		   //Perform action in case of online
+		   alert('Online, yay!');
+		}
+		
+		function onOffline() {
+		   //Perform action in case of offline
+		   alert('Offline, boo!');
+		}
+
+         window.onload = init;
+      </script>
+      
+      
+      
+      
+      
+        
+        
+        
+        
         <!-- Google Places API -->
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.10&libraries=places,geometry"></script>
 		
@@ -99,7 +254,7 @@
 			        coords.set('latlng',
 			            new google.maps.LatLng(position.coords.latitude,
 			                position.coords.longitude));
-			        $('.nearby-search').show();
+			        $('.nearby-search, .menu-tap').show();
 			        // Load the default category places	
 					clearMarkers();
 					//findPlaces();
@@ -139,24 +294,15 @@
 		          //map.fitBounds(this.getBounds()); //Change zoom to accuracy circle bounds
 		        });
 		
+/*
 		        google.maps.event.addListener(GeoMarker, 'geolocation_error', function(e) {
 		          alert('There was an error obtaining your position. Message: ' + e.message);
 		        });
+*/
 		
 		        GeoMarker.setMap(map);
-				$('.nearby-search').show();
-				
-				
-				
-				// My location marker			
-/*
-				var loc_image = 'img/loc_marker.png';	
-				loc_marker = new google.maps.Marker({
-			    	position: coords.get('latlng'),
-					map: map,
-					icon: loc_image
-			    });
-*/
+				$('.nearby-search, .menu-tap, #floating-panel').show();
+
 
 				
 			  	
@@ -249,6 +395,8 @@
     			});
 				
 				// END AUTO-COMPLETE ZIP CODES
+				
+	        
 			    
 			}
 				
@@ -409,7 +557,7 @@
 						    
 						    $(".reviews-close").click(function(){
 						        $(".reviews, .reviews-overlay, .reviews-close").fadeOut("fast");
-						        $(".nearby-search, .menu-tap").fadeIn("fast");
+						        $(".nearby-search, .menu-tap, #floating-panel").fadeIn("fast");
 						        
 						        /* VIEW TITLE */
 								var itemType = $('.sub-menu').find('li a.active').attr('title');
@@ -516,7 +664,7 @@
 		</script>
 	    
     </head>
-    <body>
+    <body onload="onLoad()">
 	    
 	    <header class="main-header">
 			<a href="" class="reviews-close"></a>

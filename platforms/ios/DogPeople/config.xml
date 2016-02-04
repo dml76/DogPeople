@@ -80,4 +80,7 @@
     <access origin="*.googleapis.com" />
     <access origin="*.gstatic.com" />
     <preference name="DisallowOverscroll" value="true" />
+    <feature name="NetworkStatus">
+        <param name="ios-package" value="CDVConnection" />
+    </feature>
 </widget>

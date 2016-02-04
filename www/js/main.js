@@ -21,7 +21,7 @@ $(document).ready(function() {
 		getMapHeight();
 	}, false);
 		
-	$('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app').hide();
+	$('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .rate-app, .menu-tap, #floating-panel').hide();
 	
 	/* ADJUST HEADER HEIGHT FOR STATUS BARS */
 	if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i))) {

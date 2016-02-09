@@ -71,6 +71,7 @@
 
 
 
+/*
 // check to see if the network is reachable
 setTimeout(function() {
   navigator.network.isReachable("www.google.com",
@@ -85,6 +86,72 @@ function networkConnectionCheck(reachability) {
   }
   
 };
+*/
+
+
+
+	$(document).bind('deviceready', function() {
+		connection();
+		$('#btnCheck').bind('touchstart'), connection);
+	});
+	
+	
+	function connection() {
+		switch(navigator.network.connection.type) {
+			case Connection.UNKNOWN: $('#checkConnection').attr('title', 'UNKNOWN');break;
+			case Connection.ETHERNET: $('#checkConnection').attr('title', 'ETHERNET');break;
+			case Connection.WIFI: $('#checkConnection').attr('title', 'WIFI');break;
+			case Connection.CELL_2G: $('#checkConnection').attr('title', 'CELL_2G');break;
+			case Connection.CELL_3G: $('#checkConnection').attr('title', 'CELL_3G');break;
+			case Connection.CELL_4G: $('#checkConnection').attr('title', 'CELL_4G');break;
+			case Connection.CELL: $('#checkConnection').attr('title', 'CELL');break;
+			case Connection.NONE: $('#checkConnection').attr('title', 'NONE');break;
+		}
+		var connectionType = $('#checkConnection').attr('title');
+		
+		$('#checkConnection').attr('title', connectionType);
+		$( "#checkConnection" ).replaceWith( "<h1 id='checkConnection' " + "title=" + connectionType + ">" + connectionType + "</h1>" );
+		
+		function recurringCheck() {
+	   		if ($('#checkConnection').attr('title') == "NONE") {
+		    	alert('Offline') //user is offline
+			} else {
+		      	alert('Online') //user is online
+		   	}
+		
+		    setTimeout(recurringCheck, 5000);
+		}	
+		recurringCheck();
+		
+	}
+
+
+	
+	
+	// WEB BROWSER VERSION
+/*
+	$(document).ready(function() {
+		$('#checkConnection').attr('title', 'UNKNOWN');
+		var connectionType = $('#checkConnection').attr('title');
+		$('#checkConnection').attr('title', connectionType);
+		$( "#checkConnection" ).replaceWith( "<h1 id='checkConnection' " + "title=" + connectionType + ">" + connectionType + "</h1>" );
+		
+		function recurringCheck() {
+	   		if ($('#checkConnection').attr('title') == "NONE") {
+		    	alert('Offline') //user is offline
+			} else {
+		      	alert('Online') //user is online
+		   	}
+		
+		    setTimeout(recurringCheck, 5000);
+		}	
+		recurringCheck();
+				
+	});
+*/
+
+
+
 
  </script>
 
@@ -93,7 +160,9 @@ function networkConnectionCheck(reachability) {
     </head>
     <body>
 	    
-	    Hello, world!
+	     <h1 id="checkConnection">CONNECTION STATUS</h1>
+	     <p>Hello, world!</p>
+	     <div id="btnCheck">Check Connection</div>
 		
         <script type="text/javascript" src="js/cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script> 

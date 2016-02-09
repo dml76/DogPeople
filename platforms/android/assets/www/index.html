@@ -31,6 +31,7 @@
         <!-- CHECK FOR NETWORK CONNECTION -->
         <script type="text/javascript" charset="utf-8">
  
+/*
 	        function checkConnection(){
 			   var networkState = navigator.connection.type;
 			   var states = {};
@@ -65,7 +66,29 @@
 				recurringCheck();
 			}
 			
-        </script>
+       
+*/
+
+
+
+// check to see if the network is reachable
+setTimeout(function() {
+  navigator.network.isReachable("www.google.com",
+  networkConnectionCheck, {isIpAddress:false});
+}, 5000);
+
+function networkConnectionCheck(reachability) {
+  if ( reachability.remoteHostStatus == NetworkStatus.NOT_REACHABLE ) {
+    navigator.notification.alert("You appear to be offline.", "DogPeople");
+  } else {
+	navigator.notification.alert("Everything looks good!", "DogPeople"); 
+  }
+  
+};
+
+ </script>
+
+
 	    
     </head>
     <body>

@@ -45,20 +45,24 @@
 			   if(states[networkState].indexOf("WiFi") != -1 || states[networkState].indexOf("Cell") != -1)
 			        return true;
 			   else return false;
-			   setTimeout(checkConnection, 10000);
 			}
 			
 			document.addEventListener("deviceready", onDeviceReady, false);
 	
 			function onDeviceReady() {
-			   // Now safe to use device APIs
-			   var connected = checkConnection();//will return true or false
+				// Now safe to use device APIs
+			    var connected = checkConnection();//will return true or false
 			
-			   if(connected){
-			      alert('online') //user is online
-			   } else {
-			      alert('offline') //user is offline
-			   }
+			    function recurringCheck() {
+			   		if(connected){
+				    	alert('online') //user is online
+					} else {
+				      	alert('offline') //user is offline
+				   	}
+				
+				    setTimeout(recurringCheck, 5000);
+				}	
+				recurringCheck();
 			}
 			
         </script>

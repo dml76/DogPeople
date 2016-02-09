@@ -33,7 +33,6 @@
  
 	        function checkConnection(){
 			   var networkState = navigator.connection.type;
-			
 			   var states = {};
 			   states[Connection.UNKNOWN]  = 'Unknown connection';
 			   states[Connection.ETHERNET] = 'Ethernet connection';
@@ -43,10 +42,10 @@
 			   states[Connection.CELL_4G]  = 'Cell 4G connection';
 			   states[Connection.CELL]     = 'Cell generic connection';
 			   states[Connection.NONE]     = 'No network connection';
-			
 			   if(states[networkState].indexOf("WiFi") != -1 || states[networkState].indexOf("Cell") != -1)
 			        return true;
 			   else return false;
+			   setTimeout(checkConnection, 10000);
 			}
 			
 			document.addEventListener("deviceready", onDeviceReady, false);
@@ -62,24 +61,6 @@
 			   }
 			}
 			
-/*
-				document.addEventListener("deviceready", onDeviceReady, false);
-	
-			function onDeviceReady() {
-				// Now safe to use device APIs
-				document.addEventListener("online", onOnline, false);
-				document.addEventListener("offline", onOffline, false);
-			}
-			
-			function onOnline() {
-			   alert('online') // User is Online
-			}
-			function onOffline() {
-			   alert('offline') // User is Offline
-			}
-*/
-	
-		
         </script>
 	    
     </head>

@@ -39,7 +39,7 @@
 		    }
 		
 		    function checkConnection() {
-		        var networkState = navigator.network.connection.type;
+		        var networkState = navigator.connection.type;
 		
 		        var states = {};
 		        states[Connection.UNKNOWN]  = 'Unknown connection';
@@ -52,6 +52,20 @@
 		
 		        alert('Connection type: ' + states[networkState]);
 		    }
+		    
+		    document.addEventListener("offline", onOffline, false);
+
+			function onOffline() {
+			    // Handle the offline event
+			    alert('Offline');
+			}
+			
+			document.addEventListener("online", onOnline, false);
+
+			function onOnline() {
+				// Handle the online event
+				alert('Online');
+			}
 
 	
 		</script>

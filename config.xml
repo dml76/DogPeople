@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.dmlapps.dogpeople"
-        version   = "12.5">
+        version   = "12.6">
 
     <name>DogPeople</name>
     <description>Everything for Fido</description>
@@ -49,6 +49,8 @@
     <plugin name="cordova-plugin-x-socialsharing" source="npm" spec="5.0.7" />
     <plugin name="cordova-plugin-google-analytics" source="npm" spec="0.8.1" />
     <plugin name="cordova-plugin-whitelist"      source="npm" spec="1.1.0" />
+    <plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager" />
+
     <allow-navigation href="*" />
     <allow-intent href="*" />
     <access origin="*" /> <!-- Required for iOS9 -->

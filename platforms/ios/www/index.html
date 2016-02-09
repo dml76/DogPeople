@@ -92,6 +92,7 @@ function networkConnectionCheck(reachability) {
 
 	$(document).bind('deviceready', function() {
 		connection();
+		alert("Hi");
 		$('#btnCheck').bind('touchstart'), connection);
 	});
 	
@@ -114,11 +115,9 @@ function networkConnectionCheck(reachability) {
 		
 		function recurringCheck() {
 	   		if ($('#checkConnection').attr('title') == "NONE") {
-		    	//alert('Offline') //user is offline
-		    	navigator.notification.alert("You appear to be offline.", "DogPeople");
+		    	alert('Offline') //user is offline
 			} else {
-		      	//alert('Online') //user is online
-		      	navigator.notification.alert("Everything looks good!", "DogPeople");
+		      	alert('Online') //user is online
 		   	}
 		
 		    setTimeout(recurringCheck, 5000);

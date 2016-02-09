@@ -32,129 +32,6 @@
         <script type="text/javascript" charset="utf-8">
  
 /*
-	        function checkConnection(){
-			   var networkState = navigator.connection.type;
-			   var states = {};
-			   states[Connection.UNKNOWN]  = 'Unknown connection';
-			   states[Connection.ETHERNET] = 'Ethernet connection';
-			   states[Connection.WIFI]     = 'WiFi connection';
-			   states[Connection.CELL_2G]  = 'Cell 2G connection';
-			   states[Connection.CELL_3G]  = 'Cell 3G connection';
-			   states[Connection.CELL_4G]  = 'Cell 4G connection';
-			   states[Connection.CELL]     = 'Cell generic connection';
-			   states[Connection.NONE]     = 'No network connection';
-			   if(states[networkState].indexOf("WiFi") != -1 || states[networkState].indexOf("Cell") != -1)
-			        return true;
-			   else return false;
-			}
-			
-			document.addEventListener("deviceready", onDeviceReady, false);
-	
-			function onDeviceReady() {
-				// Now safe to use device APIs
-			    var connected = checkConnection();//will return true or false
-			
-			    function recurringCheck() {
-			   		if(connected){
-				    	alert('online') //user is online
-					} else {
-				      	alert('offline') //user is offline
-				   	}
-				
-				    setTimeout(recurringCheck, 5000);
-				}	
-				recurringCheck();
-			}
-			
-       
-*/
-
-
-
-/*
-// check to see if the network is reachable
-setTimeout(function() {
-  navigator.network.isReachable("www.google.com",
-  networkConnectionCheck, {isIpAddress:false});
-}, 5000);
-
-function networkConnectionCheck(reachability) {
-  if ( reachability.remoteHostStatus == NetworkStatus.NOT_REACHABLE ) {
-    navigator.notification.alert("You appear to be offline.", "DogPeople");
-  } else {
-	navigator.notification.alert("Everything looks good!", "DogPeople"); 
-  }
-  
-};
-*/
-
-
-
-/*
-	$(document).bind('deviceready', function() {
-		alert("Hi");
-		connection();
-		$('#btnCheck').bind('touchstart'), connection);
-	});
-	
-	
-	function connection() {
-		switch(navigator.network.connection.type) {
-			case Connection.UNKNOWN: $('#checkConnection').attr('title', 'UNKNOWN');break;
-			case Connection.ETHERNET: $('#checkConnection').attr('title', 'ETHERNET');break;
-			case Connection.WIFI: $('#checkConnection').attr('title', 'WIFI');break;
-			case Connection.CELL_2G: $('#checkConnection').attr('title', 'CELL_2G');break;
-			case Connection.CELL_3G: $('#checkConnection').attr('title', 'CELL_3G');break;
-			case Connection.CELL_4G: $('#checkConnection').attr('title', 'CELL_4G');break;
-			case Connection.CELL: $('#checkConnection').attr('title', 'CELL');break;
-			case Connection.NONE: $('#checkConnection').attr('title', 'NONE');break;
-		}
-		var connectionType = $('#checkConnection').attr('title');
-		
-		$('#checkConnection').attr('title', connectionType);
-		$( "#checkConnection" ).replaceWith( "<h1 id='checkConnection' " + "title=" + connectionType + ">" + connectionType + "</h1>" );
-		
-		function recurringCheck() {
-	   		if ($('#checkConnection').attr('title') == "NONE") {
-		    	alert('Offline') //user is offline
-			} else {
-		      	alert('Online') //user is online
-		   	}
-		
-		    setTimeout(recurringCheck, 5000);
-		}	
-		recurringCheck();
-		
-	}
-*/
-
-
-	
-	
-	// WEB BROWSER VERSION
-/*
-	$(document).ready(function() {
-		$('#checkConnection').attr('title', 'UNKNOWN');
-		var connectionType = $('#checkConnection').attr('title');
-		$('#checkConnection').attr('title', connectionType);
-		$( "#checkConnection" ).replaceWith( "<h1 id='checkConnection' " + "title=" + connectionType + ">" + connectionType + "</h1>" );
-		
-		function recurringCheck() {
-	   		if ($('#checkConnection').attr('title') == "NONE") {
-		    	alert('Offline') //user is offline
-			} else {
-		      	alert('Online') //user is online
-		   	}
-		
-		    setTimeout(recurringCheck, 5000);
-		}	
-		recurringCheck();
-				
-	});
-*/
-
-
-
 
 // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
 function onDeviceReady() {
@@ -164,50 +41,13 @@ function onDeviceReady() {
 // Check network status
 function reachableCallback(reachability) {
   // There is no consistency on the format of reachability
-  //var networkState = reachability.code || reachability;
-  var networkState = navigator.connection.type;
+  var networkState = reachability.code || reachability;
   var states = {};
-/*
   states[NetworkStatus.NOT_REACHABLE]                      = 'No network connection';
   states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
   states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
-*/
   
-  states[Connection.UNKNOWN]  = 'Unknown connection';
-  states[Connection.ETHERNET] = 'Ethernet connection';
-  states[Connection.WIFI]     = 'WiFi connection';
-  states[Connection.CELL_2G]  = 'Cell 2G connection';
-  states[Connection.CELL_3G]  = 'Cell 3G connection';
-  states[Connection.CELL_4G]  = 'Cell 4G connection';
-  states[Connection.CELL]     = 'Cell generic connection';
-  states[Connection.NONE]     = 'No network connection';
-  
-  //if (networkState != 0) online = true;
-  if(states[networkState].indexOf("WiFi") != -1 || states[networkState].indexOf("Cell") != -1) online = true;
-  
-/*
-  var networkState = navigator.connection.type;
-	
-	var states = {};
-	states[Connection.UNKNOWN]  = 'Unknown connection';
-	states[Connection.ETHERNET] = 'Ethernet connection';
-	states[Connection.WIFI]     = 'WiFi connection';
-	states[Connection.CELL_2G]  = 'Cell 2G connection';
-	states[Connection.CELL_3G]  = 'Cell 3G connection';
-	states[Connection.CELL_4G]  = 'Cell 4G connection';
-	states[Connection.CELL]     = 'Cell generic connection';
-	states[Connection.NONE]     = 'No network connection';
-	if(states[networkState].indexOf("WiFi") != -1 || states[networkState].indexOf("Cell") != -1)
-	    return true;
-	else return false;
-*/
-  
-  
-  
-  
-  
-  
-  
+  if (networkState != 0) online = true;
   
 }
 
@@ -231,6 +71,32 @@ function recurringCheck() {
 	setTimeout(recurringCheck, 5000);
 }
 recurringCheck();
+*/
+
+
+
+
+
+function checkConnection() {
+    var networkState = navigator.network.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    alert('Connection type: ' + states[networkState]);
+}
+
+checkConnection();
+
+
+
+
 
 
 

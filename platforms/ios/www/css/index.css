@@ -113,29 +113,3 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
-
-#floating-panel {
-	position: absolute;
-	left: 2%;
-	top: 60px;
-	z-index: 1;
-	width: 96%;
-	background-color: #fff;
-	padding: 5px 1%;
-}
-
-.postal-address {
-	width: calc(100% - 70px);
-	border: none;
-	background-color: transparent;
-	padding: 7px 1% 3px 1%;
-}
-
-.postal-submit {
-	padding: 5px 10px;
-	float: right;
-}
-
-.postal-submit:active {
-	opacity: 0.3;
-}

@@ -95,26 +95,6 @@
 				var coords = new google.maps.MVCObject();
 				coords.set('latlng', new google.maps.LatLng(40.69847032728747, -73.9514422416687));
 				
-				// Check Network Connection
-				function onResume(){
-					var ntwk = CheckConnection();
-					if (ntwk) {
-						alert("Network available");
-					} else {
-						alert("Network not available");
-					}
-				}
-				
-				function CheckConnection(){
-				    if( !navigator.network ){
-				    	navigator.network = window.top.navigator.network;
-				    }
-				    return ( (navigator.network.connection.type === "none" || navigator.network.connection.type === null || 
-				                navigator.network.connection.type === "unknown" ) ? false : true );
-				}
-				
-				
-				
 				
 				
 				
@@ -126,6 +106,7 @@
 			    function onDeviceReady() {
 				    
 				    // Now safe to use device APIs
+				    alert("Device is ready");
 				    onResume();
 				    
 				    // Load Map
@@ -137,10 +118,37 @@
 			        
 			    }
 			    
+			    // Check Network Connection
+				function onResume(){
+					alert("Alert from inside onResume function");
+					setTimeout(function() {
+						// Place in 0-Timeout for iOS quirk
+						var ntwk = CheckConnection();
+						if (ntwk) {
+							alert("Network available");
+						} else {
+							alert("Network not available");
+						}
+			        }, 0);
+				}
+				
+				function CheckConnection(){
+				    if( !navigator.network ){
+				    	navigator.network = window.top.navigator.network;
+				    }
+				    return ( (navigator.network.connection.type === "none" || navigator.network.connection.type === null || 
+				                navigator.network.connection.type === "unknown" ) ? false : true );
+				}
 			    
 			    
 			    
-			    				
+			    
+			    
+			    
+			    
+			    
+			    
+				
 				// onSuccess Geolocation
 			    function onSuccess(position) {
 			        var element = document.getElementById('geolocation');

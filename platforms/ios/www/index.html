@@ -103,12 +103,7 @@
 				    
 				    // Now safe to use device APIs
 				    
-				    // Load Map
-					google.maps.event.addDomListener(window, 'load', initialize);
-			        navigator.geolocation.getCurrentPosition(onSuccess, onError);
-			        StatusBar.styleBlackTranslucent();
-			        
-			        // Check for Network Connection
+				    // Check for Network Connection
 			        document.addEventListener("resume", getintoForeground, false);  
 			
 					function getintoForeground(){
@@ -127,6 +122,11 @@
 					    return ( (navigator.network.connection.type === "none" || navigator.network.connection.type === null || 
 					                navigator.network.connection.type === "unknown" ) ? false : true );
 					}
+				    
+				    // Load Map
+					google.maps.event.addDomListener(window, 'load', initialize);
+			        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+			        StatusBar.styleBlackTranslucent();
 			        
 			    }
 				

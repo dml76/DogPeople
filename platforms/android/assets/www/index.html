@@ -30,45 +30,25 @@
         
         <script type="text/javascript" charset="utf-8">
         
-        	// Wait for Cordova to load
-		    // 
-		    document.addEventListener("deviceready", onDeviceReady, false);
-		
-		    // Cordova is loaded and it is now safe to make calls Cordova methods
-		    //
-		    function onDeviceReady() {
-		        checkConnection();
-		    }
-		
-		    function checkConnection() {
-		        var networkState = navigator.connection.type;
-		
-		        var states = {};
-		        states[Connection.UNKNOWN]  = 'Unknown connection';
-		        states[Connection.ETHERNET] = 'Ethernet connection';
-		        states[Connection.WIFI]     = 'WiFi connection';
-		        states[Connection.CELL_2G]  = 'Cell 2G connection';
-		        states[Connection.CELL_3G]  = 'Cell 3G connection';
-		        states[Connection.CELL_4G]  = 'Cell 4G connection';
-		        states[Connection.NONE]     = 'No network connection';
-		
-		        alert('Connection type: ' + states[networkState]);
-		    }
-		    
-		    document.addEventListener("offline", onOffline, false);
+        	document.addEventListener("resume", getintoForeground, false);  
 
-			function onOffline() {
-			    // Handle the offline event
-			    alert('Offline');
+			function getintoForeground(){
+				var ntwk = CheckConnection();
+				
+				if (ntwk) {
+					alert("Network available");
+				} else {
+					alert("Network not available");
+				}
 			}
 			
-			document.addEventListener("online", onOnline, false);
-
-			function onOnline() {
-				// Handle the online event
-				alert('Online');
+			function CheckConnection(){
+			    if( !navigator.network ){
+			    	navigator.network = window.top.navigator.network;
+			    }
+			    return ( (navigator.network.connection.type === "none" || navigator.network.connection.type === null || 
+			                navigator.network.connection.type === "unknown" ) ? false : true );
 			}
-
 	
 		</script>
 	    

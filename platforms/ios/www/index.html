@@ -28,41 +28,6 @@
         
         <script type="text/javascript" src="js/ga.js"></script>
         
-       
-       
-       
-       
-       
-        <!-- Check for Network Connection -->
-<!--
-        <script type="text/javascript" charset="utf-8">
-			document.addEventListener("resume", getintoForeground, false);  
-			
-			function getintoForeground(){
-				var ntwk = CheckConnection();
-				
-				if (ntwk) {
-					alert("Network available");
-				} else {
-					alert("Network not available");
-				}
-			}
-			
-			function CheckConnection(){
-			    if( !navigator.network ){
-			    	navigator.network = window.top.navigator.network;
-			    }
-			    return ( (navigator.network.connection.type === "none" || navigator.network.connection.type === null || 
-			                navigator.network.connection.type === "unknown" ) ? false : true );
-			}
-		</script>
--->
-		
-		
-		
-		
-		
-        
         <!-- Google Places API -->
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.10&libraries=places,geometry"></script>
 		
@@ -318,7 +283,7 @@
 				
 				// END AUTO-COMPLETE ZIP CODES
 				
-	        
+	        onResume();
 			    
 			}
 				
@@ -530,8 +495,7 @@
 			function panLoc() {
 			  	map.panTo(GeoMarker.getPosition());
 			} 
-			
-			onResume();		
+					
 			google.maps.event.addDomListener(window, 'load', initialize);
 			
 		</script>

@@ -95,29 +95,7 @@
 				var coords = new google.maps.MVCObject();
 				coords.set('latlng', new google.maps.LatLng(40.69847032728747, -73.9514422416687));
 				
-				
-				
-				
-				
-				// Wait for device API libraries to load
-				document.addEventListener("deviceready", onDeviceReady, false);
-
-				// device APIs are available
-			    function onDeviceReady() {
-				    
-				    // Now safe to use device APIs
-				    
-				    // Load Map
-					google.maps.event.addDomListener(window, 'load', initialize);
-			        navigator.geolocation.getCurrentPosition(onSuccess, onError);
-			        StatusBar.styleBlackTranslucent();
-			        onResume();
-			        
-			        document.addEventListener("resume", onResume, false);
-			        
-			    }
-			    
-			    // Check Network Connection
+				// Check Network Connection
 				function onResume(){
 					var ntwk = CheckConnection();
 					if (ntwk) {
@@ -134,16 +112,35 @@
 				    return ( (navigator.network.connection.type === "none" || navigator.network.connection.type === null || 
 				                navigator.network.connection.type === "unknown" ) ? false : true );
 				}
-			    
-			    
-			    
-			    
-			    
-			    
-			    
-			    
-			    
 				
+				
+				
+				
+				
+				
+				
+				// Wait for device API libraries to load
+				document.addEventListener("deviceready", onDeviceReady, false);
+
+				// device APIs are available
+			    function onDeviceReady() {
+				    
+				    // Now safe to use device APIs
+				    onResume();
+				    
+				    // Load Map
+					google.maps.event.addDomListener(window, 'load', initialize);
+			        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+			        StatusBar.styleBlackTranslucent();
+			        
+			        document.addEventListener("resume", onResume, false);
+			        
+			    }
+			    
+			    
+			    
+			    
+			    				
 				// onSuccess Geolocation
 			    function onSuccess(position) {
 			        var element = document.getElementById('geolocation');

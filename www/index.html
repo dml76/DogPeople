@@ -83,16 +83,16 @@
 			    
 			    // Check Network Connection
 				function onResume(){
-					setTimeout(function() {
-						// Place in 0-Timeout for iOS quirk
+					setInterval(function() {
 						var ntwk = CheckConnection();
 						if (ntwk) {
 							alert("Network available");
 						} else {
 							alert("Network not available");
 						}
-			        }, 0);
+			        }, 10000);
 				}
+				
 				
 				function CheckConnection(){
 				    if( !navigator.network ){

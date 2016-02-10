@@ -95,33 +95,30 @@
 				var coords = new google.maps.MVCObject();
 				coords.set('latlng', new google.maps.LatLng(40.69847032728747, -73.9514422416687));
 				
+				
+				
+				
+				
 				// Wait for device API libraries to load
 				document.addEventListener("deviceready", onDeviceReady, false);
-				//document.addEventListener("resume", getintoForeground, false);
 
 				// device APIs are available
 			    function onDeviceReady() {
 				    
 				    // Now safe to use device APIs
 				    
-				    // Check Network Connection
-				    var ntwk = CheckConnection();
-					if (ntwk) {
-						alert("Network available");
-					} else {
-						alert("Network not available");
-					}
-				    
 				    // Load Map
 					google.maps.event.addDomListener(window, 'load', initialize);
 			        navigator.geolocation.getCurrentPosition(onSuccess, onError);
 			        StatusBar.styleBlackTranslucent();
+			        onResume();
+			        
+			        document.addEventListener("resume", onResume, false);
 			        
 			    }
 			    
 			    // Check Network Connection
-/*
-				function getintoForeground(){
+				function onResume(){
 					var ntwk = CheckConnection();
 					if (ntwk) {
 						alert("Network available");
@@ -129,7 +126,6 @@
 						alert("Network not available");
 					}
 				}
-*/
 				
 				function CheckConnection(){
 				    if( !navigator.network ){

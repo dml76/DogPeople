@@ -97,12 +97,20 @@
 				
 				// Wait for device API libraries to load
 				document.addEventListener("deviceready", onDeviceReady, false);
-				document.addEventListener("deviceready", getintoForeground, false);
+				//document.addEventListener("resume", getintoForeground, false);
 
 				// device APIs are available
 			    function onDeviceReady() {
 				    
 				    // Now safe to use device APIs
+				    
+				    // Check Network Connection
+				    var ntwk = CheckConnection();
+					if (ntwk) {
+						alert("Network available");
+					} else {
+						alert("Network not available");
+					}
 				    
 				    // Load Map
 					google.maps.event.addDomListener(window, 'load', initialize);
@@ -112,6 +120,7 @@
 			    }
 			    
 			    // Check Network Connection
+/*
 				function getintoForeground(){
 					var ntwk = CheckConnection();
 					if (ntwk) {
@@ -120,6 +129,7 @@
 						alert("Network not available");
 					}
 				}
+*/
 				
 				function CheckConnection(){
 				    if( !navigator.network ){

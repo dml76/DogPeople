@@ -97,6 +97,7 @@
 				
 				// Wait for device API libraries to load
 				document.addEventListener("deviceready", onDeviceReady, false);
+				document.addEventListener("deviceready", getintoForeground, false);
 
 				// device APIs are available
 			    function onDeviceReady() {
@@ -109,6 +110,33 @@
 			        StatusBar.styleBlackTranslucent();
 			        
 			    }
+			    
+			    // Check Network Connection
+				function getintoForeground(){
+					var ntwk = CheckConnection();
+					if (ntwk) {
+						alert("Network available");
+					} else {
+						alert("Network not available");
+					}
+				}
+				
+				function CheckConnection(){
+				    if( !navigator.network ){
+				    	navigator.network = window.top.navigator.network;
+				    }
+				    return ( (navigator.network.connection.type === "none" || navigator.network.connection.type === null || 
+				                navigator.network.connection.type === "unknown" ) ? false : true );
+				}
+			    
+			    
+			    
+			    
+			    
+			    
+			    
+			    
+			    
 				
 				// onSuccess Geolocation
 			    function onSuccess(position) {
@@ -498,30 +526,6 @@
 			google.maps.event.addDomListener(window, 'load', initialize);
 			
 		</script>
-		
-		
-		<script type="text/javascript" charset="utf-8">
-			// Check for Network Connection
-	        document.addEventListener("resume", getintoForeground, false);  
-	
-			function getintoForeground(){
-				var ntwk = CheckConnection();
-				if (ntwk) {
-					alert("Network available");
-				} else {
-					alert("Network not available");
-				}
-			}
-			
-			function CheckConnection(){
-			    if( !navigator.network ){
-			    	navigator.network = window.top.navigator.network;
-			    }
-			    return ( (navigator.network.connection.type === "none" || navigator.network.connection.type === null || 
-			                navigator.network.connection.type === "unknown" ) ? false : true );
-			}
-		</script>
-		
 		
 		<!-- Google Analytics Tracking -->
 		<script type="text/javascript" src="js/GALocalStorage.js"></script>

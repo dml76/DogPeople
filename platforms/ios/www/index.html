@@ -106,9 +106,7 @@
 			    function onDeviceReady() {
 				    
 				    // Now safe to use device APIs
-				    alert("Device is ready");
-				    onResume();
-				    
+
 				    // Load Map
 					google.maps.event.addDomListener(window, 'load', initialize);
 			        navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -120,7 +118,6 @@
 			    
 			    // Check Network Connection
 				function onResume(){
-					alert("Alert from inside onResume function");
 					setTimeout(function() {
 						// Place in 0-Timeout for iOS quirk
 						var ntwk = CheckConnection();
@@ -533,7 +530,8 @@
 			function panLoc() {
 			  	map.panTo(GeoMarker.getPosition());
 			} 
-					
+			
+			onResume();		
 			google.maps.event.addDomListener(window, 'load', initialize);
 			
 		</script>

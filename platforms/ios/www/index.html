@@ -28,8 +28,12 @@
         
         <script type="text/javascript" src="js/ga.js"></script>
         
+       
+       
+       
+       
+       
         <!-- Check for Network Connection -->
-<!--
         <script type="text/javascript" charset="utf-8">
 			document.addEventListener("resume", getintoForeground, false);  
 			
@@ -51,7 +55,11 @@
 			                navigator.network.connection.type === "unknown" ) ? false : true );
 			}
 		</script>
--->
+		
+		
+		
+		
+		
         
         <!-- Google Places API -->
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.10&libraries=places,geometry"></script>
@@ -92,14 +100,6 @@
 			    function onDeviceReady() {
 				    
 				    // Now safe to use device APIs
-				   
-				   // Check Network Connection
-				   var connected = checkConnection();//will return true or false
-				   if(connected){
-				      alert('online') //user is online
-				   } else {
-				      alert('offline') //user is offline
-				   }
 				    
 				    // Load Map
 					google.maps.event.addDomListener(window, 'load', initialize);
@@ -547,7 +547,7 @@
 		</script>
 	    
     </head>
-    <body onload="onLoad()">
+    <body>
 	    
 	    <header class="main-header">
 			<a href="" class="reviews-close"></a>

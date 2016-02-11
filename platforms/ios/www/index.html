@@ -76,13 +76,11 @@
 				    // Check Network Connection
 				    document.addEventListener("resume", onResume, false);
 				    onResume();
-				    setInterval(onResume, 5000); // Execute every 5 seconds.
+				    //setInterval(onResume, 5000); // Execute every 5 seconds.
 				    
 				    // Load Map
-				    alert("About to load map...");
 					google.maps.event.addDomListener(window, 'load', initialize);
 					navigator.geolocation.getCurrentPosition(onSuccess, onError);
-					alert("Map laoded!");
 			    }
 			    
 			    // Check Network Connection
@@ -92,6 +90,7 @@
 						alert("No connection. Check your network settings and try again.");
 						location.reload();
 					}
+					setTimeout("onResume()", 5000);
 				}
 				
 				function CheckConnection(){

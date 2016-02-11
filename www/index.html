@@ -82,15 +82,24 @@
 			    }
 			    
 			    // Check Network Connection
-				setInterval(function onResume() {
-					var ntwk = CheckConnection();
-					if (ntwk) {
-						// Do nothing
-					} else {
-						alert("No connection. Check your network settings and try again.");
-						location.reload();
+				function onResume(){
+					
+					var repeatCheckNetwork;
+					function repeatCheckNetworkFunction() {
+				    	repeatCheckNetwork = setInterval(checkNetwork, 3000);
 					}
-				}, 5000)
+					
+					function checkNetwork() {
+					    var ntwk = CheckConnection();
+						if (ntwk) {
+							// Do nothing
+						} else {
+							alert("No connection. Check your network settings and try again.");
+							location.reload();
+						}
+					}
+					
+				}
 				
 				function CheckConnection(){
 				    if( !navigator.network ){

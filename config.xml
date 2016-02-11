@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.dmlapps.dogpeople"
-        version   = "16.3">
+        version   = "16.4">
 
     <name>DogPeople</name>
     <description>Everything for Fido</description>
@@ -26,20 +26,6 @@
     <feature name="NetworkStatus">
     	<param name="ios-package" value="CDVConnection" />
 	</feature>
-    
-<!--
-    <plugins>
-        <plugin name="Device" value="CDVDevice" />
-        <plugin name="Logger" value="CDVLogger" />
-        <plugin name="Compass" value="CDVLocation" />
-        <plugin name="NetworkStatus" value="CDVConnection" />
-        <plugin name="Debug Console" value="CDVDebugConsole" />
-        <plugin name="Geolocation" value="CDVLocation" />
-        <plugin name="SplashScreen" value="CDVSplashScreen" />
-        <plugin name="Battery" value="CDVBattery" />
-        <plugin name="Globalization" value="CDVGlobalization" />
-    </plugins>
---> 
     
     <plugin name="cordova-plugin-geolocation"    source="npm" spec="1.0.1" />
     <plugin name="cordova-plugin-inappbrowser"   source="npm" spec="1.0.1" />
@@ -66,29 +52,6 @@
 	
 	<!-- 9patch default splash for Android -->
 	<gap:splash src="splash.9.png" />
-
-	
-	<!-- Android -->	
-<!--
-	<icon src="www/img/icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" />
-	<icon src="www/img/icons/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
-	<icon src="www/img/icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
-	<icon src="www/img/icons/android/xdpi.png" gap:platform="android" gap:density="xhdpi" />
-	<icon src="www/img/icons/android/xxdpi.png" gap:platform="android" gap:density="xxhdpi" />
--->
-
-<!--
-	<gap:splash src="www/img/launch/android/screen-ldpi-portrait.png" gap:platform="android" gap:qualifier="port-ldpi" />
-	<gap:splash src="www/img/launch/android/screen-ldpi-landscape.png" gap:platform="android" gap:qualifier="land-ldpi" />
-	<gap:splash src="www/img/launch/android/screen-mdpi-portrait.png" gap:platform="android" gap:qualifier="port-mdpi" />
-	<gap:splash src="www/img/launch/android/screen-mdpi-landscape.png" gap:platform="android" gap:qualifier="land-mdpi" />
-	<gap:splash src="www/img/launch/android/screen-hdpi-portrait.png" gap:platform="android" gap:qualifier="port-hdpi" />
-	<gap:splash src="www/img/launch/android/screen-hdpi-landscape.png" gap:platform="android" gap:qualifier="land-hdpi" />
-	<gap:splash src="www/img/launch/android/screen-xhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xhdpi" />
-	<gap:splash src="www/img/launch/android/screen-xhdpi-landscape.png" gap:platform="android" gap:qualifier="land-xhdpi" />
-	<gap:splash src="www/img/launch/android/screen-xxhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
-	<gap:splash src="www/img/launch/android/screen-xxhdpi-landscape.png" gap:platform="android" gap:qualifier="land-xxhdpi" />
--->
 	
 	<!-- 9patch splash screens for Android densities -->
 	<gap:splash src="www/img/launch/android/splash-ldpi.9.png" gap:platform="android" gap:qualifier="ldpi" />

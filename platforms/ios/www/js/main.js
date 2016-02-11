@@ -146,5 +146,10 @@ $(document).ready(function() {
        $( "input#address" ).val("");
        $(".clear-search").hide();
     });
+    
+    // Reconnect button
+    $(".connect-btn").click(function(){
+       location.reload();
+    });
 
 })

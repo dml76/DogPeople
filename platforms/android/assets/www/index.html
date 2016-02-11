@@ -66,7 +66,6 @@
 				
 				// Wait for device API libraries to load
 				document.addEventListener("deviceready", onDeviceReady, false);
-				document.addEventListener("deviceready", onResume, false);
 
 				// device APIs are available
 			    function onDeviceReady() {
@@ -78,6 +77,8 @@
 			        navigator.geolocation.getCurrentPosition(onSuccess, onError);
 			        StatusBar.styleBlackTranslucent();
 			        
+			        document.addEventListener("resume", onResume, false);
+			        
 			    }
 			    
 			    // Check Network Connection
@@ -85,9 +86,10 @@
 				
 					var ntwk = CheckConnection();
 					if (ntwk) {
-						alert("Network available");
+						// Do nothing
 					} else {
-						alert("Network not available");
+						alert("No connection. Check your network settings and try again.");
+						location.reload();
 					}
 					setTimeout("onResume()", 5000);
 			        
@@ -274,7 +276,7 @@
 				
 				// END AUTO-COMPLETE ZIP CODES
 				
-	        //onResume();
+	        onResume();
 			    
 			}
 				
@@ -576,7 +578,7 @@
 					<!-- Auto-complete Zip codes -->
 					<div class="zipcode-search" id="floating-panel">
 				    	<a href="" class="clear-search"></a>
-				    	<input id="address" type="textbox" class="postal-address" placeholder="Enter city or zip/postal code test">
+				    	<input id="address" type="textbox" class="postal-address" placeholder="Enter city or zip/postal code">
 						<input type="image" src="img/icon-search.png" id="submit" class="postal-submit" type="button" value="">
 				    </div>
 

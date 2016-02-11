@@ -83,16 +83,16 @@
 			    
 			    // Check Network Connection
 				function onResume(){
-					setInterval(function() {
-						var ntwk = CheckConnection();
-						if (ntwk) {
-							alert("Network available");
-						} else {
-							alert("Network not available");
-						}
-			        }, 10000);
-				}
 				
+					var ntwk = CheckConnection();
+					if (ntwk) {
+						alert("Network available");
+					} else {
+						alert("Network not available");
+					}
+					setTimeout("onResume()", 5000);
+			        
+				}
 				
 				function CheckConnection(){
 				    if( !navigator.network ){

@@ -139,7 +139,7 @@ $(document).ready(function() {
 		// Load the default category places
 		findPlaces();
 	}
-	setTimeout(showDefaultPlaces, 3000);
+	setTimeout(showDefaultPlaces, 5000);
 	
 	// Clear Search
 	$(".clear-search").click(function(){

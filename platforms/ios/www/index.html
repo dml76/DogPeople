@@ -82,7 +82,7 @@
 			    }
 			    
 			    // Check Network Connection
-				function onResume(){
+				setInterval(function onResume() {
 					var ntwk = CheckConnection();
 					if (ntwk) {
 						// Do nothing
@@ -90,7 +90,7 @@
 						alert("No connection. Check your network settings and try again.");
 						location.reload();
 					}
-				}
+				}, 5000)
 				
 				function CheckConnection(){
 				    if( !navigator.network ){
@@ -273,9 +273,7 @@
 				
 				// END AUTO-COMPLETE ZIP CODES
 				
-	        setInterval(function () {
-				onResume();
-			}, 5000); // Execute every 5 seconds.
+	        onResume();
 			    
 			}
 				

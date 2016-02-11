@@ -66,6 +66,7 @@
 				
 				// Wait for device API libraries to load
 				document.addEventListener("deviceready", onDeviceReady, false);
+				document.addEventListener("deviceready", onResume, false);
 
 				// device APIs are available
 			    function onDeviceReady() {
@@ -76,8 +77,6 @@
 					google.maps.event.addDomListener(window, 'load', initialize);
 			        navigator.geolocation.getCurrentPosition(onSuccess, onError);
 			        StatusBar.styleBlackTranslucent();
-			        
-			        //document.addEventListener("resume", onResume, false);
 			        
 			    }
 			    
@@ -101,6 +100,7 @@
 				    return ( (navigator.network.connection.type === "none" || navigator.network.connection.type === null || 
 				                navigator.network.connection.type === "unknown" ) ? false : true );
 				}
+			   
 				
 				// onSuccess Geolocation
 			    function onSuccess(position) {
@@ -274,7 +274,7 @@
 				
 				// END AUTO-COMPLETE ZIP CODES
 				
-	        onResume();
+	        //onResume();
 			    
 			}
 				

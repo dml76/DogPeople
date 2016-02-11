@@ -16,10 +16,13 @@ BODY {
 
 a:hover, a:active, a:visited, a:link { text-decoration: none; color: #428BCA }
 
+
+/* Remove orange outlines on Android form inputs */
 textarea:focus, input:focus {
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
 	-webkit-tap-highlight-color: transparent;
 	-webkit-user-modify: read-write-plaintext-only;
+	outline: none;
 }
 
 /*====================================

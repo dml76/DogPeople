@@ -60,12 +60,8 @@
 				var coords = new google.maps.MVCObject();
 				coords.set('latlng', new google.maps.LatLng(40.69847032728747, -73.9514422416687));
 				
-				// Wait for device API libraries to load, make device code available on web browser
-				if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-			        document.addEventListener("deviceready", onDeviceReady, false);
-			    } else {
-			        onDeviceReady();
-			    }
+				// Wait for device API libraries to load
+				document.addEventListener("deviceready", onDeviceReady, false);
 
 				// device APIs are available
 			    function onDeviceReady() {
@@ -582,12 +578,13 @@
 					<div class="no-results">Man, no results here :(</div>
 										
 					<!-- Auto-complete Zip codes -->
-					<div class="zipcode-search" id="floating-panel">
-				    	<a href="" class="clear-search"></a>
-				    	<input id="address" type="textbox" class="postal-address" placeholder="Enter city or zip/postal code test 2">
-						<input type="image" src="img/icon-search.png" id="submit" class="postal-submit" type="button" value="">
-						<input type="submit" style="display:none"/>
-				    </div>
+					<form method="post">
+						<div class="zipcode-search" id="floating-panel">
+					    	<a href="" class="clear-search"></a>
+					    	<input id="address" type="textbox" class="postal-address" placeholder="Enter city or zip/postal code test 2">
+							<input type="image" src="img/icon-search.png" id="submit" class="postal-submit" type="button" value="">
+					    </div>
+					</form>
 
 					<!-- Map -->
 					<div id="map-canvas">

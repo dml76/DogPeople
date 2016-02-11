@@ -90,9 +90,22 @@
 						alert("No connection. Check your network settings and try again.");
 						location.reload();
 					}
-					/* CHECK CONNECTION EVERY 5 SECONDS */
-					setTimeout(onResume, 5000);
 				}
+				/* CHECK CONNECTION EVERY 5 SECONDS */
+				setTimeout(onResume, 5000);
+				
+				
+				
+/*
+				var run = function(){
+					;
+				}
+				setInterval(run, 5000);
+*/
+				
+				
+				
+				
 				
 				function CheckConnection(){
 				    if( !navigator.network ){

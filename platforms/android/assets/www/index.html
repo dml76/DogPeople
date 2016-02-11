@@ -83,22 +83,13 @@
 			    
 			    // Check Network Connection
 				function onResume(){
-					
-					var repeatCheckNetwork;
-					function repeatCheckNetworkFunction() {
-				    	repeatCheckNetwork = setInterval(checkNetwork, 3000);
+					var ntwk = CheckConnection();
+					if (ntwk) {
+						// Do nothing
+					} else {
+						alert("No connection. Check your network settings and try again.");
+						location.reload();
 					}
-					
-					function checkNetwork() {
-					    var ntwk = CheckConnection();
-						if (ntwk) {
-							// Do nothing
-						} else {
-							alert("No connection. Check your network settings and try again.");
-							location.reload();
-						}
-					}
-					
 				}
 				
 				function CheckConnection(){
@@ -282,7 +273,15 @@
 				
 				// END AUTO-COMPLETE ZIP CODES
 				
-	        onResume();
+	        setInterval(function () {
+				var ntwk = CheckConnection();
+				if (ntwk) {
+					// Do nothing
+				} else {
+					alert("No connection. Check your network settings and try again.");
+					location.reload();
+				}
+			}, 5000); // Execute every 5 seconds.
 			    
 			}
 				

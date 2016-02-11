@@ -106,9 +106,6 @@ $(document).ready(function() {
 	//setTimeout(rateAppRepeat, 10000);
 	setTimeout(rateAppRepeat, 604800000);
 	
-	/* CHECK CONNECTION EVERY 5 SECONDS */
-	setTimeout(onResume, 5000);
-	
 	/* SHOW RATE THIS APP MODAL INITIALLY */
 	$('.rate-app .remind').click(function(){
         $('.rate-app').fadeOut("fast");

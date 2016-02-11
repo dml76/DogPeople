@@ -76,7 +76,6 @@
 				    // Check Network Connection
 				    document.addEventListener("resume", onResume, false);
 				    onResume();
-				    //setInterval(onResume, 5000); // Execute every 5 seconds.
 				    
 				    // Load Map
 					google.maps.event.addDomListener(window, 'load', initialize);
@@ -91,19 +90,16 @@
 						location.reload();
 					}
 				}
+				
 				/* CHECK CONNECTION EVERY 5 SECONDS */
-				setTimeout(onResume, 5000);
-				
-				
-				
-/*
 				var run = function(){
-					;
+					var ntwk = CheckConnection();
+					if (ntwk == false) {
+						alert("No connection. Check your network settings and try again.");
+						location.reload();
+					}
 				}
 				setInterval(run, 5000);
-*/
-				
-				
 				
 				
 				

@@ -120,16 +120,16 @@ h1 {
 	color: rgba(255,255,255,0.2);
 	text-align: center;
 	position: relative;
-	top: 15%;
+	top: 100px;
 }
 
 .connection-icon > i {
-	font-size: 10em !important;
+	font-size: 5em !important;
 }
 
 .connection-icon > p {
 	font-size: 17px;
-	margin: 40px 0;
+	margin: 15px 0 40px 0;
 }
 
 .connection-icon > .connect-btn {

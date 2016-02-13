@@ -82,7 +82,11 @@
 				function onResume(){
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
-						alert("No connection. Check your network settings and try again.");
+						navigator.notification.alert(
+						    'Check your network settings and try again.',  // message
+						    'No connection',            // title
+						    'OK'                  // buttonName
+						);
 						location.reload();
 					}
 				}
@@ -91,7 +95,11 @@
 				var run = function(){
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
-						alert("No connection. Check your network settings and try again.");
+						navigator.notification.alert(
+						    'Check your network settings and try again.',  // message
+						    'No connection',            // title
+						    'OK'                  // buttonName
+						);
 						location.reload();
 					}
 				}
@@ -543,7 +551,6 @@
 	    
     </head>
     <body>
-	    
 	    <header class="main-header">
 			<a href="" class="reviews-close"></a>
 			<a href="" class="nearby-search"><i class="fa fa-location-arrow"></i></a> 
@@ -620,6 +627,8 @@
 	           <li><a title="Pet-Friendly Hotels" data-itemtype="Pet Friendly Hotels"><i class="fa fa-suitcase"></i><span>Hotels</span></a></li>   
 	        </ul>
 		</div>
+		
+<!-- 		<div id="dialog-message" title="No connection">Check your network settings and try again.</div> -->
 		
         <script type="text/javascript" src="js/cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script> 

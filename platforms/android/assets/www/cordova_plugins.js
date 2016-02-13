@@ -21,6 +21,20 @@ module.exports = [
         "clobbers": [
             "Connection"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+        "id": "cordova-plugin-dialogs.notification",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-dialogs/www/android/notification.js",
+        "id": "cordova-plugin-dialogs.notification_android",
+        "merges": [
+            "navigator.notification"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -30,6 +44,7 @@ module.exports.metadata =
     "cordova-plugin-geolocation": "1.0.2-dev",
     "org.apache.cordova.inappbrowser": "0.6.0",
     "org.apache.cordova.network-information": "0.2.15",
+    "cordova-plugin-dialogs": "1.2.0",
     "com.google.playservices": "19.0.0"
 }
 // BOTTOM OF METADATA

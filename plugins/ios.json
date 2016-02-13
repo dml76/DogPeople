@@ -72,6 +72,9 @@
         },
         "org.apache.cordova.network-information": {
             "PACKAGE_NAME": "com.dmlapps.dogpeople"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.dmlapps.dogpeople"
         }
     },
     "dependent_plugins": {}

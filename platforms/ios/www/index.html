@@ -69,6 +69,14 @@
 				    // Now safe to use device APIs
 				    StatusBar.styleBlackTranslucent();
 				    
+				    // Testing alerts
+				    alert("JS Alert test");
+				    navigator.notification.alert(
+					    'Testing alerts',  // message
+					    'Alert',            // title
+					    'OK'                  // buttonName
+					);
+				    
 				    // Check Network Connection
 				    document.addEventListener("resume", onResume, false);
 				    onResume();
@@ -82,7 +90,11 @@
 				function onResume(){
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
-						connectionAlert();
+						navigator.notification.alert(
+						    'Check your network settings and try again.',  // message
+						    'No connection',            // title
+						    'OK'                  // buttonName
+						);
 						location.reload();
 					}
 				}
@@ -91,7 +103,11 @@
 				var run = function(){
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
-						connectionAlert();
+						navigator.notification.alert(
+						    'Check your network settings and try again.',  // message
+						    'No connection',            // title
+						    'OK'                  // buttonName
+						);
 						location.reload();
 					}
 				}
@@ -490,15 +506,6 @@
 			function panLoc() {
 			  	map.panTo(GeoMarker.getPosition());
 			} 
-			
-			// Show Alert if no network conenction
-			function connectionAlert() {
-				navigator.notification.alert(
-				    'Check your network settings and try again.',  // message
-				    'No connection',            // title
-				    'OK'                  // buttonName
-				);
-			}
 					
 			google.maps.event.addDomListener(window, 'load', initialize);
 			

@@ -83,15 +83,11 @@
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
 						navigator.notification.alert(
-					        'Check your network settings and try again.',  // message
-					        alertDismissed,         // callback
-					        'No connection',            // title
-					        'OK'                  // buttonName
-					    );
-					    $(".connection-icon").show();
+						    'Check your network settings and try again.',  // message
+						    'No connection',            // title
+						    'OK'                  // buttonName
+						);
 						location.reload();
-					} else {
-						$(".connection-icon").hide();
 					}
 				}
 				
@@ -100,15 +96,11 @@
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
 						navigator.notification.alert(
-					        'Check your network settings and try again.',  // message
-					        alertDismissed,         // callback
-					        'No connection',            // title
-					        'OK'                  // buttonName
-					    );
-					    $(".connection-icon").show();
+						    'Check your network settings and try again.',  // message
+						    'No connection',            // title
+						    'OK'                  // buttonName
+						);
 						location.reload();
-					} else {
-						$(".connection-icon").hide();
 					}
 				}
 				setInterval(run, 5000);

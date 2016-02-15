@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.dmlapps.dogpeople"
-        version   = "17.9">
+        version   = "18.0">
 
     <name>DogPeople</name>
     <description>Everything for Fido</description>
@@ -35,6 +35,8 @@
     <plugin name="cordova-plugin-x-socialsharing" source="npm" spec="5.0.7" />
     <plugin name="cordova-plugin-google-analytics" source="npm" spec="0.8.1" />
     <plugin name="cordova-plugin-whitelist"      source="npm" spec="1.1.0" />
+    <plugin name="cordova-plugin-dialogs" source="npm" spec="1.2.0" />
+
     
     <feature name="Notification">
     	<param name="android-package" value="org.apache.cordova.dialogs.Notification" />

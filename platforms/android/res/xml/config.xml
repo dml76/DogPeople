@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dmlapps.dogpeople" version="17.9" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.dmlapps.dogpeople" version="18.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
@@ -22,6 +22,7 @@
     <plugin name="cordova-plugin-x-socialsharing" source="npm" spec="5.0.7" />
     <plugin name="cordova-plugin-google-analytics" source="npm" spec="0.8.1" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="1.1.0" />
+    <plugin name="cordova-plugin-dialogs" source="npm" spec="1.2.0" />
     <allow-navigation href="*" />
     <allow-intent href="*" />
     <access origin="*" />

@@ -82,8 +82,16 @@
 				function onResume(){
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
-						navigator.notification.alert( 'Check your network settings and try again.', PhoneGapAlert, 'No connection', 'OK');
+						navigator.notification.alert(
+					        'Check your network settings and try again.',  // message
+					        alertDismissed,         // callback
+					        'No connection',            // title
+					        'OK'                  // buttonName
+					    );
+					    $(".connection-icon").show();
 						location.reload();
+					} else {
+						$(".connection-icon").hide();
 					}
 				}
 				
@@ -91,8 +99,16 @@
 				var run = function(){
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
-						navigator.notification.alert( 'Check your network settings and try again.', PhoneGapAlert, 'No connection', 'OK');
+						navigator.notification.alert(
+					        'Check your network settings and try again.',  // message
+					        alertDismissed,         // callback
+					        'No connection',            // title
+					        'OK'                  // buttonName
+					    );
+					    $(".connection-icon").show();
 						location.reload();
+					} else {
+						$(".connection-icon").hide();
 					}
 				}
 				setInterval(run, 5000);

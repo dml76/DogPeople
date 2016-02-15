@@ -70,12 +70,15 @@
 				    StatusBar.styleBlackTranslucent();
 				    
 				    // Testing alerts
-				    alert("JS Alert test");
+				    //alert("JS Alert test");
+				    navigator.notification.alert("PhoneGap is working", function(){}, "", "");
+/*
 				    navigator.notification.alert(
 					    'Testing alerts',  // message
 					    'Alert',            // title
 					    'OK'                  // buttonName
 					);
+*/
 				    
 				    // Check Network Connection
 				    document.addEventListener("resume", onResume, false);

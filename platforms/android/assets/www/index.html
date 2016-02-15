@@ -69,18 +69,6 @@
 				    // Now safe to use device APIs
 				    StatusBar.styleBlackTranslucent();
 				    
-				    // Testing alerts
-				    //alert("JS Alert test");
-				    //navigator.notification.alert("PhoneGap is working", function(){}, "", "");
-				    navigator.notification.alert("Test message");
-/*
-				    navigator.notification.alert(
-					    'Testing alerts',  // message
-					    'Alert',            // title
-					    'OK'                  // buttonName
-					);
-*/
-				    
 				    // Check Network Connection
 				    document.addEventListener("resume", onResume, false);
 				    onResume();
@@ -94,11 +82,7 @@
 				function onResume(){
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
-						navigator.notification.alert(
-						    'Check your network settings and try again.',  // message
-						    'No connection',            // title
-						    'OK'                  // buttonName
-						);
+						navigator.notification.alert( 'Check your network settings and try again.', PhoneGapAlert, 'No connection', 'OK');
 						location.reload();
 					}
 				}
@@ -107,11 +91,7 @@
 				var run = function(){
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
-						navigator.notification.alert(
-						    'Check your network settings and try again.',  // message
-						    'No connection',            // title
-						    'OK'                  // buttonName
-						);
+						navigator.notification.alert( 'Check your network settings and try again.', PhoneGapAlert, 'No connection', 'OK');
 						location.reload();
 					}
 				}

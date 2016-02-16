@@ -67,7 +67,7 @@
 			    function onDeviceReady() {
 				    
 				    // Now safe to use device APIs
-				    //StatusBar.styleBlackTranslucent();
+				    StatusBar.styleBlackTranslucent();
 				    
 				    // Load Map
 					google.maps.event.addDomListener(window, 'load', initialize);
@@ -84,7 +84,6 @@
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
 						function alertDismissed() {
-					        location.reload(); // Reload the app
 					        $(".map-wrapper").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
 					    }
 					    navigator.notification.alert(
@@ -93,7 +92,9 @@
 					        'No connection', // title
 					        'OK' // buttonName
 					    );
-					} 
+					} else {
+						google.maps.event.addDomListener(window, 'load', initialize);
+					}
 				}
 				
 				/* CHECK CONNECTION EVERY 30 SECONDS */
@@ -101,7 +102,7 @@
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
 						function alertDismissed() {
-					        location.reload(); // Reload the app
+					        //location.reload(); // Reload the app
 					        $(".map-wrapper").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
 					    }
 					    navigator.notification.alert(
@@ -508,7 +509,7 @@
 			  	map.panTo(GeoMarker.getPosition());
 			} 
 					
-			google.maps.event.addDomListener(window, 'load', initialize);
+			//google.maps.event.addDomListener(window, 'load', initialize);
 			
 		</script>
 		

@@ -115,12 +115,14 @@ h1 {
 }
 
 .connection-icon {
-	width: 300px;
+	width: 100%;
 	margin: 0 auto;
+	padding: 10%;
 	color: rgba(255,255,255,0.2);
 	text-align: center;
-	position: relative;
+	position: absolute;
 	top: 100px;
+	z-index: 1;
 }
 
 .connection-icon > i {

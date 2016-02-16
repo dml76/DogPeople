@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    
+//     $(".map-wrapper").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
     	
 	/* PREVENT VERTICAL SCROLLING SYSTEM SETTING */
 	$(document).bind("touchmove", function(e){

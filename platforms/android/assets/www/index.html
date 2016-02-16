@@ -67,7 +67,7 @@
 			    function onDeviceReady() {
 				    
 				    // Now safe to use device APIs
-				    StatusBar.styleBlackTranslucent();
+				    //StatusBar.styleBlackTranslucent();
 				    
 				    // Load Map
 					google.maps.event.addDomListener(window, 'load', initialize);
@@ -85,13 +85,7 @@
 					if (ntwk == false) {
 						function alertDismissed() {
 					        location.reload(); // Reload the app
-					        $("#map-canvas").append(
-						        "<div class='connection-icon'>
-								<i class='fa fa-chain-broken'></i>
-								<p>No connection. Check your network settings and reconnect.</p>
-								<a href='' class='connect-btn'>Reconnect</a>
-								</div>"
-					        );
+					        $(".map-wrapper").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
 					    }
 					    navigator.notification.alert(
 					        'Check your network settings and try again.', // message
@@ -108,13 +102,7 @@
 					if (ntwk == false) {
 						function alertDismissed() {
 					        location.reload(); // Reload the app
-					        $("#map-canvas").append(
-						        "<div class='connection-icon'>
-								<i class='fa fa-chain-broken'></i>
-								<p>No connection. Check your network settings and reconnect.</p>
-								<a href='' class='connect-btn'>Reconnect</a>
-								</div>"
-					        );
+					        $(".map-wrapper").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
 					    }
 					    navigator.notification.alert(
 					        'Check your network settings and try again.', // message
@@ -583,7 +571,7 @@
 			<div id="menu-panel"><!-- Left blank on purpose --></div>
 			<div id="user-menu-panel"><!-- Left blank on purpose --></div>
 			<article>
-				<div class="container">
+				<div class="container map-wrapper">
 					<div class="rate-app" style="display: none;">
 						<p>Love using this app?</p>
 						<ul>

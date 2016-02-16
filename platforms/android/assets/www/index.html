@@ -69,6 +69,10 @@
 				    // Now safe to use device APIs
 				    StatusBar.styleBlackTranslucent();
 				    
+				    // Load Map
+					google.maps.event.addDomListener(window, 'load', initialize);
+					navigator.geolocation.getCurrentPosition(onSuccess, onError);
+				    
 				    // Check Network Connection
 				    document.addEventListener("resume", onResume, false);
 				    onResume();
@@ -95,11 +99,7 @@
 					        'No connection', // title
 					        'OK' // buttonName
 					    );
-					} else {
-						// Load Map
-						google.maps.event.addDomListener(window, 'load', initialize);
-						navigator.geolocation.getCurrentPosition(onSuccess, onError);
-					}
+					} 
 				}
 				
 				/* CHECK CONNECTION EVERY 30 SECONDS */
@@ -520,7 +520,7 @@
 			  	map.panTo(GeoMarker.getPosition());
 			} 
 					
-			//google.maps.event.addDomListener(window, 'load', initialize);
+			google.maps.event.addDomListener(window, 'load', initialize);
 			
 		</script>
 		

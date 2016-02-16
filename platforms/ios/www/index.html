@@ -85,8 +85,8 @@
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
 						function alertDismissed() {
-					        $('#map-canvas').hide();
-					        $(".map-wrapper").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
+					        $('.container, .menu-tap, .nearby-search').hide();
+							$("article").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
 					    }
 					    navigator.notification.alert(
 					        'Check your network settings and try again.', // message
@@ -95,9 +95,7 @@
 					        'OK' // buttonName
 					    );
 					} else {
-						$('#map-canvas').show();
-						navigator.geolocation.getCurrentPosition(onSuccess, onError);
-						google.maps.event.addDomListener(window, 'load', initialize);
+						// Display the map as usual
 					}
 				}
 				

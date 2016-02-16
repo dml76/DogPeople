@@ -123,7 +123,7 @@ header .toggle-panel {
     text-decoration: none;
 }
 
-article { background-color: #fff; height: 100vh; min-height: 100%; display: block; }
+article { background-color: #173c60; height: 100vh; min-height: 100%; display: block; }
 
 .container {
 	width: auto;

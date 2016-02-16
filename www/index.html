@@ -102,7 +102,7 @@
 					}
 				}
 				
-				/* CHECK CONNECTION EVERY 30 SECONDS */
+				/* CHECK CONNECTION EVERY 60 SECONDS */
 				var run = function(){
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
@@ -117,7 +117,7 @@
 					    );
 					}
 				}
-				setInterval(run, 30000);
+				setInterval(run, 60000);
 				
 				
 				

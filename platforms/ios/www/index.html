@@ -80,13 +80,13 @@
 				 
 			    }
 			    
-			    // Check Network Connection at app load, and if app resumes from background to foreground
+			    // Check Network Connection at app load and if app resumes from background to foreground
 				function onResume(){
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
 						function alertDismissed() {
 					        $('.container, .menu-tap, .nearby-search').hide();
-							$(".main-article").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
+							$("article").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
 							alert("We're back");
 					    }
 					    navigator.notification.alert(
@@ -573,7 +573,7 @@
         <div id="site-wrapper">
 			<div id="menu-panel"><!-- Left blank on purpose --></div>
 			<div id="user-menu-panel"><!-- Left blank on purpose --></div>
-			<article class="main-article">
+			<article>
 				<div class="container map-wrapper" style="display: none;">
 					<div class="rate-app" style="display: none;">
 						<p>Love using this app?</p>

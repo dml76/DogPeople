@@ -21,7 +21,7 @@ $(document).ready(function() {
 		getMapHeight();
 	}, false);
 		
-	$('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .menu-tap, #floating-panel').hide();
+	$('.reviews, .reviews-overlay, .reviews-close, .nearby-search, .menu-tap, #floating-panel, .rate-app').hide();
 	
 	/* ADJUST HEADER HEIGHT FOR STATUS BARS */
 	if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i))) {
@@ -116,6 +116,12 @@ $(document).ready(function() {
 	$('.rate-app .cancel').click(function(){
         $('.rate-app').fadeOut("fast");
     });
+    
+    /* SHOW NETWORK CHECK WARNING */
+	function showConnectionWarning() {
+		$('.connection-icon').fadeIn("fast");
+	}
+	setTimeout(showConnectionWarning, 3000);
     				    
 	$(".nearby-search").click(function(){
         $( "input#address" ).val("");

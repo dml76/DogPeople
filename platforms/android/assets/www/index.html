@@ -80,13 +80,14 @@
 				 
 			    }
 			    
-			    // Check Network Connection at app load and if app resumes from background to foreground
+			    // Check Network Connection at app load, and if app resumes from background to foreground
 				function onResume(){
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
 						function alertDismissed() {
 					        $('.container, .menu-tap, .nearby-search').hide();
-							$("article").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
+							$(".main-article").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
+							alert("We're back");
 					    }
 					    navigator.notification.alert(
 					        'Check your network settings and try again.', // message
@@ -95,7 +96,7 @@
 					        'OK' // buttonName
 					    );
 					} else {
-						// Display the map as usual
+						$('.container, .menu-tap, .nearby-search').show();
 					}
 				}
 				
@@ -572,8 +573,8 @@
         <div id="site-wrapper">
 			<div id="menu-panel"><!-- Left blank on purpose --></div>
 			<div id="user-menu-panel"><!-- Left blank on purpose --></div>
-			<article>
-				<div class="container map-wrapper">
+			<article class="main-article">
+				<div class="container map-wrapper" style="display: none;">
 					<div class="rate-app" style="display: none;">
 						<p>Love using this app?</p>
 						<ul>
@@ -605,15 +606,7 @@
 					</form>
 
 					<!-- Map -->
-					<div id="map-canvas">
-<!--
-						<div class="connection-icon" style="display: none;">
-							<i class="fa fa-chain-broken"></i>
-							<p>No connection. Check your network settings and reconnect.</p>
-							<a href="" class="connect-btn">Reconnect</a>
-						</div>
--->
-					</div>
+					<div id="map-canvas"></div>
 					
 					<!-- Refresh -->
 					<a href="" class="refresh"><i class="fa fa-refresh"></i> Redo search in this area</a>

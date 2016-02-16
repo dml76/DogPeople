@@ -67,7 +67,7 @@
 			    function onDeviceReady() {
 				    
 				    // Now safe to use device APIs
-				    StatusBar.styleBlackTranslucent();
+				    //StatusBar.styleBlackTranslucent();
 				    
 				    // Load Map
 					navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -85,9 +85,11 @@
 					var ntwk = CheckConnection();
 					if (ntwk == false) {
 						function alertDismissed() {
-					        $('.container, .menu-tap, .nearby-search').hide();
+					        $('.container').hide();
+/*
 							$("article").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
 							alert("We're back");
+*/
 					    }
 					    navigator.notification.alert(
 					        'Check your network settings and try again.', // message
@@ -96,7 +98,7 @@
 					        'OK' // buttonName
 					    );
 					} else {
-						$('.container, .menu-tap, .nearby-search').show();
+						$('.container').show();
 					}
 				}
 				
@@ -617,6 +619,7 @@
 					</div>
 					<div class="reviews-overlay"></div>
 				</div>
+				<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>
 			</article>
 		</div>
 		

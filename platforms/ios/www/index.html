@@ -70,8 +70,8 @@
 				    StatusBar.styleBlackTranslucent();
 				    
 				    // Load Map
-					//navigator.geolocation.getCurrentPosition(onSuccess, onError);
-					//google.maps.event.addDomListener(window, 'load', initialize);
+					navigator.geolocation.getCurrentPosition(onSuccess, onError);
+					google.maps.event.addDomListener(window, 'load', initialize);
 					
 				    
 				    // Check Network Connection
@@ -79,6 +79,55 @@
 				    onResume();
 				 
 			    }
+			    
+			    // Check Network Connection at app load and if app resumes from background to foreground
+				function onResume(){
+					var ntwk = CheckConnection();
+					if (ntwk == false) {
+						function alertDismissed() {
+					        $('#map-canvas').hide();
+					        $(".map-wrapper").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
+					    }
+					    navigator.notification.alert(
+					        'Check your network settings and try again.', // message
+					        alertDismissed, // callback
+					        'No connection', // title
+					        'OK' // buttonName
+					    );
+					} else {
+						$('#map-canvas').show();
+						navigator.geolocation.getCurrentPosition(onSuccess, onError);
+						google.maps.event.addDomListener(window, 'load', initialize);
+					}
+				}
+				
+				/* CHECK CONNECTION EVERY 30 SECONDS */
+				var run = function(){
+					var ntwk = CheckConnection();
+					if (ntwk == false) {
+						function alertDismissed() {
+					        location.reload(); // Reload the app
+					    }
+					    navigator.notification.alert(
+					        'Check your network settings and try again.', // message
+					        alertDismissed, // callback
+					        'No connection', // title
+					        'OK' // buttonName
+					    );
+					}
+				}
+				setInterval(run, 30000);
+				
+				
+				
+				function CheckConnection(){
+				    if( !navigator.network ){
+				    	navigator.network = window.top.navigator.network;
+				    }
+				    return ( (navigator.network.connection.type === "none" || navigator.network.connection.type === null || 
+				                navigator.network.connection.type === "unknown" ) ? false : true );
+				}
+			   
 				
 				// onSuccess Geolocation
 			    function onSuccess(position) {
@@ -463,54 +512,7 @@
 			  	map.panTo(GeoMarker.getPosition());
 			} 
 					
-			//google.maps.event.addDomListener(window, 'load', initialize);
-			
-			// Check Network Connection at app load and if app resumes from background to foreground
-				function onResume(){
-					var ntwk = CheckConnection();
-					if (ntwk == false) {
-						function alertDismissed() {
-					        $(".map-wrapper").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
-					    }
-					    navigator.notification.alert(
-					        'Check your network settings and try again.', // message
-					        alertDismissed, // callback
-					        'No connection', // title
-					        'OK' // buttonName
-					    );
-					} else {
-						navigator.geolocation.getCurrentPosition(onSuccess, onError);
-						google.maps.event.addDomListener(window, 'load', initialize);
-					}
-				}
-				
-				/* CHECK CONNECTION EVERY 30 SECONDS */
-				var run = function(){
-					var ntwk = CheckConnection();
-					if (ntwk == false) {
-						function alertDismissed() {
-					        //location.reload(); // Reload the app
-					        $(".map-wrapper").append("<div class='connection-icon'><i class='fa fa-chain-broken'></i><p>No connection. Check your network settings and reconnect.</p><a href='' class='connect-btn'>Reconnect</a></div>");
-					    }
-					    navigator.notification.alert(
-					        'Check your network settings and try again.', // message
-					        alertDismissed, // callback
-					        'No connection', // title
-					        'OK' // buttonName
-					    );
-					}
-				}
-				setInterval(run, 30000);
-				
-				
-				
-				function CheckConnection(){
-				    if( !navigator.network ){
-				    	navigator.network = window.top.navigator.network;
-				    }
-				    return ( (navigator.network.connection.type === "none" || navigator.network.connection.type === null || 
-				                navigator.network.connection.type === "unknown" ) ? false : true );
-				}
+			google.maps.event.addDomListener(window, 'load', initialize);
 			
 		</script>
 		
